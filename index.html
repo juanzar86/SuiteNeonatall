@@ -3,61 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal Pro</title>
+    <title>Suite Neonatal Pro - UCIN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --resp: #fef2f2; --resp-txt: #991b1b; --resp-bord: #fecaca;
-            --farm: #f0f9ff; --farm-txt: #075985; --farm-bord: #bae6fd;
-            --val: #f0fdf4; --val-txt: #166534; --val-bord: #bbf7d0;
-            --esc: #fffbeb; --esc-txt: #92400e; --esc-bord: #fde68a;
+            --rojo-bg: #fff1f1; --rojo-text: #b33a3a;
+            --azul-bg: #f0f7ff; --azul-text: #2c5d8f;
+            --verde-bg: #f0fff4; --verde-text: #2d6a4f;
+            --amarillo-bg: #fffcf0; --amarillo-text: #856404;
         }
-        body { font-family: 'Segoe UI', sans-serif; background: #f1f5f9; margin: 0; padding: 15px; display: flex; justify-content: center; }
-        .card { background: white; padding: 20px; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); width: 100%; max-width: 420px; text-align: center; }
-        h1 { color: #1e40af; margin: 0; font-size: 1.4em; }
-        .subtitle { color: #64748b; font-size: 0.8em; margin-bottom: 15px; font-weight: 600; }
-        .section-header { text-align: left; font-size: 0.65em; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 4px; font-weight: bold; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn { text-decoration: none; padding: 12px 5px; border-radius: 16px; border: 1px solid; display: flex; flex-direction: column; align-items: center; transition: 0.2s; font-weight: 600; font-size: 0.75em; }
-        .btn:active { transform: scale(0.96); opacity: 0.8; }
-        .icon { font-size: 20px; margin-bottom: 4px; }
-        .b-resp { background: var(--resp); border-color: var(--resp-bord); color: var(--resp-txt); }
-        .b-farm { background: var(--farm); border-color: var(--farm-bord); color: var(--farm-txt); }
-        .b-val { background: var(--val); border-color: var(--val-bord); color: var(--val-txt); }
-        .b-esc { background: var(--esc); border-color: var(--esc-bord); color: var(--esc-txt); }
-        .footer { margin-top: 20px; font-size: 9px; color: #94a3b8; text-transform: uppercase; font-weight: bold; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f9;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%; max-width: 450px;
+            border-radius: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 25px;
+        }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #2a4b8d; margin: 0; font-size: 26px; }
+        .header p { color: #7a7a7a; font-size: 14px; margin-top: 5px; font-weight: bold; }
+
+        .section-title {
+            font-size: 12px; font-weight: bold; color: #a0aec0;
+            margin: 25px 0 15px 5px; letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+        }
+
+        .card {
+            border-radius: 20px; padding: 20px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-decoration: none; transition: all 0.2s;
+            border: 1px solid rgba(0,0,0,0.03);
+            cursor: pointer;
+        }
+        
+        .card:active { transform: scale(0.95); opacity: 0.8; }
+        .card .icon { font-size: 28px; margin-bottom: 10px; }
+        .card span { font-size: 14px; font-weight: bold; text-align: center; }
+
+        /* Colores por sección */
+        .respiratorio { background-color: var(--rojo-bg); color: var(--rojo-text); }
+        .farmacia { background-color: var(--azul-bg); color: var(--azul-text); }
+        .seguridad { background-color: var(--verde-bg); color: var(--verde-text); }
+        .valoracion { background-color: var(--amarillo-bg); color: var(--amarillo-text); }
     </style>
 </head>
 <body>
-    <div class="card">
+
+<div class="container">
+    <div class="header">
         <h1>Suite Neonatal Pro</h1>
-        <div class="subtitle">UCIN - H.G.Z. N° 11 JALAPA</div>
-
-        <div class="section-header">Respiratorio y Aspiración</div>
-        <div class="grid">
-            <a href="ventilacion.html" class="btn b-resp"><span class="icon">💨</span>Ventilación</a>
-            <a href="aspirador.html" class="btn b-resp"><span class="icon">🩺</span>Evidencia Asp.</a>
-            <a href="neumonía.html" class="btn b-resp"><span class="icon">🛡️</span>Prevención NAV</a>
-            <a href="signosneu.html" class="btn b-resp"><span class="icon">🚨</span>Alarmas NAV</a>
-        </div>
-
-        <div class="section-header">Farmacia y Cálculo</div>
-        <div class="grid">
-            <a href="calculadora_dosis.html" class="btn b-farm"><span class="icon">🧮</span>Calc. de Dosis</a>
-            <a href="dilucion.html" class="btn b-farm"><span class="icon">💊</span>Dilución</a>
-            <a href="laboratorio.html" class="btn b-farm"><span class="icon">🧪</span>Laboratorio</a>
-            <a href="signos.html" class="btn b-farm"><span class="icon">🌡️</span>Signos Vitales</a>
-        </div>
-
-        <div class="section-header">Valoración y Escalas</div>
-        <div class="grid">
-            <a href="pae.html" class="btn b-val"><span class="icon">📋</span>NANDA/NIC</a>
-            <a href="clasificacion.html" class="btn b-esc"><span class="icon">📊</span>Clasificación</a>
-            <a href="apgar.html" class="btn b-esc"><span class="icon">👶</span>Apgar</a>
-            <a href="silverman.html" class="btn b-esc"><span class="icon">🫁</span>Silverman</a>
-            <a href="capurro.html" class="btn b-esc"><span class="icon">📏</span>Capurro</a>
-        </div>
-
-        <div class="footer">Actualizado 03/02/2026</div>
+        <p>UCIN - H.G.Z. N° 11 JALAPA</p>
     </div>
+
+    <div class="section-title">RESPIRATORIO Y ASPIRACIÓN</div>
+    <div class="grid">
+        <a href="ventilacion.html" class="card respiratorio"><div class="icon">💨</div><span>Ventilación</span></a>
+        <a href="aspirador.html" class="card respiratorio"><div class="icon">🩺</div><span>Evidencia Asp.</span></a>
+        <a href="neumonia.html" class="card respiratorio"><div class="icon">🛡️</div><span>Prevención NAV</span></a>
+        <a href="alarmas.html" class="card respiratorio"><div class="icon">🚨</div><span>Alarmas NAV</span></a>
+    </div>
+
+    <div class="section-title">FARMACIA Y CÁLCULO</div>
+    <div class="grid">
+        <a href="calculadora_dosis.html" class="card farmacia"><div class="icon">🧮</div><span>Calc. de Dosis</span></a>
+        <a href="dilucion.html" class="card farmacia"><div class="icon">💊</div><span>Dilución</span></a>
+        <a href="laboratorio.html" class="card farmacia"><div class="icon">🧪</div><span>Laboratorio</span></a>
+        <a href="signos.html" class="card farmacia"><div class="icon">🌡️</div><span>Signos Vitales</span></a>
+    </div>
+
+    <div class="section-title">SEGURIDAD Y PIEL</div>
+    <div class="grid">
+        <a href="upp.html" class="card seguridad"><div class="icon">🩹</div><span>Riesgo UPP</span></a>
+        <a href="marsi.html" class="card seguridad"><div class="icon">✨</div><span>MARSI (Adhesivos)</span></a>
+        <a href="caida.html" class="card seguridad"><div class="icon">⚠️</div><span>Riesgo Caída</span></a>
+        <a href="dispositivos.html" class="card seguridad"><div class="icon">🔌</div><span>Disp. Médicos</span></a>
+    </div>
+
+    <div class="section-title">VALORACIÓN Y ESCALAS</div>
+    <div class="grid">
+        <a href="pae.html" class="card valoracion"><div class="icon">📋</div><span>NANDA/NIC</span></a>
+        <a href="clasificacion.html" class="card valoracion"><div class="icon">📊</div><span>Clasificación</span></a>
+        <a href="dolor.html" class="card valoracion"><div class="icon">😭</div><span>Escala Dolor</span></a>
+        <a href="apgar.html" class="card valoracion"><div class="icon">👶</div><span>Apgar</span></a>
+        <a href="silverman.html" class="card valoracion"><div class="icon">🫁</div><span>Silverman</span></a>
+        <a href="capurro.html" class="card valoracion"><div class="icon">📏</div><span>Capurro</span></a>
+    </div>
+
+    <div style="height: 40px;"></div>
+</div>
+
 </body>
 </html>
