@@ -1,77 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal - Menú Principal</title>
-    <style>
-        :root {
-            --primary: #006064;
-            --secondary: #00acc1;
-            --accent: #ff4081;
-            --bg: #f4f7f6;
-            --text: #333;
-        }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 50px; }
-        header { background: var(--primary); color: white; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
-        .section-title { width: 90%; max-width: 1000px; margin: 25px auto 10px; color: var(--primary); font-weight: bold; border-left: 5px solid var(--accent); padding-left: 10px; }
-        
-        .grid-container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-            gap: 15px; 
-            width: 90%; 
-            max-width: 1000px; 
-            margin: auto; 
-        }
+<meta charset="UTF-8">
+<title>Suite Neonatal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .card { 
-            background: white; 
-            padding: 15px; 
-            border-radius: 10px; 
-            text-align: center; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
-            text-decoration: none; 
-            color: var(--text); 
-            transition: all 0.3s; 
-            border: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 100px;
-        }
-
-        .card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: var(--secondary); }
-        .card.main { background: #e0f7fa; border: 2px solid var(--secondary); }
-        .card h3 { margin: 5px 0; font-size: 1rem; color: var(--primary); }
-        .badge { background: var(--accent); color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; width: fit-content; margin: 0 auto 5px; }
-    </style>
+<style>
+:root{
+  --primary:#006064;
+  --accent:#00acc1;
+  --bg:#f4f7f6;
+}
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--bg);
+}
+header{
+  background:var(--primary);
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.1);
+  transition:.2s;
+}
+.card:hover{
+  transform:translateY(-5px);
+}
+.card a{
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:bold;
+  font-size:1.1rem;
+}
+.footer{
+  text-align:center;
+  padding:15px;
+  font-size:0.8rem;
+  color:#555;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>Suite Neonatal</h1>
-    <p>Panel de Control Clínico</p>
+  <h1>Suite Neonatal</h1>
+  <p>Herramientas clínicas y farmacológicas</p>
 </header>
 
-<div class="section-title">⭐ FARMACOLOGÍA</div>
-<div class="grid-container">
-    <a href="Guia_Diluciones_Pediatricas.html" class="card main">
-        <span class="badge">SISTEMA MAESTRO</span>
-        <h3>Guía de Diluciones</h3>
-        <p style="font-size: 0.7rem; color: #666; margin:0;">Calculadora y Estabilidades</p>
-    </a>
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <a href="farmaco.html">
+        💊<br><br>
+        Guía Farmacológica<br>
+        Neonatal / Pediátrica
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="#">
+        📋<br><br>
+        Hoja de Enfermería<br>
+        (próximamente)
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="#">
+        🧮<br><br>
+        Calculadoras<br>
+        Clínicas
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="#">
+        🫁<br><br>
+        Ventilación Mecánica<br>
+        Neonatal
+      </a>
+    </div>
+
+  </div>
 </div>
 
-<div class="section-title">🏥 PROCEDIMIENTOS Y VALORACIÓN</div>
-<div class="grid-container">
-    <a href="upp.html" class="card"><h3>Prevención UPP</h3></a>
-    <a href="marsi.html" class="card"><h3>MARSI</h3></a>
-    <a href="dispositivos.html" class="card"><h3>Dispositivos</h3></a>
-    <a href="apgar.html" class="card"><h3>Apgar</h3></a>
-    <a href="silverman.html" class="card"><h3>Silverman</h3></a>
-    <a href="laboratorio.html" class="card"><h3>Laboratorio</h3></a>
+<div class="footer">
+  © Suite Neonatal · Uso académico
 </div>
 
 </body>
