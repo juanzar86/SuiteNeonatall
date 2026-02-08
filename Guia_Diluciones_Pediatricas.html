@@ -3,159 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Farmacéutica Pediátrica Completa</title>
+    <title>Suite Neonatal - Menú Principal</title>
     <style>
-        :root { --primary: #006064; --secondary: #b2ebf2; --accent: #ff4081; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); margin: 0; padding: 20px; }
-        .container { max-width: 1200px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--secondary); padding-bottom: 10px; }
+        :root {
+            --primary: #006064;
+            --secondary: #00acc1;
+            --accent: #ff4081;
+            --bg: #f4f7f6;
+            --text: #333;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 50px; }
+        header { background: var(--primary); color: white; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
-        .search-box { display: flex; gap: 20px; margin-bottom: 30px; background: var(--secondary); padding: 20px; border-radius: 8px; }
-        .input-field { flex: 1; display: flex; flex-direction: column; }
-        label { font-weight: bold; margin-bottom: 5px; color: var(--primary); }
-        input { padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        .section-title { width: 90%; max-width: 1000px; margin: 25px auto 10px; color: var(--primary); font-weight: bold; border-left: 5px solid var(--accent); padding-left: 10px; }
+        
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px; 
+            width: 90%; 
+            max-width: 1000px; 
+            margin: auto; 
+        }
 
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th { background: var(--primary); color: white; padding: 12px; text-align: left; position: sticky; top: 0; }
-        td { border-bottom: 1px solid #eee; padding: 10px; vertical-align: top; }
-        tr:hover { background-color: #f1f8e9; }
+        .card { 
+            background: white; 
+            padding: 15px; 
+            border-radius: 10px; 
+            text-align: center; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+            text-decoration: none; 
+            color: var(--text); 
+            transition: all 0.3s; 
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px;
+        }
 
-        .calc-box { background: #e8f5e9; padding: 8px; border-radius: 4px; border-left: 4px solid #4caf50; font-weight: bold; color: #2e7d32; }
-        .stability-tag { font-size: 11px; color: #c2185b; font-weight: bold; display: block; margin-top: 5px; }
-        .theory-card { margin-top: 30px; padding: 20px; background: #fffde7; border-radius: 8px; border: 1px solid #fbc02d; }
-        .theory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: var(--secondary); }
+        .card.main { background: #e0f7fa; border: 2px solid var(--secondary); }
+        .card h3 { margin: 5px 0; font-size: 1rem; color: var(--primary); }
+        .badge { background: var(--accent); color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; width: fit-content; margin: 0 auto 5px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Manual de Diluciones y Estabilidades Intravenosas</h1>
+<header>
+    <h1>Suite Neonatal</h1>
+    <p>Panel de Control Clínico</p>
+</header>
 
-    <div class="search-box">
-        <div class="input-field">
-            <label>🔍 Buscar Medicamento:</label>
-            <input type="text" id="search" onkeyup="updateTable()" placeholder="Ej: Fenitoina, Vancomicina...">
-        </div>
-        <div class="input-field">
-            <label>💉 Dosis Pediátrica (mg):</label>
-            <input type="number" id="dosis" onkeyup="updateTable()" placeholder="Ingresar mg totales">
-        </div>
-    </div>
-
-    <table id="medTable">
-        <thead>
-            <tr>
-                <th>Medicamento / Diluyente</th>
-                <th>Límites (mg/ml)</th>
-                <th>Volumen Sugerido (ml)</th>
-                <th>Administración y Estabilidad</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
-
-    <div class="theory-card">
-        <h2>📚 Fundamentos Farmacológicos (Lactancia y Pediatría)</h2>
-        <div class="theory-grid">
-            <div>
-                <h3>Farmacocinética (LADME)</h3>
-                <p>En el paciente pediátrico, el **volumen de distribución** se ve alterado por el mayor porcentaje de agua corporal total. La **maduración renal y hepática** influye directamente en la vida media, lo que exige ajustes en la velocidad de administración para evitar toxicidad.</p>
-            </div>
-            <div>
-                <h3>Farmacodinamia</h3>
-                <p>Mecanismo de acción según grupo:
-                    <ul>
-                        <li><strong>Antibióticos:</strong> Inhibición de pared (Betalactámicos) o síntesis proteica (Aminoglucósidos).</li>
-                        <li><strong>Anticonvulsivantes (Fenitoína):</strong> Estabilización de membranas neuronales actuando sobre canales de sodio.</li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-    </div>
+<div class="section-title">⭐ FARMACOLOGÍA</div>
+<div class="grid-container">
+    <a href="Guia_Diluciones_Pediatricas.html" class="card main">
+        <span class="badge">SISTEMA MAESTRO</span>
+        <h3>Guía de Diluciones</h3>
+        <p style="font-size: 0.7rem; color: #666; margin:0;">Calculadora y Estabilidades</p>
+    </a>
 </div>
 
-<script>
-const medicamentos = [
-    {n: "ACICLOVIR", min: 5, max: 10, dil: "DX5%-SF", t: "60 MIN", temp: "TEMP AMBIENTE", dur: "5 DIAS"},
-    {n: "ALBÚMINA", min: 250, max: 250, dil: "DIRECTO-DX5%-SF", t: "30-60 MIN", temp: "2-8 °C", dur: "72 HORAS"},
-    {n: "ANFOTERICINA B", min: 0.1, max: 0.5, dil: "DX5%", t: "2-6 HORAS", temp: "2-8 °C", dur: "5 DIAS"},
-    {n: "AMIKACINA", min: 5, max: 10, dil: "DX5%-SF", t: "30 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "AZITROMICINA", min: 1, max: 2, dil: "DX5%", t: "60 MIN", temp: "2-8 °C", dur: "7 DIAS"},
-    {n: "AMPICILINA", min: 30, max: 100, dil: "ABD-SF", t: "30 MIN", temp: "2-8 °C", dur: "24 HORAS"},
-    {n: "BUPRENORFINA", min: 0, max: 0, dil: "SF", t: "BOLO 3 MIN", temp: "TEMP AMBIENTE", dur: "24 HORAS"},
-    {n: "BUTILHIOSCINA", min: 0, max: 0, dil: "SF", t: "20 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "CEFALOTINA", min: 50, max: 50, dil: "ABD-SF-DX5%", t: "30 MIN", temp: "2-8 °C", dur: "2 DIAS"},
-    {n: "CEFEPIME", min: 40, max: 100, dil: "DX5%-SF", t: "30 MIN", temp: "2-8 °C", dur: "7 DIAS"},
-    {n: "CEFOTAXIMA", min: 30, max: 100, dil: "DX5%-SF", t: "30 MIN", temp: "2-8 °C", dur: "7 DIAS"},
-    {n: "CEFTAZIDIMA", min: 30, max: 170, dil: "ABD-SF-DX5%", t: "30 MIN", temp: "2-8 °C", dur: "7 DIAS"},
-    {n: "CEFTRIAXONA", min: 30, max: 40, dil: "DX5%-SF-ABD", t: "30 MIN", temp: "2-8 °C", dur: "3 DIAS"},
-    {n: "CIPROFLOXACINO", min: 2, max: 2, dil: "DIRECTO", t: "30 MIN", temp: "TEMP AMBIENTE", dur: "5 DIAS"},
-    {n: "CITRATO DE CAFEÍNA", min: 10, max: 20, dil: "DX5%-DX50%", t: "10 MIN", temp: "TEMP AMBIENTE", dur: "24 HORAS"},
-    {n: "COLISTIMETATO", min: 75, max: 75, dil: "ABD-SF", t: "30 MIN", temp: "2-8 °C", dur: "24 HORAS"},
-    {n: "CLONIXINATO DE LISINA", min: 0, max: 0, dil: "SF", t: "60 MIN", temp: "TEMP AMBIENTE", dur: "3 DIAS"},
-    {n: "CLINDAMICINA", min: 10, max: 18, dil: "DX5%-SF", t: "30 MIN", temp: "TEMP AMBIENTE", dur: "2 DIAS"},
-    {n: "DEXAMETASONA", min: 2, max: 2, dil: "DX5%-SF", t: "10 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "ERTAPENEM", min: 20, max: 20, dil: "SF", t: "30 MIN", temp: "2-8 °C", dur: "24H / 6H TA"},
-    {n: "FLUCONAZOL", min: 2, max: 2, dil: "DIRECTO", t: "30 MIN", temp: "TEMP AMBIENTE", dur: "5 DIAS"},
-    {n: "FUROSEMIDA", min: 5, max: 10, dil: "DX5%-SF", t: "3-5 MIN", temp: "TEMP AMBIENTE", dur: "5 DIAS"},
-    {n: "FENITOÍNA", min: 6, max: 6, dil: "SF", t: "20-30 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "GENTAMICINA", min: 10, max: 10, dil: "DX5%-SF", t: "30-60 MIN", temp: "TEMP AMBIENTE", dur: "5 DIAS"},
-    {n: "HIDROCORTISONA", min: 5, max: 5, dil: "DX5%-SF", t: "15-30 MIN", temp: "TEMP AMBIENTE", dur: "3 DIAS"},
-    {n: "HIDRALAZINA", min: 20, max: 20, dil: "DIRECTO", t: "3 MIN", temp: "TEMP AMBIENTE", dur: "24 HORAS"},
-    {n: "IMIPENEM / CILASTATINA", min: 2.5, max: 7, dil: "DX5%-SF", t: "60 MIN", temp: "2-8 °C", dur: "24H / 4H TA"},
-    {n: "KETOROLACO", min: 10, max: 15, dil: "SF", t: "5 MIN", temp: "TEMP AMBIENTE", dur: "2 DIAS"},
-    {n: "LEVETIRACETAM", min: 5, max: 5, dil: "DX5%-SF-RL", t: "20 MIN", temp: "TEMP AMBIENTE", dur: "24 HORAS"},
-    {n: "LINEZOLID", min: 2, max: 2, dil: "DIRECTO", t: "30-120 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "MEROPENEM", min: 20, max: 50, dil: "DX5%-SF", t: "30 MIN-4H", temp: "2-8 °C", dur: "24H / 4H TA"},
-    {n: "METAMIZOL", min: 10, max: 10, dil: "SF", t: "30 MIN", temp: "TEMP AMBIENTE", dur: "4 DIAS"},
-    {n: "METILPREDNISOLONA", min: 0, max: 125, dil: "DX5%-SF", t: "30-120 MIN", temp: "TEMP AMBIENTE", dur: "2 DIAS"},
-    {n: "METOCLOPRAMIDA", min: 0.2, max: 5, dil: "DX5%-SF", t: "15 MIN", temp: "TEMP AMBIENTE", dur: "24 HORAS"},
-    {n: "METRONIDAZOL", min: 5, max: 5, dil: "DIRECTO", t: "30 MIN", temp: "TEMP AMBIENTE", dur: "5 DIAS"},
-    {n: "NALBUFINA", min: 1, max: 1, dil: "DX5%-SF", t: "BOLO 1-5 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "OMEPRAZOL", min: 4, max: 4, dil: "DX5%-SF-DIL", t: "10 MIN", temp: "2-8 °C", dur: "12 HORAS"},
-    {n: "ONDANSETRON", min: 1, max: 2, dil: "DX5%-SF", t: "10-20 MIN", temp: "2-8 °C", dur: "7 DIAS"},
-    {n: "ORCIPRENALINA", min: 0, max: 0, dil: "SF", t: "20-30 MIN", temp: "TEMP AMBIENTE", dur: ""},
-    {n: "OCTREOTIDE", min: 0.02, max: 0.2, dil: "SF", t: "BOLO 3M/INF", temp: "2-8 °C", dur: "4 DIAS"},
-    {n: "PANTOPRAZOL", min: 0.4, max: 4, dil: "DX5%-SF-DIL", t: "15 MIN", temp: "TEMP AMBIENTE", dur: "22 HORAS"},
-    {n: "PARACETAMOL", min: 10, max: 10, dil: "DIRECTO", t: "20 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "PIPERACILINA / TAZOBACTAM", min: 40, max: 200, dil: "DX5%-SF", t: "30 MIN", temp: "2-8 °C", dur: "2 DIAS"},
-    {n: "TIGECICLINA", min: 0.5, max: 1, dil: "DX5%-SF", t: "30-60 MIN", temp: "TEMP AMBIENTE", dur: "24-48 HORAS"},
-    {n: "TRAMADOL", min: 1, max: 1, dil: "DX5%-SF", t: "20 MIN", temp: "TEMP AMBIENTE", dur: "7 DIAS"},
-    {n: "TMP / SMX", min: 2, max: 2, dil: "DX5%", t: "60 MIN", temp: "TEMP AMBIENTE", dur: "6 HORAS"},
-    {n: "TRINITRATO DE GLICERILO", min: 0.05, max: 0.4, dil: "DX5%-SF-RL", t: "-", temp: "TEMP AMBIENTE", dur: "-"},
-    {n: "VANCOMICINA", min: 5, max: 10, dil: "DX5%-DX10%-RL", t: "120 MIN", temp: "2-8 °C", dur: "4 DIAS"},
-    {n: "VITAMINA K", min: 2, max: 2, dil: "DX5%-SF", t: "15 MIN", temp: "TEMP AMBIENTE", dur: "24 HORAS"},
-    {n: "VORICONAZOL", min: 0.5, max: 5, dil: "DX5%-SF-RL", t: "60-120 MIN", temp: "2-8 °C", dur: "24 HORAS"}
-];
+<div class="section-title">🏥 PROCEDIMIENTOS Y VALORACIÓN</div>
+<div class="grid-container">
+    <a href="upp.html" class="card"><h3>Prevención UPP</h3></a>
+    <a href="marsi.html" class="card"><h3>MARSI</h3></a>
+    <a href="dispositivos.html" class="card"><h3>Dispositivos</h3></a>
+    <a href="apgar.html" class="card"><h3>Apgar</h3></a>
+    <a href="silverman.html" class="card"><h3>Silverman</h3></a>
+    <a href="laboratorio.html" class="card"><h3>Laboratorio</h3></a>
+</div>
 
-function updateTable() {
-    const search = document.getElementById("search").value.toUpperCase();
-    const dosis = parseFloat(document.getElementById("dosis").value);
-    const body = document.getElementById("tableBody");
-    body.innerHTML = "";
-
-    medicamentos.filter(m => m.n.includes(search)).forEach(m => {
-        let calc = "--";
-        if (dosis > 0 && m.max > 0) {
-            const vMin = (dosis / m.max).toFixed(1);
-            const vMax = m.min > 0 ? (dosis / m.min).toFixed(1) : "Ilimitado";
-            calc = `<div class="calc-box">${m.min === m.max ? 'Exacto: '+vMin : vMin + ' a ' + vMax} ml</div>`;
-        }
-        
-        body.innerHTML += `
-            <tr>
-                <td><strong>${m.n}</strong><br><small>Diluyente: ${m.dil}</small></td>
-                <td><small>Mín: ${m.min || 'N/A'} mg/ml</small><br><small>Máx: ${m.max || 'N/A'} mg/ml</small></td>
-                <td>${calc}</td>
-                <td>
-                    ⏱ ${m.t}<br>
-                    <span class="stability-tag">🌡️ ${m.temp} | ⏳ ${m.dur}</span>
-                </td>
-            </tr>
-        `;
-    });
-}
-updateTable();
-</script>
 </body>
 </html>
