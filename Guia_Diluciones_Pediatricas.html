@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Diluciones Neonatales</title>
+    <title>Guía de Diluciones Neonatales - Especializada</title>
     <style>
         :root { --primary: #006064; --bg: #f4f7f6; --accent: #c62828; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 15px; }
-        .container { max-width: 1100px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .container { max-width: 1200px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .nav-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; }
-        .btn-volver { text-decoration: none; color: var(--primary); font-weight: bold; border: 2px solid var(--primary); padding: 8px 15px; border-radius: 8px; font-size: 0.8rem; }
+        .btn-volver { text-decoration: none; color: var(--primary); font-weight: bold; border: 2px solid var(--primary); padding: 8px 15px; border-radius: 8px; font-size: 0.8rem; transition: 0.3s; }
+        .btn-volver:hover { background: var(--primary); color: white; }
         .search-area { background: #e0f2f1; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
         input { padding: 12px; border: 1px solid #ccc; border-radius: 6px; width: 100%; box-sizing: border-box; }
         table { width: 100%; border-collapse: collapse; }
         th { background: var(--primary); color: white; padding: 12px; font-size: 0.8rem; text-align: left; position: sticky; top: 0; }
         td { padding: 12px; border-bottom: 1px solid #eee; font-size: 0.85rem; vertical-align: top; }
-        .calc-box { background: #fff3e0; padding: 10px; border-radius: 6px; color: #e65100; font-weight: bold; margin-top: 8px; border-left: 5px solid #ff9800; }
-        .vel { color: var(--accent); font-weight: bold; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .calc-box { background: #fff3e0; padding: 10px; border-radius: 6px; color: #e65100; font-weight: bold; margin: 8px 0; border-left: 5px solid #ff9800; }
+        .vel { color: var(--accent); font-weight: bold; display: block; margin-top: 4px; }
+        .fd-info { font-size: 0.75rem; color: #555; background: #eceff1; padding: 5px; border-radius: 4px; display: block; margin-top: 5px; line-height: 1.2; }
     </style>
 </head>
 <body>
@@ -24,18 +27,18 @@
 <div class="container">
     <div class="nav-header">
         <h2 style="color:var(--primary); margin:0;">Guía de Diluciones (46 Fármacos)</h2>
-        <a href="index.html" class="btn-volver">⬅ VOLVER</a>
+        <a href="index.html" class="btn-volver">⬅ VOLVER AL MENÚ</a>
     </div>
 
     <div class="search-area">
-        <input type="text" id="buscado" onkeyup="render()" placeholder="🔍 Buscar fármaco...">
+        <input type="text" id="buscado" onkeyup="render()" placeholder="🔍 Buscar por nombre o farmacodinamia...">
         <input type="number" id="mgDosis" onkeyup="render()" placeholder="Dosis en mg">
     </div>
 
     <table id="tablaMed">
         <thead>
             <tr>
-                <th>MEDICAMENTO</th>
+                <th>MEDICAMENTO Y FARMACODINAMIA</th>
                 <th>DILUYENTE / VELOCIDAD</th>
                 <th>ESTABILIDAD</th>
             </tr>
@@ -46,53 +49,53 @@
 
 <script>
 const db = [
-    {n:"ACICLOVIR", cMin:5, cMax:10, dil:"DX5% - SF", vel:"60 MIN", est:"5 DÍAS (TA)"},
-    {n:"ALBÚMINA", cMin:250, cMax:250, dil:"DIR - DX5% - SF", vel:"30-60 MIN", est:"72H (2-8°C)"},
-    {n:"AMIKACINA", cMin:5, cMax:10, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (TA)"},
-    {n:"AMPICILINA", cMin:30, cMax:100, dil:"ABD - SF", vel:"30 MIN", est:"24H (2-8°C)"},
-    {n:"AMPICILINA + SULBACTAM", cMin:3, cMax:30, dil:"SF", vel:"30 MIN", est:"72H (2-8°C)"},
-    {n:"ANFOTERICINA B", cMin:0.1, cMax:0.5, dil:"DX5%", vel:"2-6 HORAS", est:"5 DÍAS (2-8°C)"},
-    {n:"BUPRENORFINA", cMin:0.3, cMax:0.3, dil:"SF", vel:"BOLO 3 MIN", est:"24H (TA)"},
-    {n:"CASPOFUNGINA", cMin:0.5, cMax:0.5, dil:"SF", vel:"60 MIN", est:"24H (TA) / 48H (2-8°C)"},
-    {n:"CEFEPIME", cMin:40, cMax:100, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (2-8°C)"},
-    {n:"CEFOTAXIMA", cMin:20, cMax:100, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (2-8°C)"},
-    {n:"CEFTRIAXONA", cMin:10, cMax:40, dil:"DX5% - SF", vel:"30 MIN", est:"3 DÍAS (TA)"},
-    {n:"CEFTAZIDIMA", cMin:40, cMax:100, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (2-8°C)"},
-    {n:"CIPROFLOXACINO", cMin:1, cMax:2, dil:"SF - DX5%", vel:"60 MIN", est:"14 DÍAS (2-8°C)"},
-    {n:"CLINDAMICINA", cMin:6, cMax:12, dil:"DX5% - SF", vel:"20-30 MIN", est:"16 DÍAS (TA)"},
-    {n:"DEXAMETASONA", cMin:2, cMax:4, dil:"SF - DX5%", vel:"10 MIN", est:"7 DÍAS (TA)"},
-    {n:"DORIPENEM", cMin:4, cMax:5, dil:"SF - DX5%", vel:"60 MIN", est:"12H (TA) / 48H (2-8°C)"},
-    {n:"ERTAPENEM", cMin:20, cMax:20, dil:"SF", vel:"30 MIN", est:"6H (TA) / 24H (2-8°C)"},
-    {n:"ERITROMICINA", cMin:1, cMax:5, dil:"SF - DX5%", vel:"60 MIN", est:"24H (2-8°C)"},
-    {n:"ESMOLOL", cMin:10, cMax:10, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)"},
-    {n:"ETAMSILATO", cMin:50, cMax:50, dil:"SF - DX5%", vel:"10 MIN", est:"24H (TA)"},
-    {n:"FENITOÍNA", cMin:5, cMax:10, dil:"SF", vel:"20 MIN", est:"NO REFRIGERAR"},
-    {n:"FENOBARBITAL", cMin:10, cMax:10, dil:"SF - DX5%", vel:"20 MIN", est:"24H (TA)"},
-    {n:"FENTANILO", cMin:0.01, cMax:0.05, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)"},
-    {n:"FLUCONAZOL", cMin:2, cMax:2, dil:"DIRECTO", vel:"30 MIN", est:"24H (TA)"},
-    {n:"FUROSEMIDA", cMin:5, cMax:10, dil:"DIR - SF", vel:"10-15 MIN", est:"24H (TA)"},
-    {n:"GENTAMICINA", cMin:2.5, cMax:10, dil:"SF - DX5%", vel:"30-60 MIN", est:"24H (TA)"},
-    {n:"HIDROCORTISONA", cMin:1, cMax:5, dil:"SF - DX5%", vel:"10-30 MIN", est:"3 DÍAS (TA)"},
-    {n:"IMIPENEM", cMin:5, cMax:5, dil:"SF - DX5%", vel:"30-60 MIN", est:"4H (TA) / 24H (2-8°C)"},
-    {n:"LINEZOLID", cMin:2, cMax:2, dil:"DIRECTO", vel:"30-120 MIN", est:"7 DÍAS (TA)"},
-    {n:"LEVETIRACETAM", cMin:10, cMax:15, dil:"SF - DX5%", vel:"15 MIN", est:"24H (TA)"},
-    {n:"MEROPENEM", cMin:20, cMax:50, dil:"SF - DX5%", vel:"30 MIN", est:"2H (TA) / 12H (2-8°C)"},
-    {n:"METILPREDNISOLONA", cMin:1, cMax:5, dil:"SF - DX5%", vel:"10-30 MIN", est:"24H (TA)"},
-    {n:"METRONIDAZOL", cMin:5, cMax:5, dil:"DIRECTO", vel:"30-60 MIN", est:"NO REFRIGERAR"},
-    {n:"MIDAZOLAM", cMin:0.5, cMax:1, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)"},
-    {n:"MILRINONA", cMin:0.2, cMax:0.2, dil:"SF - DX5%", vel:"INFUSIÓN", est:"24H (TA)"},
-    {n:"MORFINA", cMin:0.1, cMax:0.5, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)"},
-    {n:"NALOXONA", cMin:0.04, cMax:0.4, dil:"SF - DX5%", vel:"10 MIN", est:"24H (TA)"},
-    {n:"OMEPRAZOL", cMin:4, cMax:4, dil:"SF - DX5%", vel:"10-30 MIN", est:"12H (TA)"},
-    {n:"ONDANSETRÓN", cMin:2, cMax:2, dil:"SF - DX5%", vel:"15 MIN", est:"7 DÍAS (TA)"},
-    {n:"OXACILINA", cMin:20, cMax:40, dil:"SF - DX5%", vel:"30 MIN", est:"4 DÍAS (2-8°C)"},
-    {n:"PENICILINA G", cMin:50000, cMax:100000, dil:"SF - DX5%", vel:"30 MIN", est:"7 DÍAS (2-8°C)"},
-    {n:"PIPERACILINA/TAZO", cMin:20, cMax:100, dil:"SF - DX5%", vel:"30 MIN", est:"48H (TA) / 7 DÍAS (R)"},
-    {n:"SULFATO DE MAGNESIO", cMin:1, cMax:10, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)"},
-    {n:"TIGECICLINA", cMin:0.5, cMax:1, dil:"SF - DX5%", vel:"30-60 MIN", est:"24H (TA)"},
-    {n:"VANCOMICINA", cMin:5, cMax:5, dil:"SF - DX5% - RL", vel:"120 MIN", est:"4 DÍAS (2-8°C)"},
-    {n:"VECURONIO", cMin:1, cMax:2, dil:"SF - DX5%", vel:"BOLO", est:"24H (TA)"},
-    {n:"ZIDOVUDINA", cMin:2, cMax:4, dil:"DX5%", vel:"60 MIN", est:"24H (TA)"}
+    {n:"ACICLOVIR", cMin:5, cMax:10, dil:"DX5% - SF", vel:"60 MIN", est:"5 DÍAS (TA)", fd:"Inhibe la síntesis de ADN viral. Vida media neonatal prolongada (4-5h)."},
+    {n:"ALBÚMINA", cMin:250, cMax:250, dil:"DIR - DX5% - SF", vel:"30-60 MIN", est:"72H (2-8°C)", fd:"Expansor de volumen. Cuidado: puede desplazar la bilirrubina de la albúmina endógena."},
+    {n:"AMIKACINA", cMin:5, cMax:10, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (TA)", fd:"Aminoglucósido. Bactericida por inhibición de síntesis proteica (30S). Eliminación renal."},
+    {n:"AMPICILINA", cMin:30, cMax:100, dil:"ABD - SF", vel:"30 MIN", est:"24H (2-8°C)", fd:"Betalactámico. Inhibe síntesis de pared celular. Sinergia con aminoglucósidos."},
+    {n:"AMPICILINA + SULBACTAM", cMin:3, cMax:30, dil:"SF", vel:"30 MIN", est:"72H (2-8°C)", fd:"Inhibidor de betalactamasas. Amplía espectro contra anaerobios y Gram-."},
+    {n:"ANFOTERICINA B", cMin:0.1, cMax:0.5, dil:"DX5%", vel:"2-6 HORAS", est:"5 DÍAS (2-8°C)", fd:"Antifúngico. Altera permeabilidad de membrana. Altamente nefrotóxico."},
+    {n:"BUPRENORFINA", cMin:0.3, cMax:0.3, dil:"SF", vel:"BOLO 3 MIN", est:"24H (TA)", fd:"Agonista parcial opioide. Analgesia prolongada con menos depresión respiratoria."},
+    {n:"CASPOFUNGINA", cMin:0.5, cMax:0.5, dil:"SF", vel:"60 MIN", est:"24H (TA) / 48H (2-8°C)", fd:"Equinocandina. Inhibe la síntesis de beta-D-glucano en la pared fúngica."},
+    {n:"CEFEPIME", cMin:40, cMax:100, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (2-8°C)", fd:"Cefalosporina 4ta gen. Alta penetración en LCR. Actividad antipseudomónica."},
+    {n:"CEFOTAXIMA", cMin:20, cMax:100, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (2-8°C)", fd:"Cefalosporina 3ra gen. Elección en sepsis neonatal y meningitis."},
+    {n:"CEFTRIAXONA", cMin:10, cMax:40, dil:"DX5% - SF", vel:"30 MIN", est:"3 DÍAS (TA)", fd:"Cuidado: Contraindicada si hay uso de Calcio (precipitados) o ictericia grave."},
+    {n:"CEFTAZIDIMA", cMin:40, cMax:100, dil:"DX5% - SF", vel:"30 MIN", est:"7 DÍAS (2-8°C)", fd:"Cefalosporina 3ra gen con alta actividad contra Pseudomonas aeruginosa."},
+    {n:"CIPROFLOXACINO", cMin:1, cMax:2, dil:"SF - DX5%", vel:"60 MIN", est:"14 DÍAS (2-8°C)", fd:"Quinolona. Inhibe ADN-girasa. Uso restringido en neonatos a infecciones graves."},
+    {n:"CLINDAMICINA", cMin:6, cMax:12, dil:"DX5% - SF", vel:"20-30 MIN", est:"16 DÍAS (TA)", fd:"Lincosamida. Inhibe síntesis proteica (50S). Activa contra anaerobios."},
+    {n:"DEXAMETASONA", cMin:2, cMax:4, dil:"SF - DX5%", vel:"10 MIN", est:"7 DÍAS (TA)", fd:"Glucocorticoide potente. Uso en displasia broncopulmonar y edema cerebral."},
+    {n:"DORIPENEM", cMin:4, cMax:5, dil:"SF - DX5%", vel:"60 MIN", est:"12H (TA) / 48H (2-8°C)", fd:"Carbapenem. Estabilidad contra betalactamasas de amplio espectro."},
+    {n:"ERTAPENEM", cMin:20, cMax:20, dil:"SF", vel:"30 MIN", est:"6H (TA) / 24H (2-8°C)", fd:"Carbapenem de vida media larga. No activo contra Pseudomonas."},
+    {n:"ERITROMICINA", cMin:1, cMax:5, dil:"SF - DX5%", vel:"60 MIN", est:"24H (2-8°C)", fd:"Macrólido. Procinético en bajas dosis. Riesgo de estenosis pilórica."},
+    {n:"ESMOLOL", cMin:10, cMax:10, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)", fd:"Betabloqueante de acción ultra corta. Control de taquicardia supraventricular."},
+    {n:"ETAMSILATO", cMin:50, cMax:50, dil:"SF - DX5%", vel:"10 MIN", est:"24H (TA)", pk:"Hemostático. Reduce fragilidad capilar en hemorragia periventricular."},
+    {n:"FENITOÍNA", cMin:5, cMax:10, dil:"SF", vel:"20 MIN", est:"NO REFRIGERAR", fd:"Bloquea canales de Sodio. No diluir en DX (precipita inmediatamente)."},
+    {n:"FENOBARBITAL", cMin:10, cMax:10, dil:"SF - DX5%", vel:"20 MIN", est:"24H (TA)", fd:"Barbitúrico de elección para convulsiones neonatales. Vida media muy larga."},
+    {n:"FENTANILO", cMin:0.01, cMax:0.05, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)", fd:"Opioide potente. Riesgo de tórax rígido si se administra en bolo rápido."},
+    {n:"FLUCONAZOL", cMin:2, cMax:2, dil:"DIRECTO", vel:"30 MIN", est:"24H (TA)", fd:"Antifúngico. Inhibe síntesis de ergosterol. Alta biodisponibilidad."},
+    {n:"FUROSEMIDA", cMin:5, cMax:10, dil:"DIR - SF", vel:"10-15 MIN", est:"24H (TA)", fd:"Diurético de asa. Riesgo de ototoxicidad y nefrocalcinosis en uso crónico."},
+    {n:"GENTAMICINA", cMin:2.5, cMax:10, dil:"SF - DX5%", vel:"30-60 MIN", est:"24H (TA)", fd:"Aminoglucósido. Monitorizar niveles valle para evitar nefrotoxicidad."},
+    {n:"HIDROCORTISONA", cMin:1, cMax:5, dil:"SF - DX5%", vel:"10-30 MIN", est:"3 DÍAS (TA)", fd:"Efecto mineralocorticoide y glucocorticoide. Uso en choque refractario."},
+    {n:"IMIPENEM", cMin:5, cMax:5, dil:"SF - DX5%", vel:"30-60 MIN", est:"4H (TA) / 24H (2-8°C)", fd:"Carbapenem. Riesgo de convulsiones mayor que con Meropenem."},
+    {n:"LINEZOLID", cMin:2, cMax:2, dil:"DIRECTO", vel:"30-120 MIN", est:"7 DÍAS (TA)", fd:"Oxazolidinona. Activo contra MRSA y VRE. No requiere ajuste renal."},
+    {n:"LEVETIRACETAM", cMin:10, cMax:15, dil:"SF - DX5%", vel:"15 MIN", est:"24H (TA)", fd:"Antiepiléptico. Actúa sobre la proteína de la vesícula sináptica SV2A."},
+    {n:"MEROPENEM", cMin:20, cMax:50, dil:"SF - DX5%", vel:"30 MIN", est:"2H (TA) / 12H (2-8°C)", fd:"Carbapenem de elección en SNC. Amplio espectro Gram+ y Gram-."},
+    {n:"METILPREDNISOLONA", cMin:1, cMax:5, dil:"SF - DX5%", vel:"10-30 MIN", est:"24H (TA)", fd:"Glucocorticoide con menor efecto mineralocorticoide que hidrocortisona."},
+    {n:"METRONIDAZOL", cMin:5, cMax:5, dil:"DIRECTO", vel:"30-60 MIN", est:"NO REFRIGERAR", fd:"Antibiótico y antiparasitario. Elección para anaerobios y ECN."},
+    {n:"MIDAZOLAM", cMin:0.5, cMax:1, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)", fd:"Benzodiacepina de acción corta. Sedación y control de estatus epiléptico."},
+    {n:"MILRINONA", cMin:0.2, cMax:0.2, dil:"SF - DX5%", vel:"INFUSIÓN", est:"24H (TA)", fd:"Inodilatador. Inhibidor de la fosfodiesterasa III. Mejora gasto cardiaco."},
+    {n:"MORFINA", cMin:0.1, cMax:0.5, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)", fd:"Opioide natural. Elección para dolor postquirúrgico y sedación en VM."},
+    {n:"NALOXONA", cMin:0.04, cMax:0.4, dil:"SF - DX5%", vel:"10 MIN", est:"24H (TA)", fd:"Antagonista opioide puro. Uso en depresión respiratoria por opioides."},
+    {n:"OMEPRAZOL", cMin:4, cMax:4, dil:"SF - DX5%", vel:"10-30 MIN", est:"12H (TA)", fd:"Inhibidor de la bomba de protones. Profilaxis de úlcera por estrés."},
+    {n:"ONDANSETRÓN", cMin:2, cMax:2, dil:"SF - DX5%", vel:"15 MIN", est:"7 DÍAS (TA)", fd:"Antagonista 5-HT3. Antiemético potente sin efectos extrapiramidales."},
+    {n:"OXACILINA", cMin:20, cMax:40, dil:"SF - DX5%", vel:"30 MIN", est:"4 DÍAS (2-8°C)", fd:"Penicilina resistente a penicilinasa. Elección para S. aureus sensible."},
+    {n:"PENICILINA G", cMin:50000, cMax:100000, dil:"SF - DX5%", vel:"30 MIN", est:"7 DÍAS (2-8°C)", fd:"Elección para Sífilis congénita y Streptococcus grupo B."},
+    {n:"PIPERACILINA/TAZO", cMin:20, cMax:100, dil:"SF - DX5%", vel:"30 MIN", est:"48H (TA) / 7 DÍAS (R)", fd:"Penicilina de amplio espectro + inhibidor. Activa contra Pseudomonas."},
+    {n:"SULFATO DE MAGNESIO", cMin:1, cMax:10, dil:"SF - DX5%", vel:"LENTO", est:"24H (TA)", fd:"Neuroprotector y broncodilatador. Monitorizar reflejos y calcio."},
+    {n:"TIGECICLINA", cMin:0.5, cMax:1, dil:"SF - DX5%", vel:"30-60 MIN", est:"24H (TA)", fd:"Glicilciclina. Reservada para infecciones multirresistentes."},
+    {n:"VANCOMICINA", cMin:5, cMax:5, dil:"SF - DX5% - RL", vel:"120 MIN", est:"4 DÍAS (2-8°C)", fd:"Glucopéptido. Riesgo de Síndrome de Hombre Rojo si se pasa rápido."},
+    {n:"VECURONIO", cMin:1, cMax:2, dil:"SF - DX5%", vel:"BOLO", est:"24H (TA)", fd:"Bloqueador neuromuscular no despolarizante. Requiere soporte ventilatorio."},
+    {n:"ZIDOVUDINA", cMin:2, cMax:4, dil:"DX5%", vel:"60 MIN", est:"24H (TA)", fd:"Antirretroviral (Inhibidor nucleósido). Profilaxis de transmisión vertical de VIH."}
 ];
 
 function render() {
@@ -100,15 +103,25 @@ function render() {
     const mg = parseFloat(document.getElementById("mgDosis").value);
     const tbody = document.getElementById("cuerpoTabla");
     tbody.innerHTML = "";
-    db.filter(f => f.n.includes(q)).forEach(f => {
+    
+    db.filter(f => f.n.includes(q) || f.fd.toUpperCase().includes(q)).forEach(f => {
         let calc = "";
         if (mg > 0) {
             let vMax = (mg / f.cMin).toFixed(2);
             let vMin = (mg / f.cMax).toFixed(2);
             let res = (vMin === vMax) ? `${vMin} ml` : `${vMin} a ${vMax} ml`;
-            calc = `<div class="calc-box">Volumen total: ${res}</div>`;
+            calc = `<div class="calc-box">💉 VOLUMEN TOTAL: ${res}</div>`;
         }
-        tbody.innerHTML += `<tr><td><b>${f.n}</b>${calc}</td><td>${f.dil}<br><span class="vel">Vel: ${f.vel}</span></td><td>${f.est}</td></tr>`;
+        tbody.innerHTML += `
+            <tr>
+                <td>
+                    <b style="color:var(--primary); font-size:1.05rem;">${f.n}</b>
+                    ${calc}
+                    <span class="fd-info"><b>FD:</b> ${f.fd}</span>
+                </td>
+                <td>${f.dil}<br><span class="vel">⏱ Vel: ${f.vel}</span></td>
+                <td>${f.est}</td>
+            </tr>`;
     });
 }
 render();
