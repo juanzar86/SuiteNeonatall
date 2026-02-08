@@ -6,58 +6,75 @@
     <title>Suite Neonatal - Menú Principal</title>
     <style>
         :root { --primary: #006064; --secondary: #00acc1; --accent: #ff4081; --bg: #f4f7f6; --text: #333; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 50px; }
-        header { background: var(--primary); color: white; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .section-title { width: 90%; max-width: 1000px; margin: 25px auto 10px; color: var(--primary); font-weight: bold; border-left: 5px solid var(--accent); padding-left: 10px; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; width: 90%; max-width: 1000px; margin: auto; }
-        .card { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: var(--text); transition: all 0.3s; border: 1px solid #eee; display: flex; flex-direction: column; justify-content: center; min-height: 100px; }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: var(--secondary); }
-        .card.main { background: #e0f7fa; border: 2px solid var(--secondary); }
-        .card h3 { margin: 5px 0; font-size: 0.9rem; color: var(--primary); }
-        .badge { background: var(--accent); color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; width: fit-content; margin: 0 auto 5px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 50px; color: var(--text); }
+        
+        header { background: var(--primary); color: white; padding: 30px 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; }
+        header p { margin: 5px 0 0; opacity: 0.9; font-weight: 300; }
+
+        .container { width: 95%; max-width: 1000px; margin: auto; }
+        
+        .section-title { margin: 30px 0 15px; color: var(--primary); font-weight: bold; font-size: 0.9rem; border-left: 5px solid var(--accent); padding-left: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        
+        .card { background: white; padding: 20px 15px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-decoration: none; color: var(--text); transition: all 0.3s ease; border: 1px solid #eaeaea; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80px; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); border-color: var(--secondary); }
+        
+        .card h3 { margin: 0; font-size: 0.95rem; color: var(--primary); line-height: 1.2; }
+        
+        /* Estilo especial para la Guía de Diluciones */
+        .card.highlight { background: #e0f7fa; border: 2px solid var(--secondary); grid-column: span 2; }
+        @media (max-width: 480px) { .card.highlight { grid-column: span 1; } }
+        
+        .badge { background: var(--accent); color: white; font-size: 0.65rem; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Suite Neonatal</h1>
-    <p>Panel de Control Clínico</p>
+    <h1>SUITE NEONATAL</h1>
+    <p>Herramientas de Soporte Clínico</p>
 </header>
 
-<div class="section-title">⭐ FARMACOLOGÍA</div>
-<div class="grid-container">
-    <a href="Guia_Diluciones_Pediatricas.html" class="card main">
-        <span class="badge">SISTEMA MAESTRO</span>
-        <h3>Guía de Diluciones</h3>
-        <p style="font-size: 0.7rem; color: #666; margin:0;">Calculadora de Seguridad</p>
-    </a>
-</div>
+<div class="container">
+    
+    <div class="section-title">⚡ Farmacología Crítica</div>
+    <div class="grid-container">
+        <a href="Guia_Diluciones_Pediatricas.html" class="card highlight">
+            <span class="badge">SISTEMA MAESTRO</span>
+            <h3>Guía de Diluciones (46 Fármacos)</h3>
+        </a>
+    </div>
 
-<div class="section-title">🏥 VALORACIÓN Y ESCALAS</div>
-<div class="grid-container">
-    <a href="apgar.html" class="card"><h3>Apgar</h3></a>
-    <a href="silverman.html" class="card"><h3>Silverman</h3></a>
-    <a href="capurro.html" class="card"><h3>Capurro</h3></a>
-    <a href="clasificacion.html" class="card"><h3>Clasificación RN</h3></a>
-</div>
+    <div class="section-title">📏 Valoración del Neonato</div>
+    <div class="grid-container">
+        <a href="apgar.html" class="card"><h3>Apgar</h3></a>
+        <a href="silverman.html" class="card"><h3>Silverman</h3></a>
+        <a href="capurro.html" class="card"><h3>Capurro</h3></a>
+        <a href="clasificacion.html" class="card"><h3>Clasificación RN</h3></a>
+        <a href="ballard.html" class="card"><h3>Ballard</h3></a>
+    </div>
 
-<div class="section-title">📋 CUIDADOS Y SEGURIDAD</div>
-<div class="grid-container">
-    <a href="upp.html" class="card"><h3>Prevención UPP</h3></a>
-    <a href="marsi.html" class="card"><h3>MARSI</h3></a>
-    <a href="dispositivos.html" class="card"><h3>Dispositivos</h3></a>
-    <a href="caida.html" class="card"><h3>Riesgo de Caída</h3></a>
-    <a href="aspirador.html" class="card"><h3>Aspirador</h3></a>
-</div>
+    <div class="section-title">🛡️ Seguridad y Procedimientos</div>
+    <div class="grid-container">
+        <a href="upp.html" class="card"><h3>Prevención UPP</h3></a>
+        <a href="marsi.html" class="card"><h3>MARSI</h3></a>
+        <a href="dispositivos.html" class="card"><h3>Dispositivos</h3></a>
+        <a href="caida.html" class="card"><h3>Riesgo de Caída</h3></a>
+        <a href="aspirador.html" class="card"><h3>Aspirador</h3></a>
+    </div>
 
-<div class="section-title">📊 DATOS CLÍNICOS</div>
-<div class="grid-container">
-    <a href="ventilacion.html" class="card"><h3>Ventilación</h3></a>
-    <a href="neumonia.html" class="card"><h3>Neumonía</h3></a>
-    <a href="signos.html" class="card"><h3>Signos Vitales</h3></a>
-    <a href="signosneu.html" class="card"><h3>Neurológico</h3></a>
-    <a href="laboratorio.html" class="card"><h3>Laboratorio</h3></a>
-    <a href="pae.html" class="card"><h3>PAE</h3></a>
+    <div class="section-title">📊 Monitorización y Datos</div>
+    <div class="grid-container">
+        <a href="ventilacion.html" class="card"><h3>Ventilación</h3></a>
+        <a href="neumonia.html" class="card"><h3>Neumonía (VAP)</h3></a>
+        <a href="signos.html" class="card"><h3>Signos Vitales</h3></a>
+        <a href="signosneu.html" class="card"><h3>Neurológico</h3></a>
+        <a href="laboratorio.html" class="card"><h3>Laboratorio</h3></a>
+        <a href="pae.html" class="card"><h3>PAE</h3></a>
+    </div>
+
 </div>
 
 </body>
