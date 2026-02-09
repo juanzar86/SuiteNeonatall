@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatall</title>
+    <title>Suite Neonatall - Completa</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 min-h-screen pb-10">
+
     <header class="bg-blue-700 p-8 rounded-b-[3rem] shadow-lg mb-6 text-center">
         <h1 class="text-white text-2xl font-black uppercase tracking-tighter">Suite Neonatall</h1>
         <p class="text-blue-100 text-[9px] font-bold uppercase tracking-widest mt-2">UCI Neonatal</p>
     </header>
 
-    <main class="max-w-md mx-auto px-4 space-y-6">
+    <main class="max-w-md mx-auto px-4 space-y-8">
+
         <section class="space-y-3">
-            <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Gestión</h2>
+            <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Gestión y Procesos</h2>
             <a href="hoja.html" class="block bg-slate-800 p-5 rounded-3xl shadow-md active:scale-95 transition">
                 <div class="flex justify-between items-center text-white font-black text-sm uppercase">
                     <span>Hoja de Enfermería</span>
                     <span>📋</span>
                 </div>
             </a>
+            <div class="grid grid-cols-2 gap-3">
+                <a href="pae.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-slate-600 uppercase active:scale-95 transition">Proceso PAE</a>
+                <a href="clasificacion.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-slate-600 uppercase active:scale-95 transition">Clasificación</a>
+            </div>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Clínica y Material</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <a href="dispositivos.html" class="bg-blue-50 p-5 rounded-3xl border border-blue-100 flex flex-col items-center active:scale-95 transition">
+                    <span class="text-blue-700 font-bold text-xs uppercase text-center">Dispositivos Médicos</span>
+                </a>
+                <a href="aspirador.html" class="bg-blue-50 p-5 rounded-3xl border border-blue-100 flex flex-col items-center active:scale-95 transition">
+                    <span class="text-blue-700 font-bold text-xs uppercase text-center">Aspirador</span>
+                </a>
+            </div>
         </section>
 
         <section class="space-y-3">
@@ -33,25 +51,35 @@
             </a>
         </section>
 
-        <section class="grid grid-cols-2 gap-3">
-            <a href="signos.html" class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center active:scale-95 transition text-center">
-                <span class="text-blue-600 font-bold text-xs uppercase">Signos Vitales</span>
-            </a>
-            <a href="laboratorio.html" class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center active:scale-95 transition text-center">
-                <span class="text-purple-600 font-bold text-xs uppercase">Laboratorio</span>
-            </a>
+        <section class="space-y-3">
+            <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Evaluación Neonatal</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <a href="apgar.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-rose-600 uppercase active:scale-95 transition">Apgar</a>
+                <a href="silverman.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-blue-600 uppercase active:scale-95 transition">Silverman</a>
+                <a href="ballard.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-indigo-600 uppercase active:scale-95 transition">Ballard</a>
+                <a href="capurro.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-emerald-600 uppercase active:scale-95 transition">Capurro</a>
+            </div>
         </section>
 
-        <section class="grid grid-cols-2 gap-3">
-            <a href="upp.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-teal-600 uppercase">Riesgo UPP</a>
-            <a href="caida.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-orange-600 uppercase">Riesgo Caída</a>
-            <a href="ballard.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-blue-500 uppercase">Ballard</a>
-            <a href="marsi.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-indigo-600 uppercase">Marsi</a>
+        <section class="space-y-3">
+            <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Monitorización y Seguridad</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <a href="signos.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-blue-500 uppercase active:scale-95 transition">Signos Vitales</a>
+                <a href="laboratorio.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-purple-600 uppercase active:scale-95 transition">Laboratorio</a>
+                <a href="upp.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-teal-600 uppercase active:scale-95 transition">Riesgo UPP</a>
+                <a href="caida.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-orange-600 uppercase active:scale-95 transition">Riesgo Caída</a>
+                <a href="marsi.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-indigo-500 uppercase active:scale-95 transition">Marsi</a>
+                <a href="ventilacion.html" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center font-bold text-[10px] text-slate-500 uppercase active:scale-95 transition">Ventilación</a>
+            </div>
         </section>
+
     </main>
 
-    <footer class="mt-8 text-center pb-6">
-        <p class="text-[8px] text-slate-400 font-bold uppercase tracking-widest">Apoyo clínico neonatal</p>
+    <footer class="mt-8 text-center pb-8 px-4">
+        <p class="text-[8px] text-slate-400 font-bold uppercase tracking-widest leading-tight">
+            Suite Neonatall v3.0 <br> Todo el material clínico en un solo lugar.
+        </p>
     </footer>
+
 </body>
 </html>
