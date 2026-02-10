@@ -3,24 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Guía Neonatal - Baby Care</title>
+    <title>Guía Neonatal</title>
     <style>
-        :root {
-            --pink-main: #e91e63;
-            --pink-bg: #fce4ec;
-            --yellow-btn: #fff176;
-            --blue-border: #e3f2fd;
-        }
+        /* ESTILOS FIJOS PARA QUE NO SE ROMPA EL DISEÑO */
         body { font-family: sans-serif; background-color: #fffdf5; margin: 0; padding-bottom: 40px; }
         
-        /* HEADER MEJORADO */
         header { 
-            background-color: var(--pink-main); 
+            background-color: #e91e63; /* Rosa fuerte */
             padding: 40px 20px 60px; 
             border-radius: 0 0 40px 40px; 
             text-align: center;
         }
-        .baby-box {
+
+        .baby-frame {
             width: 140px; height: 140px;
             background: white; border-radius: 30px;
             margin: 0 auto 20px;
@@ -28,16 +23,18 @@
             overflow: hidden; border: 4px solid white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .baby-box img { width: 100%; height: 100%; object-fit: cover; }
         
+        /* Imagen estable de Freepik */
+        .baby-frame img { width: 100%; height: 100%; object-fit: cover; }
+
         h1 { color: white; margin: 0; font-size: 28px; font-weight: 900; letter-spacing: 1px; }
         .tagline { color: #fce4ec; font-size: 10px; font-weight: bold; letter-spacing: 2px; margin-top: 5px; }
 
-        /* BOTONES PRINCIPALES */
         main { max-width: 400px; margin: -30px auto 0; padding: 0 20px; }
         
-        .btn-diluciones {
-            background-color: var(--yellow-btn);
+        /* Botón Amarillo de Diluciones */
+        .btn-yellow {
+            background-color: #fff176;
             padding: 18px; border-radius: 30px;
             text-align: center; text-decoration: none;
             display: block; color: #827717; font-weight: bold;
@@ -45,24 +42,24 @@
             margin-bottom: 30px;
         }
 
-        .section-title { color: var(--pink-main); font-size: 14px; font-weight: 900; margin: 20px 0 15px 10px; }
+        .section-title { color: #e91e63; font-size: 14px; font-weight: 900; margin: 25px 0 15px 10px; }
 
-        /* GRID DE CARTAS */
-        .card-row { 
-            background: white; border: 2px solid var(--blue-border);
-            border-radius: 25px; padding: 20px; margin-bottom: 15px;
-            text-align: center; text-decoration: none; display: block;
-            transition: 0.2s;
+        /* Tarjetas de Valoración */
+        .card { 
+            background: white; border: 2px solid #e3f2fd;
+            border-radius: 25px; padding: 20px; margin-bottom: 12px;
+            text-align: center; text-decoration: none; display: flex;
+            align-items: center; justify-content: center; gap: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .card-row:active { background-color: #f1f8ff; }
-        .card-icon { font-size: 30px; margin-bottom: 10px; display: block; }
-        .card-label { color: #1e88e5; font-weight: 900; font-size: 12px; letter-spacing: 1px; }
+        .card span { color: #1e88e5; font-weight: 900; font-size: 14px; letter-spacing: 1px; }
+        .icon { font-size: 24px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="baby-box">
+        <div class="baby-frame">
             <img src="https://img.freepik.com/vector-premium/lindo-bebe-nino-nina-durmiendo-nube-ilustracion-vector-dibujos-animados_544438-513.jpg" alt="Bebés">
         </div>
         <h1>GUÍA NEONATAL</h1>
@@ -70,28 +67,28 @@
     </header>
 
     <main>
-        <a href="farmaco.html" class="btn-diluciones">Guía Diluciones 💊</a>
+        <a href="farmaco.html" class="btn-yellow">Guía Diluciones 💊</a>
 
         <div class="section-title">VALORACIÓN CLÍNICA</div>
 
-        <a href="apgar.html" class="card-row">
-            <span class="card-icon">⭐</span>
-            <span class="card-label">APGAR</span>
+        <a href="apgar.html" class="card">
+            <span class="icon">⭐</span>
+            <span>APGAR</span>
         </a>
 
-        <a href="silverman.html" class="card-row">
-            <span class="card-icon">🌬️</span>
-            <span class="card-label">SILVERMAN</span>
+        <a href="silverman.html" class="card">
+            <span class="icon">🌬️</span>
+            <span>SILVERMAN</span>
         </a>
 
-        <a href="ballard.html" class="card-row">
-            <span class="card-icon">📅</span>
-            <span class="card-label">BALLARD</span>
+        <a href="ballard.html" class="card">
+            <span class="icon">📅</span>
+            <span>BALLARD</span>
         </a>
 
-        <a href="capurro.html" class="card-row">
-            <span class="card-icon">👶</span>
-            <span class="card-label">CAPURRO</span>
+        <a href="capurro.html" class="card">
+            <span class="icon">👶</span>
+            <span>CAPURRO</span>
         </a>
     </main>
 
