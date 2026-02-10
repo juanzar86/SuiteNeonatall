@@ -2,126 +2,156 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Suite Neonatall - Maestría</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite Neonatal</title>
     <style>
         :root {
-            --pink-main: #e91e63;
-            --pink-soft: #fce4ec;
-            --blue-main: #1e88e5;
-            --blue-soft: #e3f2fd;
-            --yellow-btn: #fff176;
-            --text-dark: #374151;
+            --rosa-principal: #e91e63;
+            --rosa-claro: #fce4ec;
+            --azul-acentos: #00838f; /* Azul turquesa oscuro para contraste */
+            --amarillo-suave: #fff176;
+            --gris-texto: #555;
         }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fffdf5; margin: 0; padding-bottom: 60px; color: var(--text-dark); }
-        
-        /* PARTE 1: CABECERA Y ACCESO RÁPIDO */
-        header { 
-            background: linear-gradient(to bottom, #f06292, #e91e63); 
-            padding: 35px 20px 55px; 
-            border-radius: 0 0 45px 45px; 
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fffafb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Cabecera */
+        .header {
+            background-color: var(--rosa-principal);
+            width: 100%;
+            padding: 40px 0 60px 0;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-        }
-        .baby-frame {
-            width: 110px; height: 110px;
-            background: white; border-radius: 30px;
-            margin: 0 auto 15px;
-            display: flex; align-items: center; justify-content: center;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .baby-frame img { width: 75%; height: 75%; object-fit: contain; }
-        h1 { color: white; margin: 0; font-size: 26px; font-weight: 900; letter-spacing: 0.5px; }
-        .tagline { color: #fce4ec; font-size: 11px; font-weight: bold; letter-spacing: 2px; margin-top: 5px; }
-
-        main { max-width: 480px; margin: -30px auto 0; padding: 0 15px; }
-
-        .top-nav { display: grid; grid-template-cols: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
-        .btn-main {
-            text-decoration: none; padding: 18px 10px; border-radius: 25px;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            font-weight: 800; font-size: 14px; box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: 0.2s;
-        }
-        .btn-main:active { transform: scale(0.96); }
-        .bg-pink { background: var(--pink-main); color: white; }
-        .bg-yellow { background: var(--yellow-btn); color: #827717; }
-
-        /* PARTE 2: CUERPO DE HERRAMIENTAS */
-        .section-label { 
-            color: var(--pink-main); font-size: 13px; font-weight: 900; 
-            margin: 25px 0 12px 10px; text-transform: uppercase; letter-spacing: 1px;
-        }
-        
-        .grid-valoracion { display: grid; grid-template-cols: repeat(4, 1fr); gap: 10px; }
-        .card-blue { 
-            background: white; border: 2px solid var(--blue-soft); border-radius: 20px; 
-            padding: 15px 5px; text-decoration: none; text-align: center;
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.05);
-        }
-        .card-blue span { color: var(--blue-main); font-weight: 800; font-size: 10px; }
-
-        .grid-seguridad { display: grid; grid-template-cols: 1fr 1fr; gap: 12px; }
-        .card-safety {
-            background: white; border: 2px solid var(--pink-soft); border-radius: 20px;
-            padding: 16px; text-decoration: none; text-align: center;
-            color: var(--pink-main); font-weight: 800; font-size: 12px;
-            box-shadow: 0 4px 8px rgba(233, 30, 99, 0.05);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .footer-grid { display: grid; grid-template-cols: 1fr 1fr; gap: 12px; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-        .btn-alt {
-            text-decoration: none; padding: 15px; border-radius: 20px; text-align: center;
-            font-weight: 800; font-size: 12px; text-transform: uppercase;
+        .icon-container {
+            background: white;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        footer { text-align: center; margin-top: 40px; }
-        .version { background: var(--pink-main); color: white; padding: 8px 20px; border-radius: 50px; font-size: 10px; font-weight: bold; }
+        .icon-container img {
+            width: 80%;
+            height: auto;
+        }
+
+        h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Contenedor de Botones */
+        .main-container {
+            width: 90%;
+            max-width: 400px;
+            margin-top: -30px;
+        }
+
+        .btn-principal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+
+        .btn-principal:active {
+            transform: scale(0.98);
+        }
+
+        /* Ajuste de color para que NO se pierda el texto */
+        .btn-registros {
+            background-color: var(--azul-acentos);
+            color: white; /* Texto blanco para máximo contraste */
+        }
+
+        .btn-diluciones {
+            background-color: var(--amarillo-suave);
+            color: #7b6500;
+        }
+
+        /* Sección de Valoración */
+        .section-title {
+            color: var(--rosa-principal);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 25px 0 15px 10px;
+            letter-spacing: 1px;
+        }
+
+        .btn-valoracion {
+            background-color: white;
+            border: 1px solid #f0f0f0;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 20px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: var(--azul-acentos);
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .btn-pink-soft {
+            background-color: var(--rosa-claro);
+            color: var(--rosa-principal);
+        }
+
+        .btn-blue-soft {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="baby-frame">
-            <img src="https://cdn-icons-png.flaticon.com/512/3209/3209121.png" alt="Baby Icon">
+    <div class="header">
+        <div class="icon-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/822/822143.png" alt="Suite Icon">
         </div>
-        <h1>SUITE NEONATALL</h1>
-        <div class="tagline">TEORÍA DE PATRICIA BENNER</div>
-    </header>
+        <h1>Suite Neonatal</h1>
+    </div>
 
-    <main>
-        <div class="top-nav">
-            <a href="hoja.html" class="btn-main bg-pink">📋 REGISTROS</a>
-            <a href="farmaco.html" class="btn-main bg-yellow">DILUCIONES 💊</a>
+    <div class="main-container">
+        <a href="#" class="btn-principal btn-registros">📋 REGISTROS</a>
+        <a href="#" class="btn-principal btn-diluciones">DILUCIONES 💊</a>
+
+        <div class="section-title">Valoración Clínica</div>
+
+        <a href="#" class="btn-valoracion btn-pink-soft">SIGNOS VITALES</a>
+        <a href="#" class="btn-valoracion btn-blue-soft">LABORATORIO</a>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <small style="color: #999;">📅 BALLARD</small>
         </div>
-
-        <div class="section-label">Valoración Clínica</div>
-        <div class="grid-valoracion">
-            <a href="apgar.html" class="card-blue"><span>⭐</span><span>APGAR</span></a>
-            <a href="silverman.html" class="card-blue"><span>🌬️</span><span>SILVERMAN</span></a>
-            <a href="ballard.html" class="card-blue"><span>📅</span><span>BALLARD</span></a>
-            <a href="capurro.html" class="card-blue"><span>👶</span><span>CAPURRO</span></a>
-        </div>
-
-        <div class="section-label">Seguridad y Soporte</div>
-        <div class="grid-seguridad">
-            <a href="upp.html" class="card-safety">🛡️ RIESGO UPP</a>
-            <a href="caidas.html" class="card-safety">👣 CAÍDAS</a>
-            <a href="material.html" class="card-safety">📦 MATERIAL</a>
-            <a href="marsi.html" class="card-safety">🩹 MARSI</a>
-        </div>
-
-        <div class="footer-grid">
-            <a href="signos.html" class="btn-alt" style="background: #fce4ec; color: #ad1457;">Signos Vitales</a>
-            <a href="laboratorio.html" class="btn-alt" style="background: #e3f2fd; color: #1565c0;">Laboratorio</a>
-        </div>
-
-        <footer>
-            <span class="version">EDICIÓN MAESTRÍA 2026</span>
-        </footer>
-    </main>
+    </div>
 
 </body>
 </html>
