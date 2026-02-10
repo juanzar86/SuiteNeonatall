@@ -6,18 +6,19 @@
     <title>Suite Neonatal</title>
     <style>
         :root {
-            --rosa-principal: #e91e63;
-            --rosa-claro: #fce4ec;
-            --azul-acentos: #00838f; /* Azul turquesa oscuro para contraste */
-            --amarillo-suave: #fff176;
-            --gris-texto: #555;
+            --rosa-fuerte: #d81b60; /* Rosa vibrante para la cabecera */
+            --rosa-suave: #fce4ec;
+            --azul-contraste: #00838f; /* Azul turquesa oscuro para el botón Registros */
+            --azul-claro: #e1f5fe;
+            --amarillo: #fff176;
+            --texto-oscuro: #333;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fffafb;
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,131 +26,133 @@
 
         /* Cabecera */
         .header {
-            background-color: var(--rosa-principal);
+            background-color: var(--rosa-fuerte);
             width: 100%;
-            padding: 40px 0 60px 0;
+            padding: 40px 0 50px 0;
             text-align: center;
-            border-radius: 0 0 50px 50px;
+            border-radius: 0 0 40px 40px;
+            color: white;
+        }
+
+        .logo-container {
+            background: white;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .icon-container {
-            background: white;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .icon-container img {
-            width: 80%;
-            height: auto;
+        .logo-container img {
+            width: 70%;
         }
 
         h1 {
-            color: white;
             margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
+            font-size: 1.6rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Contenedor de Botones */
-        .main-container {
+        /* Contenedor Principal */
+        .content {
             width: 90%;
-            max-width: 400px;
-            margin-top: -30px;
+            max-width: 450px;
+            margin-top: -25px;
+            padding-bottom: 40px;
         }
 
-        .btn-principal {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
-            margin-bottom: 15px;
-            border-radius: 30px;
+        /* Botones de Acción Inmediata */
+        .btn-main {
+            display: block;
+            width: 100%;
+            padding: 18px 0;
+            margin-bottom: 12px;
+            border-radius: 25px;
+            text-align: center;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .btn-principal:active {
-            transform: scale(0.98);
-        }
-
-        /* Ajuste de color para que NO se pierda el texto */
         .btn-registros {
-            background-color: var(--azul-acentos);
-            color: white; /* Texto blanco para máximo contraste */
+            background-color: var(--azul-contraste);
+            color: white; /* Contraste alto para que no se pierda */
         }
 
         .btn-diluciones {
-            background-color: var(--amarillo-suave);
-            color: #7b6500;
+            background-color: var(--amarillo);
+            color: #6d4c41;
         }
 
-        /* Sección de Valoración */
-        .section-title {
-            color: var(--rosa-principal);
-            text-transform: uppercase;
-            font-size: 0.9rem;
+        /* Títulos de Sección */
+        .section-header {
+            color: var(--rosa-fuerte);
             font-weight: bold;
-            margin: 25px 0 15px 10px;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin: 25px 0 15px 5px;
+            text-transform: uppercase;
         }
 
-        .btn-valoracion {
-            background-color: white;
-            border: 1px solid #f0f0f0;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 20px;
-            display: block;
-            text-align: center;
+        /* Botones de Lista */
+        .btn-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #eee;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-radius: 15px;
             text-decoration: none;
-            color: var(--azul-acentos);
-            font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .btn-pink-soft {
-            background-color: var(--rosa-claro);
-            color: var(--rosa-principal);
-        }
-
-        .btn-blue-soft {
-            background-color: #e1f5fe;
             color: #0277bd;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            text-transform: uppercase;
         }
+
+        .btn-list span {
+            margin-right: 10px;
+        }
+
+        /* Colores específicos para botones inferiores */
+        .bg-pink { background-color: var(--rosa-suave); color: var(--rosa-fuerte); border: none; }
+        .bg-blue { background-color: var(--azul-claro); color: #0277bd; border: none; }
 
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="icon-container">
-            <img src="https://cdn-icons-png.flaticon.com/512/822/822143.png" alt="Suite Icon">
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" alt="Icono">
         </div>
         <h1>Suite Neonatal</h1>
     </div>
 
-    <div class="main-container">
-        <a href="#" class="btn-principal btn-registros">📋 REGISTROS</a>
-        <a href="#" class="btn-principal btn-diluciones">DILUCIONES 💊</a>
+    <div class="content">
+        <a href="#" class="btn-main btn-registros">📋 REGISTROS</a>
+        <a href="#" class="btn-main btn-diluciones">DILUCIONES 💊</a>
 
-        <div class="section-title">Valoración Clínica</div>
+        <div class="section-header">Valoración Clínica</div>
+        <a href="#" class="btn-list">⭐ APGAR</a>
+        <a href="#" class="btn-list">🌬️ SILVERMAN</a>
+        <a href="#" class="btn-list">📅 BALLARD</a>
+        <a href="#" class="btn-list">👶 CAPURRO</a>
 
-        <a href="#" class="btn-valoracion btn-pink-soft">SIGNOS VITALES</a>
-        <a href="#" class="btn-valoracion btn-blue-soft">LABORATORIO</a>
-        
-        <div style="text-align: center; margin-top: 20px;">
-            <small style="color: #999;">📅 BALLARD</small>
+        <div class="section-header">Seguridad y Soporte</div>
+        <a href="#" class="btn-list">🛡️ RIESGO UPP</a>
+        <a href="#" class="btn-list">👣 CAÍDAS</a>
+        <a href="#" class="btn-list">📦 MATERIAL</a>
+        <a href="#" class="btn-list">🩹 MARSI</a>
+
+        <div style="margin-top: 20px;">
+            <a href="#" class="btn-list bg-pink">SIGNOS VITALES</a>
+            <a href="#" class="btn-list bg-blue">LABORATORIO</a>
         </div>
     </div>
 
