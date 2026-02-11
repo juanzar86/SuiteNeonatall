@@ -1,161 +1,65 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal Completa</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --neonatal: #ff8c00;
-            --upp-color: #1abc9c;
-            --bg: #f8f9fa;
-        }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 15px; color: #333; }
+<div class="card">
+    <div class="card-header" style="border-top: 5px solid #f39c12;">
+        <h3>RIESGO DE CAÍDA</h3>
+        <span class="subtitle">ESCALA HUMPTY DUMPTY</span>
+    </div>
+    <div class="card-body">
+        <p class="score-label">PUNTAJE TOTAL (7 A 23)</p>
+        <div class="score-display">Ej: 12</div>
         
-        /* Cabecera */
-        header { text-align: center; padding: 10px; border-bottom: 2px solid var(--neonatal); margin-bottom: 20px; }
-        
-        /* Grid de Herramientas Principales */
-        .main-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .tool-card {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--accent);
-        }
-
-        /* MODIFICACIÓN: Riesgo Caída y UPP con Interactividad */
-        .risk-card { border-top: 4px solid var(--neonatal); }
-        .details {
-            display: none;
-            text-align: left;
-            font-size: 0.85em;
-            background: #fffdf9;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .btn-view {
-            background: #e1f5fe;
-            color: #0288d1;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* NUEVA SECCIÓN: Recursos Dinámicos */
-        .resources-container {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .scroll-x {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding: 10px 0;
-        }
-
-        .infographic-item {
-            min-width: 140px;
-            height: 100px;
-            background: #eee;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7em;
-            text-align: center;
-            border: 1px dashed #ccc;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>🍼 Suite Neonatal</h1>
-    </header>
-
-    <div class="main-grid">
-        <div class="tool-card">
-            <h3>👶 Apgar</h3>
-            <p style="font-size: 0.7em; color: #777;">Estado clínico del RN</p>
-            <button class="btn-view">Abrir Test</button>
-        </div>
-        <div class="tool-card">
-            <h3>🫁 Silverman</h3>
-            <p style="font-size: 0.7em; color: #777;">Dificultad respiratoria</p>
-            <button class="btn-view">Abrir Test</button>
-        </div>
-        <div class="tool-card">
-            <h3>📏 Capurro</h3>
-            <p style="font-size: 0.7em; color: #777;">Edad gestacional</p>
-            <button class="btn-view">Calcular</button>
-        </div>
-
-        <div class="tool-card risk-card">
-            <h3>📉 Caídas</h3>
-            <button class="btn-view" onclick="toggle('caida')">¿Qué valora?</button>
-            <div id="caida" class="details">
-                <strong>Escala Humpty Dumpty:</strong>
-                <ul>
-                    <li>Edad y Género</li>
-                    <li>Diagnóstico</li>
-                    <li>Deterioro cognitivo</li>
-                    <li>Factores ambientales</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="tool-card risk-card" style="border-top-color: var(--upp-color);">
-            <h3>🩹 UPP</h3>
-            <button class="btn-view" onclick="toggle('upp')">¿Qué valora?</button>
-            <div id="upp" class="details">
-                <strong>Escala NSRAS:</strong>
-                <ul>
-                    <li>Percepción sensorial</li>
-                    <li>Humedad y Actividad</li>
-                    <li>Movilidad y Nutrición</li>
-                    <li>Fricción y Cizallamiento</li>
-                </ul>
-            </div>
+        <button class="btn-interact" onclick="toggleInfo('info-caida')">¿Qué valora?</button>
+        <div id="info-caida" class="info-desplegable" style="display:none;">
+            <ul>
+                <li>Edad y Género</li>
+                <li>Diagnóstico y Factores ambientales</li>
+                <li>Deterioro cognitivo y Cirugías</li>
+            </ul>
         </div>
     </div>
+</div>
 
-    <div class="resources-container">
-        <h3>📚 Biblioteca & Infografías</h3>
-        <div class="scroll-x">
-            <div class="infographic-item">📷 Foto Guía Apgar</div>
-            <div class="infographic-item">📷 Foto Guía Silverman</div>
-            <div class="infographic-item">📷 Protocolo Lavado</div>
-        </div>
+<div class="card">
+    <div class="card-header" style="border-top: 5px solid #1abc9c;">
+        <h3>PREVENCIÓN UPP</h3>
+        <span class="subtitle">ESCALA NSRAS NEONATAL</span>
+    </div>
+    <div class="card-body">
+        <p class="score-label">PUNTAJE OBTENIDO (6 A 24)</p>
+        <div class="score-display">Ej: 14</div>
         
-        <h4 style="margin-top:20px;">📌 Notas y Bibliografía</h4>
-        <textarea style="width:100%; height:100px; border-radius:10px; border:1px solid #ddd; padding:10px;" 
-                  placeholder="Pega aquí tus textos o enlaces de referencia científica..."></textarea>
+        <button class="btn-interact" onclick="toggleInfo('info-upp')">¿Qué valora?</button>
+        <div id="info-upp" class="info-desplegable" style="display:none;">
+            <ul>
+                <li>Percepción sensorial y Humedad</li>
+                <li>Actividad física y Movilidad</li>
+                <li>Nutrición y Fricción</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section-biblioteca" style="margin-top: 30px; background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    <h3 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">📚 Recursos y Bibliografía</h3>
+    <p style="font-size: 0.9em; color: #666;">Gestiona tus infografías y fuentes de consulta:</p>
+    
+    <div class="contenedor-imagenes" style="display: flex; gap: 10px; overflow-x: auto; padding: 10px 0;">
+        <div class="placeholder-img" style="min-width: 150px; height: 100px; background: #f9f9f9; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8em; color: #999;">+ Infografía</div>
+        <div class="placeholder-img" style="min-width: 150px; height: 100px; background: #f9f9f9; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8em; color: #999;">+ Guía Médica</div>
     </div>
 
-    <script>
-        function toggle(id) {
-            const el = document.getElementById(id);
-            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-        }
-    </script>
-</body>
-</html>
+    <div style="margin-top: 15px;">
+        <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9em;">Notas de Referencia:</label>
+        <textarea style="width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; height: 100px; font-family: inherit;" placeholder="Pega aquí tus links o bibliografía..."></textarea>
+    </div>
+</div>
+
+<script>
+function toggleInfo(id) {
+    var x = document.getElementById(id);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
