@@ -3,95 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor Neonatal - Suite</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .peligro { color: #ef4444 !important; animation: pulse 1.5s infinite; font-weight: 900; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    </style>
+    <title>Signos Vitales - Suite</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-50 p-4 min-h-screen flex items-center justify-center">
+<body>
+    <header>
+        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px; margin-bottom:10px;">⬅ Volver</a>
+        <h1>Signos Vitales Neonatales</h1>
+    </header>
 
-    <div class="bg-white shadow-2xl rounded-3xl w-full max-w-md p-6 border border-slate-100">
-        <h1 class="text-2xl font-black text-blue-600 text-center mb-6 uppercase tracking-tighter">🌡️ Signos Vitales</h1>
+    <main>
+        <section class="bloque-recurso">
+            <table style="width:100%; border-collapse: collapse; font-size: 0.9rem;">
+                <tr style="background:#2c3e50; color:white;">
+                    <th style="padding:10px;">Parámetro</th>
+                    <th style="padding:10px;">Rango Normal</th>
+                </tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Frec. Cardiaca</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">120 - 160 lpm</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Frec. Respiratoria</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">40 - 60 rpm</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Temperatura</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">36.5 - 37.5 °C</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Saturación O2</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">90 - 95% (Al nacer varía)</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Presión Sistólica</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">60 - 90 mmHg</td></tr>
+            </table>
+        </section>
 
-        <div class="grid grid-cols-2 gap-4 mb-6">
-            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                <label class="text-[10px] font-black text-slate-400 uppercase block">Semanas (SEG)</label>
-                <input type="number" id="sem" placeholder="Ej: 32" oninput="validar()" class="w-full bg-transparent font-bold text-lg outline-none text-slate-700">
-            </div>
-            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                <label class="text-[10px] font-black text-slate-400 uppercase block">Días de Vida</label>
-                <input type="number" id="dias" placeholder="Ej: 2" oninput="validar()" class="w-full bg-transparent font-bold text-lg outline-none text-slate-700">
-            </div>
-        </div>
-
-        <div class="space-y-3 mb-6 bg-blue-50 p-4 rounded-2xl border border-blue-100">
-            <p class="text-[10px] font-black text-blue-400 uppercase text-center mb-2">Ingresa valores actuales</p>
-            <div class="flex gap-2">
-                <input type="number" id="val_fc" placeholder="FC (lpm)" oninput="validar()" class="w-1/2 p-3 bg-white rounded-xl border-none text-center font-bold shadow-sm">
-                <input type="number" id="val_fr" placeholder="FR (rpm)" oninput="validar()" class="w-1/2 p-3 bg-white rounded-xl border-none text-center font-bold shadow-sm">
-            </div>
-        </div>
-
-        <div id="pantalla" class="hidden space-y-4">
-            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-xs font-bold text-slate-500 uppercase">Estado FC:</span>
-                <span id="alerta-fc" class="text-sm font-black uppercase">---</span>
-            </div>
-            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-xs font-bold text-slate-500 uppercase">Estado FR:</span>
-                <span id="alerta-fr" class="text-sm font-black uppercase">---</span>
-            </div>
-            
-            <div class="p-4 bg-blue-600 rounded-2xl text-white shadow-lg">
-                <p id="guia" class="text-[11px] font-bold leading-tight"></p>
-                <p id="pam-info" class="text-[10px] mt-2 pt-2 border-t border-blue-400 opacity-90"></p>
-            </div>
-        </div>
-
-        <div class="mt-8 text-center">
-            <a href="index.html" class="text-slate-400 text-[10px] font-black uppercase tracking-widest hover:text-blue-500 transition">← Regresar</a>
-        </div>
-    </div>
-
-    <script>
-        function validar() {
-            const sem = parseInt(document.getElementById('sem').value);
-            const dias = parseInt(document.getElementById('dias').value) || 0;
-            const fc_real = parseInt(document.getElementById('val_fc').value);
-            const fr_real = parseInt(document.getElementById('val_fr').value);
-            
-            if (!sem) return;
-            document.getElementById('pantalla').classList.remove('hidden');
-
-            let min_fc, max_fc, max_fr, pam_min, tipo;
-
-            // Lógica Clínica Dinámica
-            if (sem < 37) {
-                min_fc = 120; max_fc = 180; max_fr = 70; tipo = "PREMATURO";
-                pam_min = sem; // Regla de PAM mínima = SEG
-            } else {
-                min_fc = 110; max_fc = 160; max_fr = 60; tipo = "A TÉRMINO";
-                pam_min = dias < 2 ? 45 : 55;
-            }
-
-            // Evaluar FC
-            const elFc = document.getElementById('alerta-fc');
-            if (fc_real < min_fc && fc_real > 0) { elFc.innerText = "Bradicardia"; elFc.className = "peligro"; }
-            else if (fc_real > max_fc) { elFc.innerText = "Taquicardia"; elFc.className = "peligro"; }
-            else if (fc_real) { elFc.innerText = "Normal"; elFc.className = "text-emerald-500 font-black"; }
-
-            // Evaluar FR
-            const elFr = document.getElementById('alerta-fr');
-            if (fr_real > max_fr) { elFr.innerText = "Taquipnea"; elFr.className = "peligro"; }
-            else if (fr_real < 30 && fr_real > 0) { elFr.innerText = "Bradipnea"; elFr.className = "peligro"; }
-            else if (fr_real) { elFr.innerText = "Normal"; elFr.className = "text-emerald-500 font-black"; }
-
-            document.getElementById('guia').innerText = `Rango para RN ${tipo}: FC ${min_fc}-${max_fc} lpm | FR máx ${max_fr} rpm.`;
-            document.getElementById('pam-info').innerText = `⚠️ PAM Objetivo mínima: ${pam_min} mmHg.`;
-        }
-    </script>
+        <section class="bloque-recurso" style="background: #eef2f3; font-size: 0.85rem;">
+            <p><strong>Nota:</strong> Los valores pueden variar según la edad gestacional y el peso al nacer. Siempre correlacionar con la clínica del paciente.</p>
+        </section>
+    </main>
 </body>
 </html>
-
