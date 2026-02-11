@@ -3,42 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neonatal Suite</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+    <title>Protocolo de Vigilancia Neonatal - UCIN</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --danger: #e74c3c; --bg: #f8fafc; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--primary); margin: 0; padding: 20px; }
+        .container { max-width: 1100px; margin: auto; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
+        .card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 25px; }
+        h2 { color: var(--accent); font-size: 1.3rem; margin-top: 0; display: flex; align-items: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .input-group { display: flex; flex-direction: column; }
+        label { font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: #555; }
+        input { padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 1rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 14px; text-align: left; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; }
+        th { background: #f1f5f9; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+        .alert-text { color: var(--danger); font-weight: bold; }
+        .instruction { font-size: 0.85rem; color: #64748b; font-style: italic; margin-top: 5px; }
+        .status-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; background: #fee2e2; color: #b91c1c; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Suite Neonatal</h1>
-        <p>Panel de Control Clínico</p>
-    </header>
 
-    <main class="grid-container">
-        <a href="apgar.html" class="card">Apgar</a>
-        <a href="aspirador.html" class="card">Aspirador</a>
-        <a href="ballard.html" class="card">Ballard</a>
-        
-        <a href="caida.html" class="card accent-orange">Riesgo Caída</a>
-        <a href="capurro.html" class="card">Capurro</a>
-        <a href="clasificacion.html" class="card">Clasificación</a>
-        
-        <a href="dispositivos.html" class="card">Dispositivos</a>
-        <a href="farmaco.html" class="card accent-blue">Dosis Fármacos</a>
-        <a href="hoja.html" class="card">Hoja Filtro</a>
-        
-        <a href="laboratorio.html" class="card">Laboratorio</a>
-        <a href="marsi.html" class="card">MARSI</a>
-        <a href="signosneu.html" class="card accent-orange">Signos Neumonía</a>
-        
-        <a href="pae.html" class="card">PAE</a>
-        <a href="signos.html" class="card">Signos Vitales</a>
-        <a href="silverman.html" class="card">Silverman</a>
-        
-        <a href="upp.html" class="card accent-teal">Riesgo UPP</a>
-        <a href="ventilacion.html" class="card">Ventilación</a>
-        <a href="pase.html" class="card">Pase de Guardia</a>
+<div class="container">
+    <div class="header">
+        <h1>Sistema de Soporte Neonatal para Enfermería</h1>
+        <p>Vigilancia Activa y Seguridad del Paciente</p>
+    </div>
 
-        <a href="recursos.html" class="card special">📚 RECURSOS (Materia Extra)</a>
-    </main>
+    <section class="card">
+        <h2>1. Antropometría y Estado Nutricional</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label>Peso al Nacer (g)</label>
+                <input type="number" id="pesoNacer">
+            </div>
+            <div class="input-group">
+                <label>Peso Actual (g)</label>
+                <input type="number" id="pesoActual">
+                <span class="instruction">Calcular pérdida porcentual</span>
+            </div>
+            <div class="input-group">
+                <label>Talla (cm)</label>
+                <input type="number">
+            </div>
+            <div class="input-group">
+                <label>Perímetro Cefálico (cm)</label>
+                <input type="number">
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>2. Balance Hídrico e Infusiones de Glucosa</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label>Aporte Hídrico (ml/kg/día)</label>
+                <input type="number" placeholder="Ej: 150">
+            </div>
+            <div class="input-group">
+                <label>VIG (mg/kg/min)</label>
+                <input type="number" placeholder="Meta: 4-6">
+                <span class="instruction">Ajustar según Dextrostix</span>
+            </div>
+            <div class="input-group">
+                <label>Concentración Glucosa (%)</label>
+                <input type="number">
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>3. Metas Metabólicas</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label>Aminoácidos (g/kg/día)</label>
+                <input type="number">
+            </div>
+            <div class="input-group">
+                <label>Lípidos (g/kg/día)</label>
+                <input type="number">
+            </div>
+            <div class="input-group">
+                <label>Calorías No Proteicas</label>
+                <input type="number">
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>4. Guía de Alertas: Laboratorio y Sepsis</h2>
+        <p class="instruction">Si el valor del paciente cae en la columna "NOTIFICAR MÉDICO", actúe de inmediato.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Rango Estable</th>
+                    <th>NOTIFICAR MÉDICO (Alarma)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>pH Arterial</strong></td>
+                    <td>7.35 - 7.45</td>
+                    <td><span class="status-badge">< 7.30 (Acidosis)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Lactato (Perfusión)</strong></td>
+                    <td>< 2.0 mmol/L</td>
+                    <td><span class="status-badge">> 2.5 mmol/L</span></td>
+                </tr>
+                <tr>
+                    <td><strong>pCO₂</strong></td>
+                    <td>35 - 45 mmHg</td>
+                    <td><span class="status-badge">> 50 mmHg</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Índice I/T (Sepsis)</strong></td>
+                    <td>< 0.20</td>
+                    <td><span class="status-badge">> 0.22</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Plaquetas</strong></td>
+                    <td>> 150,000</td>
+                    <td><span class="status-badge">< 100,000 /mm³</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Glucosa Central</strong></td>
+                    <td>45 - 90 mg/dL</td>
+                    <td><span class="status-badge">< 40 o > 125 mg/dL</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="card" style="border-left: 5px solid #10b981;">
+        <h2>5. Notas de Cuidado Crítico</h2>
+        <div style="font-size: 0.9rem; line-height: 1.6;">
+            <ul style="padding-left: 20px;">
+                <li><strong>Posición:</strong> Mantener cabeza en línea media y elevación a 30° para prevenir NAVM.</li>
+                <li><strong>Aspiración:</strong> Solo por razón necesaria (PRN) para evitar aumento de presión intracraneana.</li>
+                <li><strong>Monitorización:</strong> Vigilar saturación meta según edad gestacional (88-92% en prematuros).</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
 </body>
 </html>
