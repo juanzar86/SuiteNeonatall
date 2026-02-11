@@ -3,138 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal Institucional</title>
+    <title>Suite Neonatal Pro</title>
     <style>
         :root {
-            --rosa-fuerte: #d81b60;
-            --azul-oscuro: #00838f;
-            --amarillo: #fff176;
-            --fondo: #f8f9fa;
+            /* Colores de tu proyecto original */
+            --resp: #fef2f2; --resp-txt: #991b1b; --resp-bord: #fecaca;
+            --farm: #f0f9ff; --farm-txt: #075985; --farm-bord: #bae6fd;
+            --val: #f0fdf4; --val-txt: #166534; --val-bord: #bbf7d0;
+            --esc: #fffbeb; --esc-txt: #92400e; --esc-bord: #fde68a;
+            /* Nuevas categorías despejadas */
+            --reg: #f8fafc; --reg-txt: #1e293b; --reg-bord: #cbd5e1;
+            --bibli: #f5f3ff; --bibli-txt: #5b21b6; --bibli-bord: #ddd6fe;
         }
 
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--fondo); }
-        .page { display: none; min-height: 100vh; background: white; }
-        .active { display: block; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        /* Cabecera */
-        .header {
-            background-color: var(--rosa-fuerte);
-            padding: 40px 20px;
+        header {
             text-align: center;
-            border-radius: 0 0 35px 35px;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
 
-        .logo-box {
-            background: white; width: 80px; height: 80px;
-            margin: 0 auto 15px; border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
+        h1 { color: #0f172a; margin: 0; font-size: 1.8rem; letter-spacing: -0.5px; }
+        .subtitle { color: #64748b; font-size: 0.95rem; margin-top: 5px; }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Espacio entre bloques de secciones */
         }
 
-        .container { padding: 20px; max-width: 480px; margin: -30px auto 0; }
+        .section-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
 
-        /* Botones Principales */
+        .section-label {
+            grid-column: span 2;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: "";
+            height: 1px;
+            background: #e2e8f0;
+            flex-grow: 1;
+        }
+
         .btn {
-            display: block; width: 100%; padding: 18px; margin-bottom: 12px;
-            border-radius: 25px; text-align: center; font-weight: bold;
-            text-decoration: none; border: none; cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-size: 1rem;
+            text-decoration: none;
+            padding: 16px 12px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1.5px solid;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        .btn-registros { background: var(--azul-oscuro); color: white !important; }
-        .btn-diluciones { background: var(--amarillo); color: #5d4037; }
-        .btn-item { background: white; color: #0277bd; border: 1px solid #eee; text-transform: uppercase; }
-        .btn-otros { background: #f1f1f1; color: #666; border: 1px dashed #ccc; margin-top: 20px; }
+        /* Efecto al tocar o hacer clic */
+        .btn:active {
+            transform: scale(0.96);
+            box-shadow: none;
+        }
 
-        .label { color: var(--rosa-fuerte); font-weight: bold; margin: 25px 0 10px 10px; font-size: 0.85rem; text-transform: uppercase; }
+        /* Botones que ocupan todo el ancho para despejar la vista */
+        .btn-wide {
+            grid-column: span 2;
+            flex-direction: row;
+            gap: 10px;
+            padding: 20px;
+        }
 
-        /* Subpáginas */
-        .sub-header { background: var(--rosa-fuerte); padding: 15px 20px; color: white; display: flex; align-items: center; }
-        .back-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 15px; border-radius: 12px; cursor: pointer; margin-right: 15px; }
-        .content { padding: 20px; }
-        
-        .card { background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 15px; margin-bottom: 15px; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background: #fce4ec; color: var(--rosa-fuerte); }
+        /* Aplicación de colores */
+        .btn-reg { background: var(--reg); color: var(--reg-txt); border-color: var(--reg-bord); }
+        .btn-resp { background: var(--resp); color: var(--resp-txt); border-color: var(--resp-bord); }
+        .btn-farm { background: var(--farm); color: var(--farm-txt); border-color: var(--farm-bord); }
+        .btn-val { background: var(--val); color: var(--val-txt); border-color: var(--val-bord); }
+        .btn-esc { background: var(--esc); color: var(--esc-txt); border-color: var(--esc-bord); }
+        .btn-bibli { background: var(--bibli); color: var(--bibli-txt); border-color: var(--bibli-bord); }
 
-        .infografia-box {
-            width: 100%; min-height: 250px; background: #eee; 
-            border-radius: 15px; display: flex; align-items: center; 
-            justify-content: center; color: #999; border: 2px dashed #ccc;
+        .icon { font-size: 1.3rem; margin-bottom: 4px; }
+        .btn-wide .icon { margin-bottom: 0; }
+
+        footer {
+            margin-top: 40px;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div id="home" class="page active">
-        <div class="header">
-            <div class="logo-box">
-                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" width="50" alt="logo">
-            </div>
-            <h1>SUITE NEONATAL</h1>
+    <header>
+        <h1>Suite Neonatal Pro</h1>
+        <div class="subtitle">Herramientas de Cuidado Intensivo</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-group">
+            <div class="section-label">Gestión y Paciente</div>
+            <a href="hoja.html" class="btn btn-reg btn-wide"><span class="icon">📝</span> Hoja de Enfermería</a>
+            <a href="pae.html" class="btn btn-reg"><span class="icon">📋</span> PAE</a>
+            <a href="signos.html" class="btn btn-reg"><span class="icon">🌡️</span> Signos Vitales</a>
         </div>
 
-        <div class="container">
-            <button class="btn btn-registros" onclick="show('p-reg')">📋 REGISTROS CLÍNICOS</button>
-            <button class="btn btn-diluciones" onclick="show('p-dil')">DILUCIONES 💊</button>
-
-            <div class="label">Valoración Clínica</div>
-            <button class="btn btn-item" onclick="show('p-apgar')">⭐ APGAR</button>
-            <button class="btn btn-item" onclick="show('p-sil')">🌬️ SILVERMAN-ANDERSEN</button>
-            <button class="btn btn-item" onclick="show('p-bal')">📅 BALLARD / CAPURRO</button>
-
-            <div class="label">Seguridad y Soporte</div>
-            <button class="btn btn-item" onclick="show('p-upp')">🛡️ RIESGO UPP</button>
-            <button class="btn btn-item" onclick="show('p-mar')">🩹 MARSI</button>
-
-            <button class="btn btn-otros" onclick="show('p-otros')">➕ OTROS / INFOGRAFÍAS</button>
+        <div class="section-group">
+            <div class="section-label">Área Clínica</div>
+            <a href="silverman.html" class="btn btn-resp"><span class="icon">🫁</span> Respiración</a>
+            <a href="farmaco.html" class="btn btn-farm"><span class="icon">💊</span> Fármacos</a>
+            <a href="capurro.html" class="btn btn-val"><span class="icon">📏</span> Valoración</a>
+            <a href="apgar.html" class="btn btn-val"><span class="icon">👶</span> Apgar</a>
         </div>
+
+        <div class="section-group">
+            <div class="section-label">Seguridad y Escalas</div>
+            <a href="caida.html" class="btn btn-esc"><span class="icon">⚠️</span> Caídas</a>
+            <a href="upp.html" class="btn btn-esc"><span class="icon">🩹</span> UPP</a>
+        </div>
+
+        <div class="section-group">
+            <div class="section-label">Recursos Educativos</div>
+            <a href="bibliografia.html" class="btn btn-bibli btn-wide"><span class="icon">📚</span> Biblioteca e Infografías</a>
+            <a href="normativas.html" class="btn btn-bibli"><span class="icon">⚖️</span> Normas</a>
+            <a href="dispositivos.html" class="btn btn-reg"><span class="icon">🛠️</span> Materiales</a>
+        </div>
+
     </div>
 
-    <div id="p-dil" class="page">
-        <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Guía de Diluciones</h3></div>
-        <div class="content">
-            <div class="card">
-                <h4>Cálculo de Medicamentos</h4>
-                <table>
-                    <tr><th>Fármaco</th><th>Dilución Estándar</th></tr>
-                    <tr><td>Ampicilina</td><td>50 mg / 1 ml AD</td></tr>
-                    <tr><td>Amikacina</td><td>5 mg / 1 ml DX 5%</td></tr>
-                    <tr><td>Gentamicina</td><td>2 mg / 1 ml DX 5%</td></tr>
-                </table>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <p>Desarrollado para Enfermería Neonatal<br>2024 - 2026</p>
+    </footer>
 
-    <div id="p-otros" class="page">
-        <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Otros Recursos</h3></div>
-        <div class="content">
-            <div class="card">
-                <h4>Material Educativo</h4>
-                <p>Carga de infografías y protocolos institucionales.</p>
-                <div class="infografia-box">
-                    <p>Espacio para Infografía</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="p-reg" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Registros</h3></div><div class="content"><div class="card">Formulario de enfermería neonatal.</div></div></div>
-    <div id="p-apgar" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>APGAR</h3></div><div class="content"><div class="card">Escala de vitalidad al nacer.</div></div></div>
-    <div id="p-sil" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Silverman</h3></div><div class="content"><div class="card">Evaluación respiratoria.</div></div></div>
-    <div id="p-bal" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Edad Gestacional</h3></div><div class="content"><div class="card">Test Ballard y Capurro.</div></div></div>
-    <div id="p-upp" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Riesgo UPP</h3></div><div class="content"><div class="card">Escala Braden Q.</div></div></div>
-    <div id="p-mar" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>MARSI</h3></div><div class="content"><div class="card">Prevención de lesiones cutáneas.</div></div></div>
-
-    <script>
-        function show(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-        }
-    </script>
 </body>
 </html>
