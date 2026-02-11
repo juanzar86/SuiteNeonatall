@@ -1,68 +1,68 @@
-// Suite Neonatal - Lógica de Seguridad Clínica
+// ARCHIVO: script.js
+// Objetivo: Soporte en la toma de decisiones y alertas de seguridad neonatal
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Seleccionamos todos los inputs para monitoreo constante
+    // 1. Escuchar cambios en todos los campos numéricos
     const inputs = document.querySelectorAll('input[type="number"]');
     
     inputs.forEach(input => {
         input.addEventListener('input', () => {
-            validarLimites(input);
-            realizarCalculosClinicos();
+            validarAlertas(input);
+            ejecutarCalculos();
         });
     });
 
-    function validarLimites(campo) {
+    // 2. Función para semaforizar campos (Guía visual para enfermería)
+    function validarAlertas(campo) {
         const valor = parseFloat(campo.value);
         if (isNaN(valor)) return;
 
-        // Definición de umbrales críticos para alertas de enfermería
-        const criticos = {
-            'glucosa': { min: 45, max: 125 },
-            'lactato': { max: 2.0 },
-            'pH': { min: 7.35, max: 7.45 },
-            'pCO2': { max: 50 },
-            'plaquetas': { min: 150000 }
-        };
+        let critico = false;
 
-        let esAlarma = false;
+        // Lógica de alertas basada en rangos de seguridad
+        switch(campo.id) {
+            case 'glucosa':
+                if (valor < 45 || valor > 125) critico = true;
+                break;
+            case 'lactato':
+                if (valor > 2.0) critico = true;
+                break;
+            case 'pH':
+                if (valor < 7.35 || valor > 7.45) critico = true;
+                break;
+            case 'it-indice': // Índice I/T
+                if (valor > 0.20) critico = true;
+                break;
+            case 'plaquetas':
+                if (valor < 150000) critico = true;
+                break;
+        }
 
-        // Validación lógica
-        if (campo.id === 'glucosa' && (valor < criticos.glucosa.min || valor > criticos.glucosa.max)) esAlarma = true;
-        if (campo.id === 'lactato' && valor > criticos.lactato.max) esAlarma = true;
-        if (campo.id === 'ph' && (valor < criticos.pH.min || valor > criticos.pH.max)) esAlarma = true;
-        if (campo.id === 'plaquetas' && valor < criticos.plaquetas.min) esAlarma = true;
-
-        // Respuesta visual inmediata
-        if (esAlarma) {
-            campo.classList.add('input-error'); // Esta clase está en tu CSS
+        // Aplicar estilo visual de advertencia
+        if (critico) {
+            campo.style.borderColor = '#e74c3c';
+            campo.style.backgroundColor = '#fdf2f2';
         } else {
-            campo.classList.remove('input-error');
+            campo.style.borderColor = '';
+            campo.style.backgroundColor = '';
         }
     }
 
-    function realizarCalculosClinicos() {
-        // 1. Cálculo de Índice I/T para Sepsis
-        const inmaduros = parseFloat(document.getElementById('neutrosInmaduros')?.value);
-        const totales = parseFloat(document.getElementById('neutrosTotales')?.value);
-        const itDisplay = document.getElementById('resultadoIT');
-
-        if (inmaduros && totales && totales > 0) {
-            const it = inmaduros / totales;
-            if (itDisplay) {
-                itDisplay.innerText = it.toFixed(2);
-                itDisplay.style.color = it > 0.22 ? '#e74c3c' : '#27ae60';
-            }
-        }
-
-        // 2. Cálculo de Pérdida de Peso (Vigilancia de Hidratación)
+    // 3. Cálculos automáticos para reducir error humano
+    function ejecutarCalculos() {
+        // Cálculo de Pérdida de Peso Porcentual
         const pNacer = parseFloat(document.getElementById('pesoNacer')?.value);
         const pActual = parseFloat(document.getElementById('pesoActual')?.value);
         
         if (pNacer && pActual) {
-            const diff = ((pNacer - pActual) / pNacer) * 100;
-            if (diff > 10) {
-                // Alerta visual de deshidratación
-                document.getElementById('pesoActual').style.border = '2px solid #e74c3c';
+            const perdida = ((pNacer - pActual) / pNacer) * 100;
+            const alertaPeso = document.getElementById('alerta-peso');
+            
+            if (perdida > 10) {
+                if (alertaPeso) alertaPeso.innerHTML = `⚠️ Pérdida del ${perdida.toFixed(1)}% - Notificar`;
+            } else if (alertaPeso) {
+                alertaPeso.innerHTML = '';
             }
         }
     }
