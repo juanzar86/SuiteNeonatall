@@ -3,46 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Capurro</title>
-    <style>
-        body { background: #121212; color: white; font-family: sans-serif; padding: 20px; }
-        .card { background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; }
-        select { width: 100%; padding: 10px; margin: 10px 0; background: #333; color: white; border: none; }
-        .btn { display: block; width: 100%; padding: 15px; background: #ffc107; color: black; text-align: center; border: none; border-radius: 5px; font-weight: bold; }
-        #res { margin-top: 20px; text-align: center; font-size: 1.1em; }
-    </style>
+    <title>Test de Capurro - Suite Neonatal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-<div class="card">
-    <h2>📋 Test de Capurro (A)</h2>
-    <label>Forma de la oreja:</label>
-    <select id="c1"><option value="0">0 - Plana</option><option value="8">8 - Borde superior incurvado</option><option value="16">16 - Todo el borde incurvado</option></select>
-    
-    <label>Tamaño glándula mamaria:</label>
-    <select id="c2"><option value="0">0 - No palpable</option><option value="5">5 - < 5mm</option><option value="10">10 - 5 a 10mm</option><option value="15">15 - > 10mm</option></select>
-    
-    <label>Formación del pezón:</label>
-    <select id="c3"><option value="0">0 - Apenas visible</option><option value="5">5 - Diámetro < 7.5mm</option><option value="10">10 - Diámetro > 7.5mm, areola punteada</option><option value="15">15 - Areola levantada</option></select>
-    
-    <label>Textura de la piel:</label>
-    <select id="c4"><option value="0">0 - Muy fina/gelatinosa</option><option value="5">5 - Fina/lisa</option><option value="10">10 - Gruesa/grietas superficiales</option><option value="15">15 - Grietas profundas</option></select>
-    
-    <label>Pliegues plantares:</label>
-    <select id="c5"><option value="0">0 - Sin pliegues</option><option value="5">5 - Mal definidos</option><option value="10">10 - Surcos en mitad anterior</option><option value="15">15 - Surcos en más de la mitad anterior</option><option value="20">20 - Surcos en toda la planta</option></select>
+    <header>
+        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px; margin-bottom:10px;">⬅ Volver</a>
+        <h1>Test de Capurro</h1>
+        <p>Evaluación de Edad Gestacional</p>
+    </header>
 
-    <button class="btn" onclick="calcC()">Calcular Edad Gestacional</button>
-    <div id="res"></div>
-    <a href="index.html" style="color: #bbb; display: block; text-align: center; margin-top: 15px; text-decoration: none;">← Volver</a>
-</div>
-<script>
-function calcC() {
-    let puntos = parseInt(document.getElementById('c1').value) + parseInt(document.getElementById('c2').value) + 
-                 parseInt(document.getElementById('c3').value) + parseInt(document.getElementById('c4').value) + 
-                 parseInt(document.getElementById('c5').value);
-    let dias = 204 + puntos;
-    let semanas = (dias / 7).toFixed(1);
-    document.getElementById('res').innerHTML = "Días: " + dias + "<br>Semanas: " + semanas;
-}
-</script>
+    <main id="modulo-calculo">
+        <div class="pizarra-resultado">
+            <span id="resultado-semanas">0</span> Semanas
+            <p id="resultado-dias" style="font-size: 1rem; font-weight: normal; margin-top:5px;">(0 días)</p>
+        </div>
+
+        <section class="bloque-recurso">
+            <h3>1. Forma de la oreja (Pabellón)</h3>
+            <label><input type="radio" name="c1" value="0"> Aplanada, sin incurvación (0)</label><br>
+            <label><input type="radio" name="c1" value="8"> Borde superior parcialmente incurvado (8)</label><br>
+            <label><input type="radio" name="c1" value="16"> Toda la parte superior incurvada (16)</label><br>
+            <label><input type="radio" name="c1" value="24"> Pabellón totalmente incurvado (24)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>2. Tamaño de la glándula mamaria</h3>
+            <label><input type="radio" name="c2" value="0"> No palpable (0)</label><br>
+            <label><input type="radio" name="c2" value="5"> Palpable menor de 5 mm (5)</label><br>
+            <label><input type="radio" name="c2" value="10"> Entre 5 y 10 mm (10)</label><br>
+            <label><input type="radio" name="c2" value="15"> Mayor de 10 mm (15)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>3. Formación del pezón</h3>
+            <label><input type="radio" name="c3" value="0"> Apenas visible, sin areola (0)</label><br>
+            <label><input type="radio" name="c3" value="5"> Diámetro < 7.5 mm, areola lisa (5)</label><br>
+            <label><input type="radio" name="c3" value="10"> Diámetro > 7.5 mm, areola punteada (10)</label><br>
+            <label><input type="radio" name="c3" value="15"> Diámetro > 7.5 mm, areola sobreelevada (15)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>4. Textura de la piel</h3>
+            <label><input type="radio" name="c4" value="0"> Muy fina, gelatinosa (0)</label><br>
+            <label><input type="radio" name="c4" value="5"> Fina, lisa (5)</label><br>
+            <label><input type="radio" name="c4" value="10"> Más gruesa, discreta descamación (10)</label><br>
+            <label><input type="radio" name="c4" value="15"> Gruesa, grietas superficiales (15)</label><br>
+            <label><input type="radio" name="c4" value="20"> Gruesa, grietas profundas (20)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>5. Pliegues plantares</h3>
+            <label><input type="radio" name="c5" value="0"> Sin pliegues (0)</label><br>
+            <label><input type="radio" name="c5" value="5"> Mal definidos en la mitad anterior (5)</label><br>
+            <label><input type="radio" name="c5" value="10"> Bien definidos en la mitad anterior (10)</label><br>
+            <label><input type="radio" name="c5" value="15"> Surcos en mitad anterior (15)</label><br>
+            <label><input type="radio" name="c5" value="20"> Surcos en más de la mitad anterior (20)</label>
+        </section>
+    </main>
 </body>
 </html>
