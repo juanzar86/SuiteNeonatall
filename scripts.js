@@ -1,13 +1,13 @@
-// Lógica de Soporte Vital Neonatal
+// Suite Neonatal - Lógica de Seguridad Clínica
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Monitoreo de Alertas en Tiempo Real
+    // Seleccionamos todos los inputs para monitoreo constante
     const inputs = document.querySelectorAll('input[type="number"]');
     
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             validarLimites(input);
-            calcular指标();
+            realizarCalculosClinicos();
         });
     });
 
@@ -15,48 +15,54 @@ document.addEventListener('DOMContentLoaded', () => {
         const valor = parseFloat(campo.value);
         if (isNaN(valor)) return;
 
-        // Lógica de semaforización para enfermería
+        // Definición de umbrales críticos para alertas de enfermería
+        const criticos = {
+            'glucosa': { min: 45, max: 125 },
+            'lactato': { max: 2.0 },
+            'pH': { min: 7.35, max: 7.45 },
+            'pCO2': { max: 50 },
+            'plaquetas': { min: 150000 }
+        };
+
         let esAlarma = false;
 
-        // Ejemplo: Alerta de Glucosa
-        if (campo.id === 'glucosa' && (valor < 40 || valor > 125)) esAlarma = true;
-        
-        // Ejemplo: Alerta de Lactato
-        if (campo.id === 'lactato' && valor > 2.5) esAlarma = true;
+        // Validación lógica
+        if (campo.id === 'glucosa' && (valor < criticos.glucosa.min || valor > criticos.glucosa.max)) esAlarma = true;
+        if (campo.id === 'lactato' && valor > criticos.lactato.max) esAlarma = true;
+        if (campo.id === 'ph' && (valor < criticos.pH.min || valor > criticos.pH.max)) esAlarma = true;
+        if (campo.id === 'plaquetas' && valor < criticos.plaquetas.min) esAlarma = true;
 
+        // Respuesta visual inmediata
         if (esAlarma) {
-            campo.style.backgroundColor = '#fee2e2'; // Rojo suave
-            campo.style.borderColor = '#ef4444';     // Rojo intenso
+            campo.classList.add('input-error'); // Esta clase está en tu CSS
         } else {
-            campo.style.backgroundColor = '';
-            campo.style.borderColor = '';
+            campo.classList.remove('input-error');
         }
     }
 
-    function calcular指标() {
-        // Cálculo de Pérdida de Peso
+    function realizarCalculosClinicos() {
+        // 1. Cálculo de Índice I/T para Sepsis
+        const inmaduros = parseFloat(document.getElementById('neutrosInmaduros')?.value);
+        const totales = parseFloat(document.getElementById('neutrosTotales')?.value);
+        const itDisplay = document.getElementById('resultadoIT');
+
+        if (inmaduros && totales && totales > 0) {
+            const it = inmaduros / totales;
+            if (itDisplay) {
+                itDisplay.innerText = it.toFixed(2);
+                itDisplay.style.color = it > 0.22 ? '#e74c3c' : '#27ae60';
+            }
+        }
+
+        // 2. Cálculo de Pérdida de Peso (Vigilancia de Hidratación)
         const pNacer = parseFloat(document.getElementById('pesoNacer')?.value);
         const pActual = parseFloat(document.getElementById('pesoActual')?.value);
         
         if (pNacer && pActual) {
-            const perdida = ((pNacer - pActual) / pNacer) * 100;
-            const msgPeso = document.getElementById('msg-peso');
-            if (perdida > 10) {
-                console.warn("ALERTA: Pérdida de peso superior al 10%");
-                // Aquí podrías mostrar un aviso visual en la interfaz
-            }
-        }
-
-        // Cálculo de Índice I/T (Sepsis)
-        const inmaduros = parseFloat(document.getElementById('neutrosInmaduros')?.value);
-        const totales = parseFloat(document.getElementById('neutrosTotales')?.value);
-        
-        if (inmaduros && totales) {
-            const indiceIT = inmaduros / totales;
-            const itCampo = document.getElementById('resultadoIT');
-            if (itCampo) {
-                itCampo.innerText = indiceIT.toFixed(2);
-                itCampo.className = indiceIT > 0.22 ? 'alert-text' : '';
+            const diff = ((pNacer - pActual) / pNacer) * 100;
+            if (diff > 10) {
+                // Alerta visual de deshidratación
+                document.getElementById('pesoActual').style.border = '2px solid #e74c3c';
             }
         }
     }
