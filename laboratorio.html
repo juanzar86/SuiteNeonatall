@@ -1,53 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio y Bilirrubinas (NICE) - Suite</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
-</head>
-<body>
-    <header>
-        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px; margin-bottom:10px;">⬅ Volver</a>
-        <h1>Laboratorio y Bilirrubinas</h1>
-        <p style="font-size: 0.8rem; color: #666;">Basado en Guías NICE CG98</p>
-    </header>
-
-    <main>
-        <section class="bloque-recurso" style="border-left: 5px solid #f1c40f; background: #fff9e6;">
-            <h3 style="color: #d4ac0d;">🟡 Bilirrubinas (Manejo de Ictericia)</h3>
-            <p style="font-size: 0.85rem;"><strong>Criterios de Intervención (NICE):</strong></p>
-            
-            <div style="background: white; padding: 10px; border-radius: 8px; font-size: 0.85rem; border: 1px solid #f1c40f;">
-                <p><strong>Factores de Riesgo:</strong> Edad gestacional < 38 sem, hermano con ictericia que requirió fototerapia, lactancia materna exclusiva.</p>
-                <hr>
-                <p><strong>Umbrales rápidos (RNT >38 sem):</strong></p>
-                <ul>
-                    <li><strong>< 24h:</strong> Siempre es patológica. Fototerapia inmediata.</li>
-                    <li><strong>24h:</strong> Iniciar si > 100 µmol/L (5.8 mg/dL).</li>
-                    <li><strong>48h:</strong> Iniciar si > 150 µmol/L (8.8 mg/dL).</li>
-                </ul>
-                <p style="font-size: 0.75rem; color: #777;">*Conversión: mg/dL = µmol/L ÷ 17.1</p>
-            </div>
-
-            <div style="margin-top: 15px; text-align: center;">
-                <p style="font-size: 0.8rem; font-weight: bold;">📊 Interpretación de Gráficas NICE:</p>
-                <div style="background: #eee; height: 150px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; border-radius: 10px;">
-                    <p style="color: #666; font-size: 0.8rem; padding: 10px;">
-                        [Aquí puedes subir tu imagen de la gráfica NICE CG98 de tu hospital]
-                    </p>
-                </div>
-                <p style="font-size: 0.75rem; margin-top: 5px; color: #2980b9;">Recuerda usar la gráfica específica según la Edad Gestacional (23 a 38+ semanas).</p>
-            </div>
-        </section>
-
-        <section class="bloque-recurso" style="border-left: 5px solid #ff4757;">
-            <h3>Arterial y Biometría</h3>
-            <p style="font-size: 0.85rem;"><strong>pH:</strong> 7.35 - 7.45 | <strong>pCO2:</strong> 35 - 45</p>
-            <p style="font-size: 0.85rem;"><strong>Hto:</strong> 45-60% | <strong>Plaquetas:</strong> >150k</p>
-        </section>
-
-    </main>
-</body>
-</html>
+<div class="card" id="card-ph">
+  <div class="card-title">pH</div>
+  <input
+    type="number"
+    step="0.01"
+    id="ph"
+    placeholder="7.35 – 7.45"
+    oninput="evaluarPH()"
+  />
+  <div class="card-range">Normal: 7.35 – 7.45</div>
+</div>
