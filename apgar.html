@@ -3,52 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Apgar</title>
-    <style>
-        /* Estilo simple para que se parezca a tu app */
-        body { background: #121212; color: white; font-family: sans-serif; padding: 20px; }
-        .card { background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; }
-        select { width: 100%; padding: 10px; margin: 10px 0; background: #333; color: white; border: none; }
-        .btn { display: block; width: 100%; padding: 15px; background: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 10px; border: none; }
-        #resultado { margin-top: 20px; font-size: 1.2em; text-align: center; }
-    </style>
+    <title>Test de Apgar - Suite Neonatal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
+    <header>
+        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px;">⬅ Volver</a>
+        <h1>Test de Apgar</h1>
+    </header>
 
-<div class="card">
-    <h2>👶 Test de Apgar</h2>
-    
-    <label>Color:</label>
-    <select id="c"><option value="0">0 - Azul</option><option value="1">1 - Acrocianosis</option><option value="2">2 - Rosado</option></select>
-    
-    <label>Pulso:</label>
-    <select id="p"><option value="0">0 - Ausente</option><option value="1">1 - <100</option><option value="2">2 - >100</option></select>
-    
-    <label>Gesticulación:</label>
-    <select id="g"><option value="0">0 - Sin resp.</option><option value="1">1 - Muecas</option><option value="2">2 - Llanto</option></select>
-    
-    <label>Actividad:</label>
-    <select id="a"><option value="0">0 - Flácido</option><option value="1">1 - Flexión</option><option value="2">2 - Activo</option></select>
-    
-    <label>Respiración:</label>
-    <select id="r"><option value="0">0 - Ausente</option><option value="1">1 - Irregular</option><option value="2">2 - Fuerte</option></select>
+    <main id="modulo-calculo">
+        <div class="pizarra-resultado">
+            Puntaje: <span id="resultado">0</span>
+        </div>
 
-    <button class="btn" onclick="calc()">Calcular</button>
-    <div id="resultado"></div>
-    <a href="index.html" style="color: gray; display: block; margin-top: 20px; text-align: center;">← Volver</a>
-</div>
+        <section class="bloque-recurso">
+            <h3>Apariencia (Color)</h3>
+            <label><input type="radio" name="r1" value="0"> Azul / Pálido (0)</label><br>
+            <label><input type="radio" name="r1" value="1"> Cuerpo rosado, extremidades azules (1)</label><br>
+            <label><input type="radio" name="r1" value="2"> Completamente rosado (2)</label>
+        </section>
 
-<script>
-function calc() {
-    let total = parseInt(document.getElementById('c').value) + 
-                parseInt(document.getElementById('p').value) + 
-                parseInt(document.getElementById('g').value) + 
-                parseInt(document.getElementById('a').value) + 
-                parseInt(document.getElementById('r').value);
-    
-    let m = total >= 7 ? "Normal" : (total >= 4 ? "Depresión Moderada" : "Depresión Severa");
-    document.getElementById('resultado').innerHTML = "Puntaje: " + total + "<br>" + m;
-}
-</script>
+        <section class="bloque-recurso">
+            <h3>Pulso (Frecuencia Cardiaca)</h3>
+            <label><input type="radio" name="r2" value="0"> Ausente (0)</label><br>
+            <label><input type="radio" name="r2" value="1"> < 100 lpm (1)</label><br>
+            <label><input type="radio" name="r2" value="2"> > 100 lpm (2)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>Gesticulación (Irritabilidad)</h3>
+            <label><input type="radio" name="r3" value="0"> Sin respuesta (0)</label><br>
+            <label><input type="radio" name="r3" value="1"> Muecas / Llanto débil (1)</label><br>
+            <label><input type="radio" name="r3" value="2"> Llanto vigoroso / Estornudo (2)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>Actividad (Tono muscular)</h3>
+            <label><input type="radio" name="r4" value="0"> Flácido (0)</label><br>
+            <label><input type="radio" name="r4" value="1"> Cierta flexión (1)</label><br>
+            <label><input type="radio" name="r4" value="2"> Movimiento activo (2)</label>
+        </section>
+
+        <section class="bloque-recurso">
+            <h3>Respiración</h3>
+            <label><input type="radio" name="r5" value="0"> Ausente (0)</label><br>
+            <label><input type="radio" name="r5" value="1"> Lenta e irregular (1)</label><br>
+            <label><input type="radio" name="r5" value="2"> Llanto fuerte (2)</label>
+        </section>
+    </main>
 </body>
 </html>
