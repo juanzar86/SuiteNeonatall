@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal - Institucional</title>
+    <title>Suite Neonatal Institucional</title>
     <style>
         :root {
-            --rosa: #d81b60;
-            --azul-fuerte: #00838f;
+            --rosa-fuerte: #d81b60;
+            --azul-oscuro: #00838f;
             --amarillo: #fff176;
             --fondo: #f8f9fa;
         }
 
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--fondo); color: #333; }
-        
-        /* Sistema de Navegación */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--fondo); }
         .page { display: none; min-height: 100vh; background: white; }
-        .active { display: block; animation: fadeIn 0.2s; }
+        .active { display: block; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Cabecera Principal */
+        /* Cabecera */
         .header {
-            background-color: var(--rosa);
-            padding: 45px 20px;
+            background-color: var(--rosa-fuerte);
+            padding: 40px 20px;
             text-align: center;
-            border-radius: 0 0 40px 40px;
+            border-radius: 0 0 35px 35px;
             color: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .logo-box {
-            background: white; width: 85px; height: 85px;
+            background: white; width: 80px; height: 80px;
             margin: 0 auto 15px; border-radius: 20px;
             display: flex; align-items: center; justify-content: center;
         }
 
         .container { padding: 20px; max-width: 480px; margin: -30px auto 0; }
 
-        /* Botones de Acción */
+        /* Botones Principales */
         .btn {
             display: block; width: 100%; padding: 18px; margin-bottom: 12px;
             border-radius: 25px; text-align: center; font-weight: bold;
@@ -45,21 +43,28 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-size: 1rem;
         }
 
-        .btn-registros { background: var(--azul-fuerte); color: white !important; }
+        .btn-registros { background: var(--azul-oscuro); color: white !important; }
         .btn-diluciones { background: var(--amarillo); color: #5d4037; }
         .btn-item { background: white; color: #0277bd; border: 1px solid #eee; text-transform: uppercase; }
+        .btn-otros { background: #f1f1f1; color: #666; border: 1px dashed #ccc; margin-top: 20px; }
 
-        .label { color: var(--rosa); font-weight: bold; margin: 25px 0 10px 10px; font-size: 0.85rem; text-transform: uppercase; }
+        .label { color: var(--rosa-fuerte); font-weight: bold; margin: 25px 0 10px 10px; font-size: 0.85rem; text-transform: uppercase; }
 
-        /* Subpáginas Técnicas */
-        .sub-header { background: var(--rosa); padding: 15px 20px; color: white; display: flex; align-items: center; position: sticky; top: 0; }
+        /* Subpáginas */
+        .sub-header { background: var(--rosa-fuerte); padding: 15px 20px; color: white; display: flex; align-items: center; }
         .back-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 15px; border-radius: 12px; cursor: pointer; margin-right: 15px; }
         .content { padding: 20px; }
         
         .card { background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 15px; margin-bottom: 15px; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background: #fce4ec; color: var(--rosa); }
+        th { background: #fce4ec; color: var(--rosa-fuerte); }
+
+        .infografia-box {
+            width: 100%; min-height: 250px; background: #eee; 
+            border-radius: 15px; display: flex; align-items: center; 
+            justify-content: center; color: #999; border: 2px dashed #ccc;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +72,7 @@
     <div id="home" class="page active">
         <div class="header">
             <div class="logo-box">
-                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" width="55" alt="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" width="50" alt="logo">
             </div>
             <h1>SUITE NEONATAL</h1>
         </div>
@@ -83,8 +88,9 @@
 
             <div class="label">Seguridad y Soporte</div>
             <button class="btn btn-item" onclick="show('p-upp')">🛡️ RIESGO UPP</button>
-            <button class="btn btn-item" onclick="show('p-cai')">👣 CAÍDAS</button>
             <button class="btn btn-item" onclick="show('p-mar')">🩹 MARSI</button>
+
+            <button class="btn btn-otros" onclick="show('p-otros')">➕ OTROS / INFOGRAFÍAS</button>
         </div>
     </div>
 
@@ -92,10 +98,9 @@
         <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Guía de Diluciones</h3></div>
         <div class="content">
             <div class="card">
-                <h4>Regla de Tres Simple</h4>
-                <p style="background:#e0f2f1; padding:10px; border-radius:10px;"><b>(Dosis indicada × Diluyente) ÷ Presentación</b></p>
+                <h4>Cálculo de Medicamentos</h4>
                 <table>
-                    <tr><th>Fármaco</th><th>Dilución Recomendada</th></tr>
+                    <tr><th>Fármaco</th><th>Dilución Estándar</th></tr>
                     <tr><td>Ampicilina</td><td>50 mg / 1 ml AD</td></tr>
                     <tr><td>Amikacina</td><td>5 mg / 1 ml DX 5%</td></tr>
                     <tr><td>Gentamicina</td><td>2 mg / 1 ml DX 5%</td></tr>
@@ -104,45 +109,25 @@
         </div>
     </div>
 
-    <div id="p-apgar" class="page">
-        <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Escala de APGAR</h3></div>
+    <div id="p-otros" class="page">
+        <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Otros Recursos</h3></div>
         <div class="content">
             <div class="card">
-                <table>
-                    <tr><th>Signo</th><th>0 pts</th><th>1 pt</th><th>2 pts</th></tr>
-                    <tr><td>Frecuencia C.</td><td>Ausente</td><td>< 100</td><td>> 100</td></tr>
-                    <tr><td>Esfuerzo R.</td><td>Ausente</td><td>Débil</td><td>Llanto</td></tr>
-                    <tr><td>Irritabilidad</td><td>Sin resp.</td><td>Mueca</td><td>Tos/Estornudo</td></tr>
-                </table>
+                <h4>Material Educativo</h4>
+                <p>Carga de infografías y protocolos institucionales.</p>
+                <div class="infografia-box">
+                    <p>Espacio para Infografía</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="p-sil" class="page">
-        <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Silverman-Andersen</h3></div>
-        <div class="content">
-            <div class="card">
-                <p><b>0 pts:</b> Sin dificultad | <b>>7 pts:</b> Grave</p>
-                <ul style="line-height: 1.8;">
-                    <li>Aleteo Nasal</li>
-                    <li>Quejido Espiratorio</li>
-                    <li>Tiraje Intercostal</li>
-                    <li>Retracción Xifoidea</li>
-                    <li>Disociación Toraco-Abdominal</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="p-reg" class="page">
-        <div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Registros Clínicos</h3></div>
-        <div class="content"><p>Formulario de ingreso y seguimiento de enfermería neonatal.</p></div>
-    </div>
-
-    <div id="p-upp" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Riesgo UPP</h3></div><div class="content"><p>Escala de Braden Q para valoración de riesgo de úlceras por presión en neonatos.</p></div></div>
-    <div id="p-cai" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Prevención de Caídas</h3></div><div class="content"><p>Protocolo institucional de seguridad en cuna y termocuna.</p></div></div>
-    <div id="p-mar" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>MARSI</h3></div><div class="content"><p>Prevención de lesiones cutáneas relacionadas con adhesivos médicos.</p></div></div>
-    <div id="p-bal" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Edad Gestacional</h3></div><div class="content"><p>Cálculo mediante Test de Ballard y Capurro.</p></div></div>
+    <div id="p-reg" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Registros</h3></div><div class="content"><div class="card">Formulario de enfermería neonatal.</div></div></div>
+    <div id="p-apgar" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>APGAR</h3></div><div class="content"><div class="card">Escala de vitalidad al nacer.</div></div></div>
+    <div id="p-sil" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Silverman</h3></div><div class="content"><div class="card">Evaluación respiratoria.</div></div></div>
+    <div id="p-bal" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Edad Gestacional</h3></div><div class="content"><div class="card">Test Ballard y Capurro.</div></div></div>
+    <div id="p-upp" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>Riesgo UPP</h3></div><div class="content"><div class="card">Escala Braden Q.</div></div></div>
+    <div id="p-mar" class="page"><div class="sub-header"><button class="back-btn" onclick="show('home')">←</button><h3>MARSI</h3></div><div class="content"><div class="card">Prevención de lesiones cutáneas.</div></div></div>
 
     <script>
         function show(id) {
