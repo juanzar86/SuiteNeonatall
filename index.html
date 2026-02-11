@@ -3,147 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo Neonatal: Guía de Vigilancia Crítica</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-            --bg: #f4f7f6;
-        }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--primary); margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; }
-        .header { text-align: center; padding: 20px; border-bottom: 4px solid var(--accent); margin-bottom: 30px; background: white; border-radius: 8px; }
-        .card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 25px; }
-        h2 { color: var(--accent); font-size: 1.25rem; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .input-group { display: flex; flex-direction: column; }
-        label { font-weight: bold; font-size: 0.85rem; margin-bottom: 8px; color: #555; }
-        input { padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 1rem; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; }
-        th, td { padding: 12px; text-align: left; border: 1px solid #edf2f7; font-size: 0.9rem; }
-        th { background: #f8fafc; color: #475569; }
-        .badge-danger { background: var(--danger); color: white; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
-        .instruction-note { font-size: 0.85rem; color: #7f8c8d; font-style: italic; margin-top: 5px; }
-        .footer-note { background: #fff3cd; border-left: 5px solid var(--warning); padding: 15px; margin-top: 20px; font-size: 0.9rem; }
-    </style>
+    <title>Sintonía Neonatal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>Sistema de Apoyo Clínico Neonatal</h1>
-        <p>Enfoque en Seguridad y Vigilancia de Enfermería</p>
-    </div>
+    <header class="header">
+        <h1>Sintonía Neonatal</h1>
+        <p id="quote">"La observación indica cómo está el paciente; la reflexión indica qué hay que hacer."</p>
+    </header>
 
-    <div class="card">
-        <h2>1. Antropometría y Balance de Peso</h2>
+    <section class="card">
+        <h2><span class="icon">🌬️</span> Dinámica Vital y Sustrato</h2>
         <div class="grid">
             <div class="input-group">
-                <label>Peso al Nacer (g)</label>
-                <input type="number" placeholder="Ej: 2800">
+                <label for="ph">pH (Potencial)</label>
+                <input type="number" id="ph" step="0.01" placeholder="7.35 - 7.45">
             </div>
             <div class="input-group">
-                <label>Peso Actual (g)</label>
-                <input type="number" placeholder="Ej: 2650">
+                <label for="lactato">Lactato (Eco)</label>
+                <input type="number" id="lactato" step="0.1" placeholder="mmol/L">
             </div>
             <div class="input-group">
-                <label>Talla (cm)</label>
-                <input type="number">
-            </div>
-            <div class="input-group">
-                <label>Edad Gestacional (Semanas)</label>
-                <input type="number">
+                <label for="glucosa">Glucosa (Sustrato)</label>
+                <input type="number" id="glucosa" placeholder="mg/dL">
             </div>
         </div>
-        <p class="instruction-note">* Una pérdida de peso > 10% en los primeros días requiere evaluación médica inmediata.</p>
+    </section>
+
+    <div id="reflexion-container" class="reflexion-box">
+        <span id="label-estado">Estado del Sistema:</span>
+        <span id="evaluacion-clinica">Iniciando observación reflexiva...</span>
     </div>
 
-    <div class="card">
-        <h2>2. Aportes Hídricos e Infusiones</h2>
-        <div class="grid">
-            <div class="input-group">
-                <label>Líquidos Totales (ml/kg/día)</label>
-                <input type="number">
-            </div>
-            <div class="input-group">
-                <label>VIG (mg/kg/min)</label>
-                <input type="number" placeholder="Meta: 4.0 - 6.0">
-            </div>
-            <div class="input-group">
-                <label>Proteínas (g/kg/día)</label>
-                <input type="number">
-            </div>
-            <div class="input-group">
-                <label>Lípidos (g/kg/día)</label>
-                <input type="number">
-            </div>
+    <section class="card" style="margin-top: 40px;">
+        <h3><span class="icon">🧭</span> Herramientas de Valoración</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 15px;">
+            <a href="apgar.html" class="btn-link">Apgar</a>
+            <a href="silverman.html" class="btn-link">Silverman</a>
+            <a href="ballard.html" class="btn-link">Ballard</a>
+            <a href="farmaco.html" class="btn-link">Fármacos</a>
+            <a href="ventilacion.html" class="btn-link">Ventilación</a>
+            <a href="laboratorio.html" class="btn-link">Laboratorio</a>
         </div>
-    </div>
-
-    <div class="card">
-        <h2>3. Parámetros Críticos: Laboratorio</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Indicador</th>
-                    <th>Rango de Referencia</th>
-                    <th>Criterio de Alarma (Notificar)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>pH (Equilibrio Ácido-Base)</strong></td>
-                    <td>7.35 - 7.45</td>
-                    <td><span class="badge-danger">< 7.30 o > 7.50</span></td>
-                </tr>
-                <tr>
-                    <td><strong>pCO₂ (Ventilación)</strong></td>
-                    <td>35 - 45 mmHg</td>
-                    <td><span class="badge-danger">> 50 mmHg</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Lactato (Perfusión)</strong></td>
-                    <td>< 2.0 mmol/L</td>
-                    <td><span class="badge-danger">> 2.5 mmol/L</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Índice I/T (Sepsis)</strong></td>
-                    <td>< 0.20</td>
-                    <td><span class="badge-danger">> 0.22</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Plaquetas</strong></td>
-                    <td>> 150,000</td>
-                    <td><span class="badge-danger">< 100,000</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Glucosa Central</strong></td>
-                    <td>45 - 90 mg/dL</td>
-                    <td><span class="badge-danger">< 40 o > 125 mg/dL</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card">
-        <h2>4. Intervenciones de Enfermería Prioritarias</h2>
-        <div class="grid">
-            <div style="grid-column: span 2;">
-                <ul>
-                    <li><strong>Neuroprotección:</strong> Cabeza en línea media, manipulación mínima y control de ruido/luz.</li>
-                    <li><strong>Prevención de Infecciones:</strong> Lavado de manos estricto antes de manipular accesos vasculares.</li>
-                    <li><strong>Termorregulación:</strong> Mantener temperatura axilar entre 36.5°C y 37.5°C.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-note">
-        <strong>Nota de Seguridad:</strong> Este sistema es una herramienta de apoyo. El juicio clínico del profesional y la valoración directa del recién nacido prevalecen sobre los datos ingresados.
-    </div>
+    </section>
 </div>
 
+<style>
+    /* Toque rápido para los botones de navegación */
+    .btn-link {
+        text-decoration: none;
+        color: #64748b;
+        background: #f1f5f9;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 0.8rem;
+        transition: 0.3s;
+        border: 1px solid #e2e8f0;
+    }
+    .btn-link:hover {
+        background: #e2e8f0;
+        color: #334155;
+    }
+</style>
+
+<script src="script.js"></script>
 </body>
 </html>
