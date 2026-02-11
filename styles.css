@@ -1,135 +1,119 @@
-/* Estilos de Alta Especialidad Neonatal */
+/* style.css - Estética del Prisma de Adaptación */
+
 :root {
-    --primary: #2c3e50;
-    --accent: #3498db;
-    --danger: #e74c3c;
-    --warning: #f39c12;
-    --success: #27ae60;
-    --bg: #f4f7f6;
-    --white: #ffffff;
+    --fondo: #f8fafc;        /* Blanco hospitalario suave */
+    --texto-primario: #334155;
+    --texto-secundario: #64748b;
+    --sintonía: #27ae60;     /* Verde equilibrio */
+    --disonancia: #e74c3c;   /* Rojo de alerta adaptativa */
+    --borde: #e2e8f0;
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--primary);
-    line-height: 1.6;
+    background-color: var(--fondo);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--texto-primario);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
     margin: 0;
-    padding: 20px;
 }
 
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
 }
 
-/* Tarjetas de Módulo */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--texto-primario);
+    margin-bottom: 8px;
+}
+
+#quote {
+    font-style: italic;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* Tarjetas: El concepto de "Cuna de Datos" */
 .card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-top: 5px solid var(--accent);
-    transition: transform 0.2s ease;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--borde);
 }
 
 h2 {
-    color: var(--primary);
-    font-size: 1.2rem;
-    margin-top: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--texto-secundario);
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-/* Grid de Inputs */
+/* Grid y Inputs: La sutileza del control */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-weight: 600;
-    font-size: 0.85rem;
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin-bottom: 8px;
-    color: #546e7a;
+    color: var(--texto-secundario);
 }
 
 input {
+    width: 100%;
     padding: 12px;
-    border: 2px solid #e0e6ed;
+    border: 1px solid var(--borde);
     border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fcfcfc;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+    outline: none;
+    border-color: #cbd5e1;
 }
 
-/* Clases de Alerta Dinámicas (Usadas por JS) */
-.input-error {
-    background-color: #fff5f5 !important;
-    border-color: var(--danger) !important;
-    color: var(--danger) !important;
-    animation: shake 0.4s ease-in-out;
+/* El Reflexionador: El cuadro de Callista Roy */
+.reflexion-box {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--borde);
+    font-size: 0.95rem;
 }
 
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-/* Tablas Clínicas */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th {
-    background-color: #f8fafc;
-    color: #64748b;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    padding: 12px;
-}
-
-td {
-    padding: 12px;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.badge-danger {
-    display: inline-block;
-    background: var(--danger);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 50px;
+#label-estado {
     font-weight: bold;
-    font-size: 0.8rem;
+    margin-right: 10px;
 }
 
-/* Notas de Enfermería */
-.instruction-note {
-    background: #eef2f7;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    color: #475569;
-    border-left: 4px solid var(--accent);
+#evaluacion-clinica {
+    color: var(--sintonía);
+    transition: color 0.5s ease;
+}
+
+/* Animación de Disonancia (Alerta) */
+.alerta-activa {
+    border-left: 4px solid var(--disonancia) !important;
+    background-color: #fffafa !important;
 }
