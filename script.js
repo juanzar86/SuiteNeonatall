@@ -1,14 +1,13 @@
-// script.js - El Observador de la Adaptación
+// script.js - El Observador de la Adaptación (Nightingale/Roy)
 
 document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('input[type="number"]');
     const reflexionTexto = document.getElementById('evaluacion-clinica');
 
-    // Escuchamos la danza de los datos
+    // Escuchamos los cambios en los datos
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             evaluarAdaptacion(input);
-            calcularEquilibrio();
         });
     });
 
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let disonancia = false;
 
-        // Umbrales de Adaptación (El objetivo oculto de seguridad)
+        // Umbrales de Seguridad (Sintonía)
         const umbrales = {
             ph: { min: 7.35, max: 7.45 },
             glucosa: { min: 45, max: 125 },
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pco2: { max: 50 }
         };
 
-        // Verificamos si el estímulo supera la respuesta del neonato
+        // Verificación de Rangos
         if (umbrales[campo.id]) {
             const regla = umbrales[campo.id];
             if ((regla.min && valor < regla.min) || (regla.max && valor > regla.max)) {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Refacción visual situacional
+        // Respuesta visual y reflexiva
         if (disonancia) {
             campo.classList.add('alerta-activa');
             actualizarReflexion("Disonancia detectada: El modo adaptativo requiere sintonía clínica.");
@@ -44,24 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function calcularEquilibrio() {
-        const pNacer = parseFloat(document.getElementById('pesoNacer')?.value);
-        const pActual = parseFloat(document.getElementById('pesoActual')?.value);
-        const statusPeso = document.getElementById('status-peso');
-
-        if (pNacer && pActual) {
-            const perdida = ((pNacer - pActual) / pNacer) * 100;
-            if (perdida > 10) {
-                actualizarReflexion("Alerta de Roy: La arquitectura del sistema pierde su centro hídrico.");
-                if(statusPeso) statusPeso.style.color = "#e74c3c";
-            }
-        }
-    }
-
     function actualizarReflexion(mensaje) {
         if (reflexionTexto) {
             reflexionTexto.innerText = mensaje;
-            reflexionTexto.style.color = mensaje.includes("Disonancia") || mensaje.includes("Alerta") ? "#e74c3c" : "#27ae60";
+            reflexionTexto.style.color = mensaje.includes("Disonancia") ? "#e74c3c" : "#27ae60";
         }
     }
 });
