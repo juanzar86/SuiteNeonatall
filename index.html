@@ -3,158 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal</title>
+    <title>Suite Neonatal Institucional</title>
     <style>
         :root {
-            --rosa-fuerte: #d81b60; /* Rosa vibrante para la cabecera */
-            --rosa-suave: #fce4ec;
-            --azul-contraste: #00838f; /* Azul turquesa oscuro para el botón Registros */
-            --azul-claro: #e1f5fe;
+            --rosa-fuerte: #d81b60;
+            --rosa-claro: #fce4ec;
+            --azul-oscuro: #00838f;
+            --azul-baby: #e1f5fe;
             --amarillo: #fff176;
-            --texto-oscuro: #333;
+            --blanco: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-color: #f5f5f5;
+            color: #333;
+            scroll-behavior: smooth;
         }
+
+        /* Vistas (Secciones) */
+        .page {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background: var(--blanco);
+        }
+
+        .active { display: block; }
 
         /* Cabecera */
         .header {
             background-color: var(--rosa-fuerte);
-            width: 100%;
-            padding: 40px 0 50px 0;
+            padding: 40px 20px;
             text-align: center;
             border-radius: 0 0 40px 40px;
             color: white;
         }
 
-        .logo-container {
+        .logo-box {
             background: white;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto 15px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .logo-container img {
-            width: 70%;
-        }
+        /* Botones del Menú */
+        .container { padding: 20px; max-width: 450px; margin: -30px auto 0; }
 
-        h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Contenedor Principal */
-        .content {
-            width: 90%;
-            max-width: 450px;
-            margin-top: -25px;
-            padding-bottom: 40px;
-        }
-
-        /* Botones de Acción Inmediata */
-        .btn-main {
+        .btn {
             display: block;
             width: 100%;
-            padding: 18px 0;
+            padding: 18px;
             margin-bottom: 12px;
             border-radius: 25px;
             text-align: center;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .btn-registros {
-            background-color: var(--azul-contraste);
-            color: white; /* Contraste alto para que no se pierda */
-        }
+        .btn-registros { background: var(--azul-oscuro); color: white; }
+        .btn-diluciones { background: var(--amarillo); color: #5d4037; }
+        .btn-item { background: white; color: #0277bd; border: 1px solid #eee; }
+        .btn-pink { background: var(--rosa-claro); color: var(--rosa-fuerte); }
 
-        .btn-diluciones {
-            background-color: var(--amarillo);
-            color: #6d4c41;
-        }
-
-        /* Títulos de Sección */
-        .section-header {
+        .section-label {
             color: var(--rosa-fuerte);
             font-weight: bold;
+            margin: 20px 0 10px 10px;
             font-size: 0.9rem;
-            margin: 25px 0 15px 5px;
-            text-transform: uppercase;
         }
 
-        /* Botones de Lista */
-        .btn-list {
+        /* Estilo de las subpáginas */
+        .subpage-header {
+            background: var(--rosa-fuerte);
+            padding: 20px;
+            color: white;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: white;
-            border: 1px solid #eee;
-            padding: 14px;
-            margin-bottom: 10px;
-            border-radius: 15px;
-            text-decoration: none;
-            color: #0277bd;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-            text-transform: uppercase;
         }
 
-        .btn-list span {
-            margin-right: 10px;
+        .back-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 15px;
         }
 
-        /* Colores específicos para botones inferiores */
-        .bg-pink { background-color: var(--rosa-suave); color: var(--rosa-fuerte); border: none; }
-        .bg-blue { background-color: var(--azul-claro); color: #0277bd; border: none; }
-
+        .content-area { padding: 20px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="logo-container">
-            <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" alt="Icono">
+    <div id="home" class="page active">
+        <div class="header">
+            <div class="logo-box">
+                <img src="https://cdn-icons-png.flaticon.com/512/2864/2864448.png" width="50" alt="logo">
+            </div>
+            <h1>SUITE NEONATAL</h1>
         </div>
-        <h1>Suite Neonatal</h1>
-    </div>
 
-    <div class="content">
-        <a href="#" class="btn-main btn-registros">📋 REGISTROS</a>
-        <a href="#" class="btn-main btn-diluciones">DILUCIONES 💊</a>
+        <div class="container">
+            <button class="btn btn-registros" onclick="showPage('page-registros')">📋 REGISTROS</button>
+            <button class="btn btn-diluciones" onclick="showPage('page-diluciones')">DILUCIONES 💊</button>
 
-        <div class="section-header">Valoración Clínica</div>
-        <a href="#" class="btn-list">⭐ APGAR</a>
-        <a href="#" class="btn-list">🌬️ SILVERMAN</a>
-        <a href="#" class="btn-list">📅 BALLARD</a>
-        <a href="#" class="btn-list">👶 CAPURRO</a>
+            <div class="section-label">VALORACIÓN CLÍNICA</div>
+            <button class="btn btn-item" onclick="showPage('page-apgar')">⭐ APGAR</button>
+            <button class="btn btn-item" onclick="showPage('page-silverman')">🌬️ SILVERMAN</button>
+            <button class="btn btn-item" onclick="showPage('page-ballard')">📅 BALLARD</button>
+            <button class="btn btn-item" onclick="showPage('page-capurro')">👶 CAPURRO</button>
 
-        <div class="section-header">Seguridad y Soporte</div>
-        <a href="#" class="btn-list">🛡️ RIESGO UPP</a>
-        <a href="#" class="btn-list">👣 CAÍDAS</a>
-        <a href="#" class="btn-list">📦 MATERIAL</a>
-        <a href="#" class="btn-list">🩹 MARSI</a>
+            <div class="section-label">SEGURIDAD Y SOPORTE</div>
+            <button class="btn btn-item" onclick="showPage('page-upp')">🛡️ RIESGO UPP</button>
+            <button class="btn btn-item" onclick="showPage('page-caidas')">👣 CAÍDAS</button>
+            <button class="btn btn-item" onclick="showPage('page-marsi')">🩹 MARSI</button>
 
-        <div style="margin-top: 20px;">
-            <a href="#" class="btn-list bg-pink">SIGNOS VITALES</a>
-            <a href="#" class="btn-list bg-blue">LABORATORIO</a>
+            <button class="btn btn-pink" style="margin-top:20px" onclick="showPage('page-signos')">SIGNOS VITALES</button>
         </div>
     </div>
+
+    <div id="page-registros" class="page">
+        <div class="subpage-header">
+            <button class="back-btn" onclick="showPage('home')">←</button>
+            <h2>Registros Clínicos</h2>
+        </div>
+        <div class="content-area">
+            <p>Módulo de registro de enfermería en desarrollo.</p>
+        </div>
+    </div>
+
+    <div id="page-apgar" class="page">
+        <div class="subpage-header">
+            <button class="back-btn" onclick="showPage('home')">←</button>
+            <h2>Escala de APGAR</h2>
+        </div>
+        <div class="content-area">
+            <p>Calculadora de vitalidad del recién nacido.</p>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            
+            // Mostrar la seleccionada
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
 
 </body>
 </html>
+
+
