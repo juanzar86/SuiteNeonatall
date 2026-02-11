@@ -3,145 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite de Enfermería Pro</title>
+    <title>Suite Neonatal Completa</title>
     <style>
         :root {
             --primary: #2c3e50;
             --accent: #3498db;
-            --bg: #f4f7f6;
+            --neonatal: #ff8c00;
+            --upp-color: #1abc9c;
+            --bg: #f8f9fa;
         }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 15px; color: #333; }
         
-        /* Contenedor Principal */
-        .grid-container {
+        /* Cabecera */
+        header { text-align: center; padding: 10px; border-bottom: 2px solid var(--neonatal); margin-bottom: 20px; }
+        
+        /* Grid de Herramientas Principales */
+        .main-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        /* Tarjetas Interactivas (Caída y UPP) */
-        .card {
+        .tool-card {
             background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); }
-
-        .details {
-            display: none; /* Se oculta por defecto */
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-
-        .btn-info {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        /* Nueva Sección: Biblioteca e Infografías */
-        .resources-section {
-            grid-column: 1 / -1;
-            background: #eef2f3;
-            padding: 25px;
             border-radius: 15px;
-            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
         }
 
-        .resource-grid {
+        /* MODIFICACIÓN: Riesgo Caída y UPP con Interactividad */
+        .risk-card { border-top: 4px solid var(--neonatal); }
+        .details {
+            display: none;
+            text-align: left;
+            font-size: 0.85em;
+            background: #fffdf9;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-view {
+            background: #e1f5fe;
+            color: #0288d1;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* NUEVA SECCIÓN: Recursos Dinámicos */
+        .resources-container {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scroll-x {
             display: flex;
             overflow-x: auto;
             gap: 15px;
-            padding-bottom: 10px;
+            padding: 10px 0;
         }
 
-        .infographic-box {
-            min-width: 200px;
-            height: 150px;
-            background: #ddd;
+        .infographic-item {
+            min-width: 140px;
+            height: 100px;
+            background: #eee;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            cursor: pointer;
-            background-size: cover;
-            position: relative;
+            font-size: 0.7em;
+            text-align: center;
+            border: 1px dashed #ccc;
         }
-
-        .infographic-box:hover { opacity: 0.8; }
-        .infographic-box::after { content: '🔍 Ampliar'; position: absolute; bottom: 5px; right: 5px; font-size: 10px; background: rgba(0,0,0,0.5); color: white; padding: 2px 5px; border-radius: 3px; }
     </style>
 </head>
 <body>
 
-    <h2>Suite Clínica: Gestión de Riesgos</h2>
-    
-    <div class="grid-container">
-        <div class="card">
-            <h3>📉 Riesgo de Caída</h3>
-            <button class="btn-info" onclick="toggle('caida')">Ver qué valora</button>
+    <header>
+        <h1>🍼 Suite Neonatal</h1>
+    </header>
+
+    <div class="main-grid">
+        <div class="tool-card">
+            <h3>👶 Apgar</h3>
+            <p style="font-size: 0.7em; color: #777;">Estado clínico del RN</p>
+            <button class="btn-view">Abrir Test</button>
+        </div>
+        <div class="tool-card">
+            <h3>🫁 Silverman</h3>
+            <p style="font-size: 0.7em; color: #777;">Dificultad respiratoria</p>
+            <button class="btn-view">Abrir Test</button>
+        </div>
+        <div class="tool-card">
+            <h3>📏 Capurro</h3>
+            <p style="font-size: 0.7em; color: #777;">Edad gestacional</p>
+            <button class="btn-view">Calcular</button>
+        </div>
+
+        <div class="tool-card risk-card">
+            <h3>📉 Caídas</h3>
+            <button class="btn-view" onclick="toggle('caida')">¿Qué valora?</button>
             <div id="caida" class="details">
-                <strong>Parámetros Evaluados:</strong>
+                <strong>Escala Humpty Dumpty:</strong>
                 <ul>
-                    <li>Limitación física y movilidad.</li>
-                    <li>Estado mental y conciencia.</li>
-                    <li>Antecedentes de caídas previas.</li>
-                    <li>Efecto de medicamentos (Sedantes/Hipotensores).</li>
+                    <li>Edad y Género</li>
+                    <li>Diagnóstico</li>
+                    <li>Deterioro cognitivo</li>
+                    <li>Factores ambientales</li>
                 </ul>
             </div>
         </div>
 
-        <div class="card">
-            <h3>🩹 Riesgo de UPP</h3>
-            <button class="btn-info" onclick="toggle('upp')">Ver qué valora</button>
+        <div class="tool-card risk-card" style="border-top-color: var(--upp-color);">
+            <h3>🩹 UPP</h3>
+            <button class="btn-view" onclick="toggle('upp')">¿Qué valora?</button>
             <div id="upp" class="details">
-                <strong>Parámetros Evaluados:</strong>
+                <strong>Escala NSRAS:</strong>
                 <ul>
-                    <li>Percepción sensorial (Respuesta al dolor).</li>
-                    <li>Exposición a la humedad.</li>
-                    <li>Actividad física y deambulación.</li>
-                    <li>Nutrición y fricción/cizallamiento.</li>
+                    <li>Percepción sensorial</li>
+                    <li>Humedad y Actividad</li>
+                    <li>Movilidad y Nutrición</li>
+                    <li>Fricción y Cizallamiento</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="resources-section">
-        <h3>📚 Biblioteca e Infografías (Recursos Dinámicos)</h3>
-        <p>Haz clic en los recuadros para pegar tu contenido o visualizar tus guías:</p>
+    <div class="resources-container">
+        <h3>📚 Biblioteca & Infografías</h3>
+        <div class="scroll-x">
+            <div class="infographic-item">📷 Foto Guía Apgar</div>
+            <div class="infographic-item">📷 Foto Guía Silverman</div>
+            <div class="infographic-item">📷 Protocolo Lavado</div>
+        </div>
         
-        <div class="resource-grid">
-            <div class="infographic-box" style="background-image: url('https://via.placeholder.com/200x150?text=Guia+Apgar')"></div>
-            <div class="infographic-box" style="background-image: url('https://via.placeholder.com/200x150?text=Guia+Silverman')"></div>
-            <div class="infographic-box" style="background-image: url('https://via.placeholder.com/200x150?text=Manual+PAE')"></div>
-        </div>
-
-        <div style="margin-top: 15px;">
-            <h4>📌 Bibliografía de Consulta</h4>
-            <textarea style="width: 100%; height: 80px; border-radius: 8px; border: 1px solid #ccc; padding: 10px;" placeholder="Pega aquí tus enlaces, referencias APA o notas rápidas..."></textarea>
-        </div>
+        <h4 style="margin-top:20px;">📌 Notas y Bibliografía</h4>
+        <textarea style="width:100%; height:100px; border-radius:10px; border:1px solid #ddd; padding:10px;" 
+                  placeholder="Pega aquí tus textos o enlaces de referencia científica..."></textarea>
     </div>
 
     <script>
-        // Función para la interactividad de las tarjetas
         function toggle(id) {
-            const element = document.getElementById(id);
-            if (element.style.display === "block") {
-                element.style.display = "none";
-            } else {
-                element.style.display = "block";
-            }
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
         }
     </script>
-
 </body>
 </html>
