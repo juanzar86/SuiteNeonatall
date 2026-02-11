@@ -3,58 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vademécum Neonatal - Suite</title>
+    <title>Farmacología Neonatal - Suite</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
     <header>
         <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px; margin-bottom:10px;">⬅ Volver</a>
-        <h1>Vademécum Neonatal</h1>
-        <input type="text" id="busqueda-farmaco" placeholder="🔍 Buscar medicamento..." style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc; box-sizing: border-box;">
+        <h1>Farmacología Neonatal</h1>
+        <input type="text" id="busqueda-farmaco" placeholder="🔍 Buscar medicamento o término..." style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc; box-sizing: border-box;">
     </header>
 
     <main>
+        <section class="bloque-recurso" style="border-left: 5px solid #3498db;">
+            <h2 style="color: #2c3e50;">🧪 Farmacocinética</h2>
+            <div style="background: #fdfdfd; padding: 10px; border-radius: 8px; line-height: 1.6;">
+                <p><strong>Absorción:</strong> La absorción gastrointestinal en neonatos está alterada por el pH gástrico elevado y el vaciamiento gástrico lento.</p>
+                <p><strong>Distribución:</strong> Mayor porcentaje de agua corporal total y menor unión a proteínas plasmáticas, lo que aumenta la fracción libre de fármacos hidrosolubles.</p>
+                <p><strong>Metabolismo:</strong> Inmadurez de los sistemas enzimáticos hepáticos (fases I y II), lo que prolonga la vida media de muchos fármacos.</p>
+                <p><strong>Excreción:</strong> La filtración glomerular y la secreción tubular son reducidas en el nacimiento, aumentando gradualmente en las primeras semanas.</p>
+            </div>
+        </section>
+
         <section class="bloque-recurso" style="border-left: 5px solid #a55eea;">
-            <details open>
-                <summary style="font-weight: bold; cursor: pointer;">📖 Farmacocinética y Dinamia</summary>
-                <div style="padding-top:15px; font-size: 0.9rem;">
-                    <h4 style="margin: 5px 0;">Farmacocinética:</h4>
-                    <p><i>[Escribe o pega aquí tu texto sobre absorción y metabolismo]</i></p>
-                    
-                    <h4 style="margin: 15px 0 5px 0;">Farmacodinamia:</h4>
-                    <p><i>[Escribe o pega aquí tu texto sobre mecanismos de acción]</i></p>
-                </div>
-            </details>
+            <h2 style="color: #2c3e50;">🔬 Farmacodinamia</h2>
+            <div style="background: #fdfdfd; padding: 10px; border-radius: 8px; line-height: 1.6;">
+                <p>Estudia los efectos bioquímicos y fisiológicos de los fármacos y sus mecanismos de acción. En el neonato, la respuesta puede variar debido a la inmadurez de los receptores y los sistemas de segundos mensajeros.</p>
+            </div>
         </section>
 
         <section class="bloque-recurso">
-            <h3>Lista de Fármacos</h3>
+            <h2 style="color: #2c3e50;">📋 Guía de Dilución y Administración</h2>
             <div style="overflow-x: auto;">
-                <table id="tabla-medicamentos" style="width:100%; border-collapse: collapse; font-size: 0.85rem;">
+                <table id="tabla-medicamentos" style="width:100%; border-collapse: collapse; font-size: 0.8rem;">
                     <thead>
                         <tr style="background:#2c3e50; color:white;">
-                            <th style="padding:10px; border:1px solid #ddd; text-align:left;">Fármaco</th>
-                            <th style="padding:10px; border:1px solid #ddd; text-align:left;">Dosis / Notas</th>
+                            <th style="padding:8px; border:1px solid #ddd;">Medicamento</th>
+                            <th style="padding:8px; border:1px solid #ddd;">Conc. Máx Pediátrica</th>
+                            <th style="padding:8px; border:1px solid #ddd;">Velocidad Admin.</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Amikacina</strong></td><td>15 mg/kg/día</td></tr>
-                        <tr><td><strong>Ampicilina</strong></td><td>100-200 mg/kg/día</td></tr>
-                        <tr><td><strong>Bencilpenicilina</strong></td><td>50,000 UI/kg/dosis</td></tr>
-                        <tr><td><strong>Cefotaxima</strong></td><td>50 mg/kg/dosis</td></tr>
-                        <tr><td><strong>Dexametasona</strong></td><td>0.15 mg/kg/día</td></tr>
-                        <tr><td><strong>Dopamina</strong></td><td>2-20 mcg/kg/min</td></tr>
-                        </tbody>
+                        <tr><td><strong>Aciclovir</strong></td><td>10 mg/ml</td><td>60 min</td></tr>
+                        <tr><td><strong>Amikacina</strong></td><td>10 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Ampicilina</strong></td><td>100 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Cefepime</strong></td><td>100 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Cefotaxima</strong></td><td>100 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Ceftriaxona</strong></td><td>40 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Clindamicina</strong></td><td>18 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Dexametasona</strong></td><td>2 mg/ml</td><td>10 min</td></tr>
+                        <tr><td><strong>Fenitoína</strong></td><td>6 mg/ml</td><td>20-30 min</td></tr>
+                        <tr><td><strong>Gentamicina</strong></td><td>10 mg/ml</td><td>30-60 min</td></tr>
+                        <tr><td><strong>Meropenem</strong></td><td>50 mg/ml</td><td>30 min - 4 h</td></tr>
+                        <tr><td><strong>Metronidazol</strong></td><td>5 mg/ml</td><td>30 min</td></tr>
+                        <tr><td><strong>Vancomicina</strong></td><td>5 mg/ml</td><td>120 min</td></tr>
+                    </tbody>
                 </table>
             </div>
         </section>
     </main>
 
     <script>
-        // Este código hace que el buscador funcione específicamente en esta tabla
+        // Lógica del buscador para filtrar tanto la tabla como los textos
         document.getElementById('busqueda-farmaco').addEventListener('keyup', function() {
             let filtro = this.value.toLowerCase();
+            
+            // Filtrar filas de la tabla
             let filas = document.querySelectorAll('#tabla-medicamentos tbody tr');
             filas.forEach(fila => {
                 fila.style.display = fila.innerText.toLowerCase().includes(filtro) ? '' : 'none';
