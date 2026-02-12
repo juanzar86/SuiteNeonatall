@@ -1,57 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Apgar - Suite Neonatal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
-</head>
-<body>
-    <header>
-        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px;">⬅ Volver</a>
-        <h1>Test de Apgar</h1>
-    </header>
+<header>
+  <h1>Escala Apgar</h1>
+</header>
+<main>
+  <form id="apgarForm">
+    <!-- Parámetros con select -->
+    <label>Color:
+      <select name="color">
+        <option value="0">0 - Cianótico</option>
+        <option value="1">1 - Acrocianótico</option>
+        <option value="2">2 - Rosado</option>
+      </select>
+    </label>
+    <!-- Repite para respiración, tono, reflejos, frecuencia -->
+    <button type="button" onclick="calcularApgar()">Calcular</button>
+  </form>
+  <div id="resultado"></div>
+</main>
 
-    <main id="modulo-calculo">
-        <div class="pizarra-resultado">
-            Puntaje: <span id="resultado">0</span>
-        </div>
-
-        <section class="bloque-recurso">
-            <h3>Apariencia (Color)</h3>
-            <label><input type="radio" name="r1" value="0"> Azul / Pálido (0)</label><br>
-            <label><input type="radio" name="r1" value="1"> Cuerpo rosado, extremidades azules (1)</label><br>
-            <label><input type="radio" name="r1" value="2"> Completamente rosado (2)</label>
-        </section>
-
-        <section class="bloque-recurso">
-            <h3>Pulso (Frecuencia Cardiaca)</h3>
-            <label><input type="radio" name="r2" value="0"> Ausente (0)</label><br>
-            <label><input type="radio" name="r2" value="1"> < 100 lpm (1)</label><br>
-            <label><input type="radio" name="r2" value="2"> > 100 lpm (2)</label>
-        </section>
-
-        <section class="bloque-recurso">
-            <h3>Gesticulación (Irritabilidad)</h3>
-            <label><input type="radio" name="r3" value="0"> Sin respuesta (0)</label><br>
-            <label><input type="radio" name="r3" value="1"> Muecas / Llanto débil (1)</label><br>
-            <label><input type="radio" name="r3" value="2"> Llanto vigoroso / Estornudo (2)</label>
-        </section>
-
-        <section class="bloque-recurso">
-            <h3>Actividad (Tono muscular)</h3>
-            <label><input type="radio" name="r4" value="0"> Flácido (0)</label><br>
-            <label><input type="radio" name="r4" value="1"> Cierta flexión (1)</label><br>
-            <label><input type="radio" name="r4" value="2"> Movimiento activo (2)</label>
-        </section>
-
-        <section class="bloque-recurso">
-            <h3>Respiración</h3>
-            <label><input type="radio" name="r5" value="0"> Ausente (0)</label><br>
-            <label><input type="radio" name="r5" value="1"> Lenta e irregular (1)</label><br>
-            <label><input type="radio" name="r5" value="2"> Llanto fuerte (2)</label>
-        </section>
-    </main>
-</body>
-</html>
+<script>
+function calcularApgar() {
+  let selects = document.querySelectorAll('#apgarForm select');
+  let total = 0;
+  selects.forEach(sel => total += parseInt(sel.value));
+  let mensaje = '';
+  if (total <= 3) mensaje = 'Apgar bajo (grave)';
+  else if (total <= 6) mensaje = 'Apgar intermedio (moderado)';
+  else mensaje = 'Apgar alto (buena condición)';
+  document.getElementById('resultado').textContent = `Puntaje: ${total} → ${mensaje}`;
+}
+</script>
