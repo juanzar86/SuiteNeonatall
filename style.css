@@ -1,13 +1,8 @@
-/* Reset básico */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 /* Estilo general */
 body {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f5f7fa; /* tono claro hospitalario */
   color: #333;
 }
@@ -21,6 +16,7 @@ header {
 }
 
 header h1 {
+  margin: 0;
   font-size: 1.8em;
 }
 
@@ -42,7 +38,7 @@ main.grid {
   text-decoration: none;
   color: #004080;
   font-weight: bold;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Íconos */
