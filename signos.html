@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signos Vitales - Suite</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px; margin-bottom:10px;">⬅ Volver</a>
-        <h1>Signos Vitales Neonatales</h1>
-    </header>
+<header>
+  <h1>Signos Vitales</h1>
+</header>
+<main>
+  <form id="signosForm" class="formulario">
+    <label>Frecuencia cardiaca (lat/min):
+      <input type="number" name="fc" min="40" max="220">
+    </label>
+    <label>Frecuencia respiratoria (resp/min):
+      <input type="number" name="fr" min="10" max="100">
+    </label>
+    <label>Temperatura (°C):
+      <input type="number" step="0.1" name="temp" min="30" max="42">
+    </label>
+    <label>Saturación de oxígeno (%):
+      <input type="number" name="sat" min="50" max="100">
+    </label>
+    <button type="button" onclick="calcularSignos()">Calcular</button>
+  </form>
+  <div id="resultado"></div>
+</main>
 
-    <main>
-        <section class="bloque-recurso">
-            <table style="width:100%; border-collapse: collapse; font-size: 0.9rem;">
-                <tr style="background:#2c3e50; color:white;">
-                    <th style="padding:10px;">Parámetro</th>
-                    <th style="padding:10px;">Rango Normal</th>
-                </tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Frec. Cardiaca</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">120 - 160 lpm</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Frec. Respiratoria</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">40 - 60 rpm</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Temperatura</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">36.5 - 37.5 °C</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Saturación O2</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">90 - 95% (Al nacer varía)</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Presión Sistólica</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">60 - 90 mmHg</td></tr>
-            </table>
-        </section>
+<script>
+function calcularSignos() {
+  let fc = parseInt(document.querySelector('[name="fc"]').value);
+  let fr = parseInt(document.querySelector('[name="fr"]').value);
+  let temp = parseFloat(document.querySelector('[name="temp"]').value);
+  let sat = parseInt(document.querySelector('[name="sat"]').value);
 
-        <section class="bloque-recurso" style="background: #eef2f3; font-size: 0.85rem;">
-            <p><strong>Nota:</strong> Los valores pueden variar según la edad gestacional y el peso al nacer. Siempre correlacionar con la clínica del paciente.</p>
-        </section>
-    </main>
-</body>
-</html>
+  let mensaje = '';
+  if (fc >= 100 && fc <= 160) mensaje += 'FC normal. '; else mensaje += 'FC alterada. ';
+  if (fr >= 30 && fr <= 60) mensaje += 'FR normal. '; else mensaje += 'FR alterada. ';
+  if (temp >= 36.5 && temp <= 37.5) mensaje += 'Temperatura normal. '; else mensaje += 'Temperatura alterada. ';
+  if (sat >= 90) mensaje += 'SatO₂ adecuada.'; else mensaje += 'SatO₂ baja.';
+
+  document.getElementById('resultado').textContent = mensaje;
+}
+</script>
