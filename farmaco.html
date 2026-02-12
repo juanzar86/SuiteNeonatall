@@ -1,90 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmacología Neonatal</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Dosis</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px; margin-bottom:10px; text-decoration:none;">⬅ Volver</a>
-        <h1>Vademécum y Diluciones</h1>
-        <input type="text" id="busqueda" placeholder="🔍 Buscar medicamento o solución..." style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc; box-sizing: border-box; margin-top:10px;">
-    </header>
+  <header>
+    <h1>Buscador de Dosis</h1>
+  </header>
+  <main>
+    <input type="text" id="search" placeholder="Buscar medicamento..." class="search-bar">
 
-    <main>
-        <section class="bloque-recurso">
-            <div style="overflow-x: auto;">
-                <table id="tabla-f" style="width:100%; border-collapse: collapse; font-size: 0.8rem;">
-                    <thead>
-                        <tr style="background:#2c3e50; color:white;">
-                            <th style="padding:10px; border:1px solid #444;">Elemento</th>
-                            <th style="padding:10px; border:1px solid #444;">Conc. Máx / Dilución</th>
-                            <th style="padding:10px; border:1px solid #444;">Administración</th>
-                            <th style="padding:10px; border:1px solid #444;">Estabilidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Aciclovir</td><td>7 mg/ml</td><td>60 min</td><td>Manual</td></tr>
-                        <tr><td>Albúmina 20%</td><td>Directo / 1:1</td><td>30-60 min</td><td>4h ambiente</td></tr>
-                        <tr><td>Amikacina</td><td>5 mg/ml</td><td>30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Aminofilina</td><td>1 mg/ml</td><td>20-30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Ampicilina</td><td>30 mg/ml</td><td>15-30 min</td><td>1h ambiente</td></tr>
-                        <tr><td>Anfotericina B</td><td>0.1 mg/ml</td><td>2-6 h</td><td>24h (Luz)</td></tr>
-                        <tr><td>Atropina</td><td>Directo</td><td>Bolo rápido</td><td>Inmediato</td></tr>
-                        <tr><td>Azitromicina</td><td>2 mg/ml</td><td>60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Bicarbonato Na</td><td>0.5 mEq/ml</td><td>15-30 min</td><td>Inmediato</td></tr>
-                        <tr><td>Caspofungina</td><td>0.5 mg/ml</td><td>60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Cefazolina</td><td>20 mg/ml</td><td>10-60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Cefotaxima</td><td>20 mg/ml</td><td>15-30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Ceftazidima</td><td>40 mg/ml</td><td>15-30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Ceftriaxona</td><td>40 mg/ml</td><td>30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Clindamicina</td><td>6 mg/ml</td><td>20-30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Clonidina</td><td>1 mcg/ml</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Cloruro de Potasio</td><td>40 mEq/L (VPP)</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Cloruro de Sodio</td><td>0.9%</td><td>Variable</td><td>N/A</td></tr>
-                        <tr><td>Dexametasona</td><td>Directo</td><td>10 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Dextrosa 5% - 50%</td><td>Máx 12.5% VPP</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Diazepam</td><td>Directo</td><td>Bolo lento</td><td>Inmediato</td></tr>
-                        <tr><td>Dobutamina</td><td>5 mg/ml</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Dopamina</td><td>3.2 mg/ml</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Epinefrina</td><td>0.01-0.1 mg/ml</td><td>Bolo/Infusión</td><td>Inmediato</td></tr>
-                        <tr><td>Eritromicina</td><td>5 mg/ml</td><td>60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Fenitoína</td><td>5 mg/ml</td><td>20-30 min</td><td>Inmediato</td></tr>
-                        <tr><td>Fenobarbital</td><td>10 mg/ml</td><td>20 min</td><td>Inmediato</td></tr>
-                        <tr><td>Fentanilo</td><td>10 mcg/ml</td><td>Bolo/Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Fluconazol</td><td>2 mg/ml</td><td>30 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Furosemida</td><td>10 mg/ml</td><td>10 min</td><td>24h (Luz)</td></tr>
-                        <tr><td>Gantamicina</td><td>1 mg/ml</td><td>30-60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Ganciclovir</td><td>10 mg/ml</td><td>60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Gluconato Calcio</td><td>100 mg/ml</td><td>15-30 min</td><td>Inmediato</td></tr>
-                        <tr><td>Heparina</td><td>1 UI/ml</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Hidrocortisona</td><td>1 mg/ml</td><td>10 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Imipenem</td><td>5 mg/ml</td><td>30-60 min</td><td>4h ambiente</td></tr>
-                        <tr><td>Insulina</td><td>0.1 UI/ml</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Linezolid</td><td>2 mg/ml</td><td>30-120 min</td><td>N/A</td></tr>
-                        <tr><td>Meropenem</td><td>20 mg/ml</td><td>30 min</td><td>4h ambiente</td></tr>
-                        <tr><td>Metronidazol</td><td>5 mg/ml</td><td>30-60 min</td><td>24h ambiente</td></tr>
-                        <tr><td>Morfina</td><td>0.1 mg/ml</td><td>20 min/Infus</td><td>24h ambiente</td></tr>
-                        <tr><td>Midazolam</td><td>0.5 mg/ml</td><td>Bolo/Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Milrinona</td><td>0.2 mg/ml</td><td>Infusión</td><td>24h ambiente</td></tr>
-                        <tr><td>Piperacilina/Tazob</td><td>20 mg/ml</td><td>30 min</td><td>24h (Refrig)</td></tr>
-                        <tr><td>Vancomicina</td><td>5 mg/ml</td><td>60-120 min</td><td>24h ambiente</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+    <table id="tablaFarmacos" class="tabla">
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Concentración</th>
+          <th>Tiempo de Infusión</th>
+          <th>Estabilidad</th>
+          <th>Administración</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aciclovir</td><td>7 mg/ml</td><td>60 min</td><td>24h ambiente</td><td>Infusión</td>
+        </tr>
+        <tr>
+          <td>Ampicilina</td><td>30 mg/ml</td><td>15-30 min</td><td>4h ambiente</td><td>Bolo</td>
+        </tr>
+        <tr>
+          <td>Gentamicina</td><td>10 mg/ml</td><td>30 min</td><td>24h con luz</td><td>Infusión</td>
+        </tr>
+        <!-- Agrega más filas según tu vademécum -->
+      </tbody>
+    </table>
+  </main>
 
-    <script>
-        document.getElementById('busqueda').addEventListener('keyup', function() {
-            let filtro = this.value.toLowerCase();
-            let filas = document.querySelectorAll('#tabla-f tbody tr');
-            filas.forEach(f => {
-                f.style.display = f.innerText.toLowerCase().includes(filtro) ? '' : 'none';
-            });
-        });
-    </script>
+  <script>
+    document.getElementById('search').addEventListener('keyup', function() {
+      let filtro = this.value.toLowerCase();
+      let filas = document.querySelectorAll('#tablaFarmacos tbody tr');
+      filas.forEach(fila => {
+        let texto = fila.textContent.toLowerCase();
+        fila.style.display = texto.includes(filtro) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
