@@ -11,8 +11,10 @@
     <h1>Buscador de Dosis</h1>
   </header>
   <main>
+    <!-- Barra de búsqueda -->
     <input type="text" id="search" placeholder="Buscar medicamento..." class="search-bar">
 
+    <!-- Tabla de medicamentos -->
     <table id="tablaFarmacos" class="tabla">
       <thead>
         <tr>
@@ -24,6 +26,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Ejemplo de filas, sustituye con tus 40+ medicamentos -->
         <tr>
           <td>Aciclovir</td><td>7 mg/ml</td><td>60 min</td><td>24h ambiente</td><td>Infusión</td>
         </tr>
@@ -33,11 +36,12 @@
         <tr>
           <td>Gentamicina</td><td>10 mg/ml</td><td>30 min</td><td>24h con luz</td><td>Infusión</td>
         </tr>
-        <!-- Agrega más filas según tu vademécum -->
+        <!-- Aquí pegas todas las demás filas de tu vademécum -->
       </tbody>
     </table>
   </main>
 
+  <!-- Script para búsqueda dinámica -->
   <script>
     document.getElementById('search').addEventListener('keyup', function() {
       let filtro = this.value.toLowerCase();
