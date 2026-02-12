@@ -1,58 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Silverman - Suite Neonatal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala Silverman</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="card" style="display:inline-block; padding: 5px 15px;">⬅ Volver</a>
-        <h1>Test de Silverman-Andersen</h1>
-    </header>
+  <header>
+    <h1>Escala Silverman-Andersen</h1>
+  </header>
+  <main>
+    <form id="silvermanForm" class="formulario">
+      <label>Movimientos torácicos:
+        <select name="torax">
+          <option value="0">0 - Sincrónicos</option>
+          <option value="1">1 - Retraso leve</option>
+          <option value="2">2 - Retraso marcado</option>
+        </select>
+      </label>
 
-    <main id="modulo-calculo">
-        <div class="pizarra-resultado">
-            Puntaje: <span id="resultado">0</span>
-            <p style="font-size: 0.9rem; font-weight: normal;">(0 = Normal | 10 = Dificultad grave)</p>
-        </div>
+      <label>Retracción intercostal:
+        <select name="intercostal">
+          <option value="0">0 - Ausente</option>
+          <option value="1">1 - Leve</option>
+          <option value="2">2 - Marcada</option>
+        </select>
+      </label>
 
-        <section class="bloque-recurso">
-            <h3>Movimientos toraco-abdominales</h3>
-            <label><input type="radio" name="s1" value="0"> Rítmicos y regulares (0)</label><br>
-            <label><input type="radio" name="s1" value="1"> Tórax inmóvil, abdomen se mueve (1)</label><br>
-            <label><input type="radio" name="s1" value="2"> Disociación toraco-abdominal (2)</label>
-        </section>
+      <label>Retracción xifoidea:
+        <select name="xifoidea">
+          <option value="0">0 - Ausente</option>
+          <option value="1">1 - Leve</option>
+          <option value="2">2 - Marcada</option>
+        </select>
+      </label>
 
-        <section class="bloque-recurso">
-            <h3>Tiraje intercostal</h3>
-            <label><input type="radio" name="s2" value="0"> Ausente (0)</label><br>
-            <label><input type="radio" name="s2" value="1"> Leve (1)</label><br>
-            <label><input type="radio" name="s2" value="2"> Marcado y constante (2)</label>
-        </section>
+      <label>Aleteo nasal:
+        <select name="aleteo">
+          <option value="0">0 - Ausente</option>
+          <option value="1">1 - Leve</option>
+          <option value="2">2 - Marcado</option>
+        </select>
+      </label>
 
-        <section class="bloque-recurso">
-            <h3>Retracción xifoidea</h3>
-            <label><input type="radio" name="s3" value="0"> Ausente (0)</label><br>
-            <label><input type="radio" name="s3" value="1"> Leve (1)</label><br>
-            <label><input type="radio" name="s3" value="2"> Marcada (2)</label>
-        </section>
+      <label>Quejido respiratorio:
+        <select name="quejido">
+          <option value="0">0 - Ausente</option>
+          <option value="1">1 - Audible con estetoscopio</option>
+          <option value="2">2 - Audible sin estetoscopio</option>
+        </select>
+      </label>
 
-        <section class="bloque-recurso">
-            <h3>Aleteo nasal</h3>
-            <label><input type="radio" name="s4" value="0"> Ausente (0)</label><br>
-            <label><input type="radio" name="s4" value="1"> Leve (1)</label><br>
-            <label><input type="radio" name="s4" value="2"> Marcado (2)</label>
-        </section>
+      <button type="button" onclick="calcularSilverman()">Calcular</button>
+    </form>
 
-        <section class="bloque-recurso">
-            <h3>Quejido espiratorio</h3>
-            <label><input type="radio" name="s5" value="0"> Ausente (0)</label><br>
-            <label><input type="radio" name="s5" value="1"> Audible con estetoscopio (1)</label><br>
-            <label><input type="radio" name="s5" value="2"> Audible a distancia (2)</label>
-        </section>
-    </main>
-</body>
-</html>
+    <div id="resultado" class="resultado"></div>
+  </main>
+
+  <script>
+    function calcularSilverman() {
+      let selects = document.querySelectorAll('#silvermanForm select');
+      let total = 0;
+      selects.forEach(sel => total += parseInt(sel.value));
+      let mensaje = '';
+      if (total <= 3) mensaje = 'Dificultad respiratoria leve';
+      else if (total
