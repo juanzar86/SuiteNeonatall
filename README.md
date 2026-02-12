@@ -28,22 +28,5 @@ Diseñado con estética hospitalaria, responsiva y consultable, desplegado en **
 
 - Diseño hospitalario y responsivo.  
 - Formularios consultables con validación básica.  
-- Calculadoras interactivas (ej. ventilación).  
-- Campos amplios para observaciones clínicas.  
-- Exportación y registro local opcional.  
-
----
-
-## 🛠️ Tecnologías utilizadas
-
-- **HTML, CSS, JavaScript**  
-- **Despliegue en Vercel**  
-- **Repositorio público en GitHub**
-
----
-
-## 🚀 Cómo desplegar
-
-1. Clonar el repositorio:  
-   ```bash
-   git clone https://github.com/juanzar86/SuiteNeonatall.git
+- Calculadoras interactivas (ej. ventilación).
+- 
