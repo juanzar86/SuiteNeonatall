@@ -1,92 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suite Neonatal</title>
-
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite Neonatal - juanzar86</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card { @apply bg-white border-2 border-blue-100 rounded-xl p-6 shadow-lg flex flex-col items-center transition-all hover:border-blue-500; }
+        .icon-box { @apply w-32 h-32 flex items-center justify-center mb-4 bg-blue-50 rounded-full; }
+    </style>
 </head>
+<body class="bg-slate-50 min-h-screen font-sans antialiased text-slate-800">
 
-<body>
+    <header class="bg-white border-b-4 border-blue-600 p-8 text-center shadow-sm">
+        <h1 class="text-3xl md:text-5xl font-black text-blue-900 tracking-tighter uppercase">
+            Diseño de Unidad Neonatal
+        </h1>
+        <p class="text-blue-500 font-bold mt-2 text-xl italic">Organización por Bloques Técnicos</p>
+    </header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <h1>DISEÑO UNIDAD NEONATAL</h1>
-    <p class="subtitle">
-      Seleccione un módulo según el bloque clínico de atención neonatal
-    </p>
-  </header>
+    <main class="max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <section class="card">
+            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 1: SOPORTE RESPIRATORIO</h2>
+            <div class="icon-box">
+                <img src="ventilador.svg" alt="Ventilador" class="w-24 h-24">
+            </div>
+            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Apgar / Silverman</p>
+            <p class="text-sm text-center text-slate-500">Evaluación inicial y estabilización de la vía aérea.</p>
+        </section>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="container blocks-grid">
+        <section class="card">
+            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 2: MICROCLIMA & FOTOTERAPIA</h2>
+            <div class="icon-box">
+                <img src="incubadora.svg" alt="Incubadora" class="w-24 h-24">
+            </div>
+            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Luz Azul (Bilis)</p>
+            <p class="text-sm text-center text-slate-500">Manejo térmico y control de ictericia neonatal.</p>
+        </section>
 
-    <!-- CUADRO 1 -->
-    <section class="block">
-      <h2>Cuadro 1 · Soporte Respiratorio</h2>
+        <section class="card">
+            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 3: VIGILANCIA (MONITOR)</h2>
+            <div class="icon-box">
+                <img src="monitor.svg" alt="Monitor" class="w-24 h-24">
+            </div>
+            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Monitoreo Hemodinámico</p>
+            <p class="text-sm text-center text-slate-500">Vigilancia continua de constantes vitales y saturación.</p>
+        </section>
 
-      <a href="ventilacion/index.html" class="card">
-        <span class="icon">🫁</span>
-        <div>
-          <div class="text">Efectividad Ventilación</div>
-          <small>Evaluación del soporte respiratorio</small>
+        <section class="card">
+            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 4: FARMACOLOGÍA & LAB</h2>
+            <div class="icon-box">
+                <img src="farmacia.svg" alt="Farmacia" class="w-24 h-24">
+            </div>
+            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Seguridad Nugols</p>
+            <p class="text-sm text-center text-slate-500">Registro de enfermería y administración de medicamentos.</p>
+        </section>
+
+    </main>
+
+    <footer class="max-w-5xl mx-auto px-6 mb-12">
+        <div class="border-4 border-dashed border-blue-900 p-4 rounded-lg bg-blue-50 text-center">
+            <span class="text-blue-900 font-black text-2xl tracking-[0.5em] uppercase italic">
+                Pasillo de Seguridad (1 Metro)
+            </span>
         </div>
-      </a>
-    </section>
-
-    <!-- CUADRO 2 -->
-    <section class="block">
-      <h2>Cuadro 2 · Microclima y RN</h2>
-
-      <a href="apgar/index.html" class="card">
-        <span class="icon">👶</span>
-        <div>
-          <div class="text">Calculadora APGAR</div>
-          <small>Valoración inicial del recién nacido</small>
-        </div>
-      </a>
-
-      <a href="balance/index.html" class="card">
-        <span class="icon">💧</span>
-        <div>
-          <div class="text">Balance Hídrico</div>
-          <small>Control de ingresos y egresos</small>
-        </div>
-      </a>
-    </section>
-
-    <!-- CUADRO 3 -->
-    <section class="block">
-      <h2>Cuadro 3 · Vigilancia</h2>
-
-      <a href="monitor/index.html" class="card">
-        <span class="icon">❤️</span>
-        <div>
-          <div class="text">Monitor de Signos</div>
-          <small>Seguimiento clínico continuo</small>
-        </div>
-      </a>
-    </section>
-
-    <!-- CUADRO 4 (FUTURO) -->
-    <section class="block">
-      <h2>Farmacología y Laboratorio</h2>
-
-      <div class="card disabled">
-        <span class="icon">💊</span>
-        <div>
-          <div class="text">Próximamente</div>
-          <small>Manejo farmacológico neonatal</small>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>Suite Neonatal · Herramienta de apoyo clínico y académico</p>
-  </footer>
+    </footer>
 
 </body>
 </html>
