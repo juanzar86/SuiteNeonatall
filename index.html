@@ -1,71 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Neonatal - juanzar86</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .card { @apply bg-white border-2 border-blue-100 rounded-xl p-6 shadow-lg flex flex-col items-center transition-all hover:border-blue-500; }
-        .icon-box { @apply w-32 h-32 flex items-center justify-center mb-4 bg-blue-50 rounded-full; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suite Neonatal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 min-h-screen font-sans antialiased text-slate-800">
+<body>
+  <h1>Suite Neonatal</h1>
 
-    <header class="bg-white border-b-4 border-blue-600 p-8 text-center shadow-sm">
-        <h1 class="text-3xl md:text-5xl font-black text-blue-900 tracking-tighter uppercase">
-            Diseño de Unidad Neonatal
-        </h1>
-        <p class="text-blue-500 font-bold mt-2 text-xl italic">Organización por Bloques Técnicos</p>
-    </header>
+  <div class="container">
+    <!-- Bloque Soporte Respiratorio -->
+    <div class="bloque">
+      <h2>Soporte Respiratorio</h2>
+      <div class="icono">
+        <img src="img/ventilador.svg" alt="Ventilador Neonatal">
+      </div>
+      <div class="card"><a href="apgar.html">Escala Apgar</a></div>
+      <div class="card"><a href="silverman.html">Escala Silverman</a></div>
+      <div class="card"><a href="ventilacion.html">Ventilación</a></div>
+      <div class="card"><a href="neumonia.html">Neumonía</a></div>
+    </div>
 
-    <main class="max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-        <section class="card">
-            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 1: SOPORTE RESPIRATORIO</h2>
-            <div class="icon-box">
-                <img src="ventilador.svg" alt="Ventilador" class="w-24 h-24">
-            </div>
-            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Apgar / Silverman</p>
-            <p class="text-sm text-center text-slate-500">Evaluación inicial y estabilización de la vía aérea.</p>
-        </section>
+    <!-- Bloque Microclima & Fototerapia -->
+    <div class="bloque">
+      <h2>Microclima & Fototerapia</h2>
+      <div class="icono">
+        <img src="img/incubadora.svg" alt="Incubadora Neonatal">
+      </div>
+      <div class="card"><a href="ballard.html">Ballard</a></div>
+      <div class="card"><a href="capurro.html">Capurro</a></div>
+      <div class="card"><a href="fototerapia.html">Fototerapia</a></div>
+      <div class="card"><a href="bilirrubina.html">Bilirrubina</a></div>
+    </div>
 
-        <section class="card">
-            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 2: MICROCLIMA & FOTOTERAPIA</h2>
-            <div class="icon-box">
-                <img src="incubadora.svg" alt="Incubadora" class="w-24 h-24">
-            </div>
-            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Luz Azul (Bilis)</p>
-            <p class="text-sm text-center text-slate-500">Manejo térmico y control de ictericia neonatal.</p>
-        </section>
+    <!-- Bloque Vigilancia -->
+    <div class="bloque">
+      <h2>Vigilancia</h2>
+      <div class="icono">
+        <img src="img/monitor.svg" alt="Monitor Neonatal">
+      </div>
+      <div class="card"><a href="signos.html">Signos Vitales</a></div>
+      <div class="card"><a href="signosneu.html">Signos Neurológicos</a></div>
+      <div class="card"><a href="oximetria.html">Oximetría</a></div>
+    </div>
 
-        <section class="card">
-            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 3: VIGILANCIA (MONITOR)</h2>
-            <div class="icon-box">
-                <img src="monitor.svg" alt="Monitor" class="w-24 h-24">
-            </div>
-            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Monitoreo Hemodinámico</p>
-            <p class="text-sm text-center text-slate-500">Vigilancia continua de constantes vitales y saturación.</p>
-        </section>
+    <!-- Bloque Farmacología & Lab -->
+    <div class="bloque">
+      <h2>Farmacología & Lab</h2>
+      <div class="icono">
+        <img src="img/farmacia.svg" alt="Farmacia Neonatal">
+      </div>
+      <div class="card"><a href="farmaco.html">Buscador de Dosis</a></div>
+      <div class="card"><a href="laboratorio.html">Laboratorio</a></div>
+    </div>
 
-        <section class="card">
-            <h2 class="text-blue-700 font-black text-center mb-4 text-lg leading-tight">CUADRO 4: FARMACOLOGÍA & LAB</h2>
-            <div class="icon-box">
-                <img src="farmacia.svg" alt="Farmacia" class="w-24 h-24">
-            </div>
-            <p class="text-xs text-center font-bold text-blue-400 mb-2 uppercase">Seguridad Nugols</p>
-            <p class="text-sm text-center text-slate-500">Registro de enfermería y administración de medicamentos.</p>
-        </section>
+    <!-- Bloque Cuidados de Enfermería -->
+    <div class="bloque">
+      <h2>Cuidados de Enfermería</h2>
+      <div class="icono">
+        <img src="img/enfermeria.svg" alt="Hoja de Enfermería">
+      </div>
+      <div class="card"><a href="hoja.html">Hoja de Enfermería</a></div>
+      <div class="card"><a href="upp.html">Riesgo de Úlceras</a></div>
+      <div class="card"><a href="marsi.html">Lesiones por Adhesivos</a></div>
+      <div class="card"><a href="caidas.html">Riesgo de Caídas</a></div>
+    </div>
 
-    </main>
+    <!-- Bloque Proceso & Recursos -->
+    <div class="bloque">
+      <h2>Proceso & Recursos</h2>
+      <div class="icono">
+        <img src="img/recursos.svg" alt="Recursos Neonatales">
+      </div>
+      <div class="card"><a href="pae.html">Proceso de Atención</a></div>
+      <div class="card"><a href="recursos.html">Recursos</a></div>
+    </div>
 
-    <footer class="max-w-5xl mx-auto px-6 mb-12">
-        <div class="border-4 border-dashed border-blue-900 p-4 rounded-lg bg-blue-50 text-center">
-            <span class="text-blue-900 font-black text-2xl tracking-[0.5em] uppercase italic">
-                Pasillo de Seguridad (1 Metro)
-            </span>
-        </div>
-    </footer>
-
+    <!-- Pasillo de Seguridad -->
+    <div class="bloque">
+      <h2>Pasillo de Seguridad</h2>
+      <p>(1 metro)</p>
+    </div>
+  </div>
 </body>
 </html>
