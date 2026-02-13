@@ -1,1 +1,5 @@
-Agregar ícono fototerapia.svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#FBC02D" stroke-width="2">
+  <path d="M20 30 h60 v10 h-60 z" fill="#FFF9C4"/>
+  <path d="M30 40 l-5 40 M70 40 l5 40 M25 80 h50" stroke-dasharray="2 2"/>
+  <circle cx="50" cy="65" r="10" fill="#BBDEFB" opacity="0.5"/>
+</svg> ícono fototerapia.svg
