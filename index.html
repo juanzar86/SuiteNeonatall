@@ -5,60 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suite Neonatal</title>
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="css/styles.css">
-
 </head>
+
 <body>
 
-  <!-- ENCABEZADO -->
+  <!-- HEADER -->
   <header class="header">
     <h1>DISEÑO UNIDAD NEONATAL</h1>
-    <p>Organización por Bloques Técnicos</p>
+    <p class="subtitle">
+      Seleccione un módulo según el bloque clínico de atención neonatal
+    </p>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="container">
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container blocks-grid">
 
     <!-- CUADRO 1 -->
     <section class="block">
-      <h2>CUADRO 1: SOPORTE RESPIRATORIO</h2>
+      <h2>Cuadro 1 · Soporte Respiratorio</h2>
 
       <a href="ventilacion/index.html" class="card">
         <span class="icon">🫁</span>
-        <span class="text">Efectividad Ventilación</span>
+        <div>
+          <div class="text">Efectividad Ventilación</div>
+          <small>Evaluación del soporte respiratorio</small>
+        </div>
       </a>
     </section>
 
     <!-- CUADRO 2 -->
     <section class="block">
-      <h2>CUADRO 2: MICROCLIMA & FOTOTERAPIA</h2>
+      <h2>Cuadro 2 · Microclima y RN</h2>
 
       <a href="apgar/index.html" class="card">
         <span class="icon">👶</span>
-        <span class="text">Calculadora APGAR</span>
+        <div>
+          <div class="text">Calculadora APGAR</div>
+          <small>Valoración inicial del recién nacido</small>
+        </div>
       </a>
 
       <a href="balance/index.html" class="card">
         <span class="icon">💧</span>
-        <span class="text">Balance Hídrico</span>
+        <div>
+          <div class="text">Balance Hídrico</div>
+          <small>Control de ingresos y egresos</small>
+        </div>
       </a>
     </section>
 
     <!-- CUADRO 3 -->
     <section class="block">
-      <h2>CUADRO 3: VIGILANCIA (MONITOR)</h2>
+      <h2>Cuadro 3 · Vigilancia</h2>
 
       <a href="monitor/index.html" class="card">
         <span class="icon">❤️</span>
-        <span class="text">Monitor de Signos</span>
+        <div>
+          <div class="text">Monitor de Signos</div>
+          <small>Seguimiento clínico continuo</small>
+        </div>
       </a>
+    </section>
+
+    <!-- CUADRO 4 (FUTURO) -->
+    <section class="block">
+      <h2>Farmacología y Laboratorio</h2>
+
+      <div class="card disabled">
+        <span class="icon">💊</span>
+        <div>
+          <div class="text">Próximamente</div>
+          <small>Manejo farmacológico neonatal</small>
+        </div>
+      </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>Suite Neonatal © 2026</p>
+    <p>Suite Neonatal · Herramienta de apoyo clínico y académico</p>
   </footer>
 
 </body>
