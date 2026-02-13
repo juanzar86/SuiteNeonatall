@@ -1,2 +1,6 @@
-<img src="img/enfermeria.svg" alt="Hoja de Enfermería">
+# Copia tu archivo enfermeria.svg dentro de la carpeta img
+git add img/enfermeria.svg
+git commit -m "Agregar ícono enfermeria.svg"
+git push origin main
+
 
