@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Hídrico - Suite Neonatal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0fdfa; font-family: sans-serif; }
+        .card { border-radius: 15px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .res-box { background-color: #e0f2fe; border-radius: 10px; padding: 15px; margin-top: 20px; }
+        .header-bal { background: #0d9488; color: white; padding: 20px; border-radius: 15px 15px 0 0; }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+    <a href="index.html" class="btn btn-outline-secondary mb-3">← Volver al Panel</a>
+    
+    <div class="card">
+        <div class="header-bal text-center">
+            <h2>Balance Hídrico</h2>
+            <p class="mb-0">Cálculo de Ingresos y Egresos</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Peso del Neonato (kg)</label>
+                    <input type="number" id="peso" class="form-control" placeholder="Ej: 2.5" step="0.1" oninput="calcBal()">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Horas del periodo</label>
+                    <input type="number" id="horas" class="form-control" value="24" oninput="calcBal()">
+                </div>
+                <div class="col-6">
+                    <label class="form-label text-success fw-bold">Total Ingresos (ml)</label>
+                    <input type="number" id="ingresos" class="form-control" placeholder="Leche, IV, etc" oninput="calcBal()">
+                </div>
+                <div class="col-6">
+                    <label class="form-label text-danger fw-bold">Total Egresos (ml)</label>
+                    <input type="number" id="egresos" class="form-control" placeholder="Orina, fístulas" oninput="calcBal()">
+                </div>
+            </div>
+
+            <div class="res-box text-center">
+                <div class="row">
+                    <div class="col-6 border-end">
+                        <small class="text-muted d-block">Balance Total</small>
+                        <span id="balTotal" class="h4 fw-bold">0</span> <small>ml</small>
+                    </div>
+                    <div class="col-6">
+                        <small class="text-muted d-block">Flujo Urinario</small>
+                        <span id="flujo" class="h4 fw-bold text-primary">0</span> <small>ml/kg/hr</small>
+                    </div>
+                </div>
+            </div>
+            <div id="alertaFlujo" class="mt-3 text-center small fw-bold"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function calcBal() {
+    let peso = parseFloat(document.getElementById('peso').value) || 0;
+    let horas = parseFloat(document.getElementById('horas').value) || 1;
+    let ing = parseFloat(document.getElementById('ingresos').value) || 0;
+    let egr = parseFloat(document.getElementById('egresos').value) || 0;
+
+    // Balance Simple
+    let balance = ing - egr;
+    document.getElementById('balTotal').innerText = balance.toFixed(1);
+
+    // Flujo Urinario (ml / kg / horas)
+    if(peso > 0) {
+        let fu = (egr / peso) / horas;
+        document.getElementById('flujo').innerText = fu.toFixed(2);
+        
+        let alerta = document.getElementById('alertaFlujo');
+        if(fu < 0.5) {
+            alerta.innerText = "⚠️ Alerta: Oliguria";
+            alerta.className = "mt-3 text-center small fw-bold text-danger";
+        } else if(fu > 4) {
+            alerta.innerText = "ℹ️ Poliuria";
+            alerta.className = "mt-3 text-center small fw-bold text-primary";
+        } else {
+            alerta.innerText = "✅ Flujo dentro de rangos normales";
+            alerta.className = "mt-3 text-center small fw-bold text-success";
+        }
+    }
+}
+</script>
+</body>
+</html>
