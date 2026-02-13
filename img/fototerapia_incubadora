@@ -1,9 +1,10 @@
 <div class="modulo">
   <h3>Fototerapia e Incubadora</h3>
   <div class="iconos">
-    <img src="img/fototerapia_incubadora/fototerapia.svg" alt="Fototerapia Neonatal">
+    <img src="img/fototerapia.svg" alt="Fototerapia Neonatal">
     <img src="img/incubadora.svg" alt="Incubadora Neonatal">
   </div>
 </div>
+
 
 
