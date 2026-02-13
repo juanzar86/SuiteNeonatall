@@ -1,30 +1,70 @@
-.search-bar {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 20px auto;
-  display: block;
-  border: 1px solid #d9e2ec;
-  border-radius: 6px;
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #eef7fb; /* fondo azul claro */
+  margin: 0;
+  padding: 40px;
+  color: #333;
 }
 
-.tabla {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.tabla th, .tabla td {
-  border: 1px solid #d9e2ec;
-  padding: 10px;
+h1 {
   text-align: center;
+  margin-bottom: 50px;
+  color: #004d80;
+  font-size: 2.2em;
+  letter-spacing: 1px;
 }
 
-.tabla th {
-  background-color: #004080;
-  color: white;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
 
-.tabla tr:nth-child(even) {
-  background-color: #f5f7fa;
+.bloque {
+  background: #ffffff;
+  border: 3px solid #cce7ff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 14px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease;
 }
+
+.bloque:hover {
+  transform: translateY(-8px);
+}
+
+.bloque h2 {
+  margin-bottom: 20px;
+  color: #006699;
+  font-size: 1.5em;
+}
+
+.icono img {
+  display: block;
+  margin: 0 auto 20px auto;
+  max-height: 130px;
+}
+
+.card {
+  background: #e6f7ff;
+  border-radius: 10px;
+  margin: 12px 0;
+  padding: 14px;
+  transition: background 0.2s ease;
+}
+
+.card a {
+  text-decoration: none;
+  color: #004d40;
+  font-weight: bold;
+}
+
+.card:hover {
+  background: #cceeff;
+}
+
+.card a:hover {
+  color: #d84315;
+}
+
