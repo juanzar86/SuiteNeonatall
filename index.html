@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diseño Unidad Neonatal</title>
+<title>Suite Neonatal</title>
 
 <style>
 *{
@@ -14,71 +14,119 @@ box-sizing:border-box;
 
 body{
 font-family:Arial, Helvetica, sans-serif;
-background:#f4f7fb;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
+background:#eef3f9;
+padding:40px 20px;
 }
 
 .container{
-background:white;
 max-width:1200px;
-width:100%;
-border-radius:12px;
-padding:30px;
-box-shadow:0 8px 25px rgba(0,0,0,0.08);
+margin:auto;
 text-align:center;
 }
 
 h1{
 color:#1e4f8a;
-font-size:28px;
+font-size:34px;
 margin-bottom:10px;
 }
 
 h2{
 color:#3a6ea5;
-font-size:20px;
-margin-bottom:30px;
+font-size:18px;
+margin-bottom:40px;
 font-weight:normal;
 }
 
-img{
-width:100%;
-border-radius:10px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+gap:25px;
 }
 
-.footer{
-margin-top:25px;
-font-weight:bold;
+.card{
+background:white;
+padding:30px 20px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card h3{
 color:#1e4f8a;
-font-size:18px;
+margin-bottom:15px;
 }
 
+.card p{
+font-size:14px;
+margin-bottom:20px;
+color:#555;
+}
+
+.card a{
+display:inline-block;
+padding:10px 18px;
+background:#1e4f8a;
+color:white;
+text-decoration:none;
+border-radius:8px;
+transition:0.3s;
+}
+
+.card a:hover{
+background:#163b66;
+}
+
+/* Responsive */
 @media(max-width:768px){
-h1{font-size:22px;}
-h2{font-size:16px;}
-.footer{font-size:16px;}
+h1{
+font-size:26px;
+}
 }
 </style>
 
 </head>
+
 <body>
 
 <div class="container">
-<h1>DISEÑO DE UNIDAD NEONATAL</h1>
-<h2>Organización por Bloques Técnicos</h2>
 
-<img src="https://raw.githubusercontent.com/juanzar86/SuiteNeonatal/main/WhatsApp%20Image%202026-02-12%20at%2011.56.12%20PM%20(1).jpeg" alt="Diseño Unidad Neonatal">
+<h1>Suite Neonatal</h1>
+<h2>Plataforma Integral de Apoyo Clínico</h2>
 
-<div class="footer">
-Pasillo de Seguridad (1 metro)
+<div class="grid">
+
+<div class="card">
+<h3>Farmacología</h3>
+<p>Módulo de cálculo y administración de medicamentos neonatales.</p>
+<a href="farmacia.html">Abrir</a>
+</div>
+
+<div class="card">
+<h3>Laboratorio</h3>
+<p>Interpretación de estudios y valores neonatales.</p>
+<a href="lab.html">Abrir</a>
+</div>
+
+<div class="card">
+<h3>Monitores</h3>
+<p>Evaluación de signos vitales y monitoreo clínico.</p>
+<a href="monitores.html">Abrir</a>
+</div>
+
+<div class="card">
+<h3>Diseño Unidad Neonatal</h3>
+<p>Organización por bloques técnicos y estructura funcional.</p>
+<a href="diseño-unidad.html">Abrir</a>
+</div>
+
 </div>
 
 </div>
 
 </body>
 </html>
-
